@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+
+.page{
+    display: flex;
+}
+
+.body{
+    width: 80%;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: $grey;
+}

@@ -1,0 +1,152 @@
+@import "../../styles/variables.scss";
+
+/***** PAGE TITLE *****/
+
+h1{
+    @include page-title;
+}
+
+/***** BODY LAYOUT *****/
+
+.profile-body{
+    display: flex;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+/***** CHANGE PHOTO *****/
+
+.change-photo{
+    @include edit-profile-box(90%);
+    height: 40%;
+    margin-left: 20px;
+    align-items: center;
+    justify-content:center;
+
+    img{
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+
+    button{
+        @include button(30px, $blue);
+    }
+}
+
+/***** MY WORKSHOPS *****/
+
+.edit-myWorkshops{
+    @include edit-profile-box(90%);
+    height: 30%;
+    margin: 20px 0 0 20px;
+    align-items: center;
+
+    button{
+        @include button(30px, $blue);
+    }
+}
+
+.edit-myWorkshops-title{
+    @include edit-profile-title(40px);
+}
+
+/***** USER SETTINGS *****/
+
+.user-settings{
+    @include edit-profile-box(97%);
+    margin-bottom: 20px;
+
+    button{
+        @include button(30px, $blue);
+    }
+}
+
+.user-settings-title{
+    @include edit-profile-title(40px);
+}
+
+.user-settings-form{
+    @include edit-profile-form;
+
+    label{
+        @include edit-profile-label;
+    }
+
+    input{
+        @include edit-profile-input
+    }
+}
+
+.password-form{
+    @include edit-profile-form;
+
+    label{
+        @include edit-profile-label;
+    }
+
+    input{
+        @include edit-profile-input
+    }
+}
+
+.username-email,
+.name,
+.password{
+    display: flex;
+}
+
+/***** CONTACT SETTINGS *****/
+
+.contact-settings{
+    @include edit-profile-box(97%);
+    margin-bottom: 20px;
+
+    button{
+        @include button(30px, $blue);
+    }
+}
+
+.contact-settings-title{
+    @include edit-profile-title(40px);
+}
+
+.contact-settings-form{
+    @include edit-profile-form;
+
+    label{
+        @include edit-profile-label;
+    }
+
+    input{
+        @include edit-profile-input
+    }
+
+    select{
+        @include edit-profile-select(29px, 90%)
+    }
+}
+
+.country-company,
+.position-role{
+    display: flex;
+}
+
+/***** FORM LABLEL/INPUT LAYOUT *****/
+
+.label-input{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+

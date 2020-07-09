@@ -1,0 +1,249 @@
+/****** COLORS ******/
+
+$blue : #3B65B0;
+$grey: #F0F0F0;
+$darkgrey: #8f8f8f;
+
+/****** MIXINS ******/
+
+/****** Profile ******/
+
+@mixin edit-profile-box ( $width ) {
+  background-color: white;
+  border-radius: 5px;
+  width: $width;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
+}
+
+@mixin edit-profile-title( $height ) {
+  width: 100%;
+  height: $height;
+  background-color: $grey;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-left: 10px;
+  border-radius: 5px 5px 0 0;
+  font-family: roboto;
+  font-weight: 450;
+  font-size: 16px;
+  color: $blue;
+}
+
+@mixin edit-profile-form {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 20px 0;
+  padding: 0 10px;
+}
+
+@mixin edit-profile-input {
+  height: 25px;
+  width: 90%;
+  outline: none;
+  padding: 0;
+  border: 2px solid $grey;
+  border-radius: 5px;
+  color: $darkgrey;
+}
+
+@mixin edit-profile-label {
+  padding: 0;
+  height: 40px;
+  font-family: roboto;
+  font-weight: 500;
+  font-size: 16px;
+  color: $darkgrey;
+}
+
+@mixin edit-profile-select( $height, $width ) {
+  height: $height;
+  width: $width;
+  outline: none;
+  border: 2px solid $grey;
+  border-radius: 5px;
+  color: $darkgrey;
+}
+
+/****** general mixins ******/
+
+@mixin button ( $height, $color ) {
+  background-color: $color;
+  color: white;
+  height: $height;
+  outline: none;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+@mixin page-title {
+  margin: 0;
+  font-family: roboto;
+  font-weight: 450;
+  font-size: 25px;
+  color: $darkgrey;
+  margin: 20px;
+}
+
+/****** tables ******/
+
+@mixin table {
+  font-family: roboto;
+  border-collapse: collapse;
+  margin: auto;
+  width: 97%;
+}
+
+@mixin td-and-th{
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  color: $darkgrey;
+}
+
+@mixin td{
+  background-color: white;
+  position: relative;
+
+  p{
+    font-family: roboto;
+    font-weight: 450;
+    color: $darkgrey;
+  }
+  
+}
+
+@mixin th{
+  border-top: 1px solid #ddd;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: white;
+}
+
+/****** tables/dropdown ******/
+
+@mixin options-btn{
+  background:none;
+  color: $darkgrey;
+  font-size: 24px;
+  margin: 5px 10px;
+  padding: 0;
+}
+
+@mixin dropdown( $top){
+  display: none;
+  position: absolute;
+  background-color: $grey;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+  top: $top;
+  border-top: 1px solid $darkgrey;
+  border-left: 1px solid $darkgrey;
+  border-right: 1px solid $darkgrey;
+}
+
+@mixin dropdown-delete-btn-hover{
+  background-color: red;
+  color: white;
+}
+
+@mixin dropdown-item{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: $grey;
+  width: 100%;
+  border-radius: 0;
+  color: $darkgrey;
+  border-bottom: 1px solid $darkgrey;
+  padding: 10px;
+  font-family: roboto;
+  font-weight: 450;
+}
+
+@mixin dropdown-item-hover{
+  background-color: $blue;
+  color: white;
+}
+
+@mixin open-dropdown-hover{
+  display: flex;
+  flex-direction: column;
+}
+
+/****** WORKSHOP INFO CARD ******/
+
+@mixin workshop-info-card{
+  background-color: white;
+  border-radius: 5px;
+  width: 95%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
+}
+
+@mixin workshop-info-card-header{
+  width: 100%;
+  height: 50px;
+  background-color: $grey;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding:0 15px 0 15px;
+  border-bottom: 1px solid $darkgrey;
+  border-radius: 5px 5px 0 0;
+  font-family: roboto;
+  font-weight: 450;
+  font-size: 16px;
+  color: $blue;
+}
+
+@mixin workshop-info-card-header-btns{
+  margin: 0;
+  padding: 10px;
+  background: none;
+  font-size: 24px;
+  color: $darkgrey;
+}
+
+@mixin workshop-info-card-body{
+  display:flex;
+  justify-content: space-evenly;
+}
+
+@mixin workshop-info-card-body-half($text-align){
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: $text-align;
+  width: 50%;
+  border-right: 1px solid $darkgrey;
+  padding: 10px 20px;
+}
+
+@mixin workshop-info-card-footer{
+  background-color: $grey;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $darkgrey ;
+  border-radius: 0 0 5px 5px;
+}
+
+@mixin page-header{
+  display: flex;
+  align-items: center;
+  margin: 10px 10px 10px 2.5%;
+}
+
+

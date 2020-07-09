@@ -1,0 +1,28 @@
+@import '../../styles/variables.scss';
+
+.all-notifications-header{
+    display: flex;
+    align-items: center;
+    margin: 10px 10px 10px 2.5%;
+
+    h1{
+        margin-left: 0;
+    }
+
+    .new-notification-btn{
+        @include button(40px, $darkgrey);
+        margin-top: 0;
+    
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+}
+
+.all-notifications-body{
+    width: 95%;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
+}

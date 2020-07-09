@@ -1,0 +1,60 @@
+@import '../../styles/variables.scss';
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-form{
+  height: 50%;
+  width: 35%;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+
+  #searchbar{
+    width: 90%;
+    height: 100%;
+    background-color: $grey;
+    outline: none;
+    border:none;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+  }
+
+  #searchbtn{
+    width: 10%;
+    height: 100%;
+    outline: none;
+    border:none;
+    border-radius: 0 5px 5px 0;
+    background-color: $blue;
+  }
+}
+
+.user{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+
+  img{
+    border-radius: 50%;
+    width: 60%;
+  }
+
+  p{
+    font-size: 16px;
+    margin-right: 10px;
+  }
+}
+
+
+
+

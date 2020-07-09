@@ -1,0 +1,19 @@
+@import '../../../styles/variables.scss';
+
+.message-modal{
+    width: fit-content;
+    height: fit-content;
+    padding: 30px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
+
+
+    p{
+        font-family: roboto;
+        font-weight: 400;
+        color: $darkgrey;
+    }
+}

@@ -1,0 +1,80 @@
+@import '../../styles/variables.scss';
+
+.item ul,
+.nav input[type='checkbox'] {
+  display: none;
+}
+
+.logo {
+  display: block;
+  width: 70%;
+  margin: 2rem;
+  align-items: center;
+}
+
+.item input:checked ~ ul {
+  display: block;
+}
+
+.arrow {
+  width: 12px;
+  vertical-align: middle;
+  margin: -1px 0px 1px 10px;
+  color: #e6e6e6;
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+label {
+  width: 100%;
+  display: block;
+  z-index: 3;
+  position: relative;
+}
+
+.nav {
+  width: 20%;
+  height: 100vh;
+  background-color: $blue;
+  overflow-x: hidden;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.nav ul,
+.nav li,
+label {
+  line-height: 50px;
+  margin: 0;
+  padding: 0 1rem;
+  list-style: none;
+  text-decoration: none;
+  color: #e6e6e6;
+  font-weight: 100;
+  width: 100%;
+}
+
+.item a {
+  line-height: 50px;
+  margin: 0;
+  padding: 0 1em;
+  list-style: none;
+  text-decoration: none;
+  color: #e6e6e6;
+  font-weight: 100;
+}
+
+.item ul {
+  padding: 0 0.25em;
+}
+
+.nav li a {
+  line-height: 50px;
+  margin: 0;
+  padding: 0 4em;
+  list-style: none;
+  text-decoration: none;
+  color: #e6e6e6;
+  font-weight: 100;
+}

@@ -1,0 +1,158 @@
+@import "../../styles/variables.scss";
+
+.workshop-attendees-header {
+  @include page-header;
+}
+
+.workshop-attendees-body {
+  width: 95%;
+  margin: 0 auto 40px auto;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
+
+  .search-attendee {
+    width: 20%;
+    margin: 10px 0;
+  }
+}
+
+.workshop-info {
+  @include workshop-info-card;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  margin-bottom: 0;
+  border-bottom: 1px solid $darkgrey;
+}
+
+.workshop-info-header {
+  @include workshop-info-card-header;
+
+  .workshop-info-date {
+    display: flex;
+
+    .date {
+      margin-right: 10px;
+    }
+  }
+
+  .workshop-info-header-btns {
+    margin-right: 10px;
+
+    .workshop-icons {
+      @include workshop-info-card-header-btns;
+    }
+  }
+}
+
+.workshop-info-body {
+  @include workshop-info-card-body;
+}
+
+.workshop-info-left {
+  @include workshop-info-card-body-half(start);
+
+  h2,
+  h4,
+  p {
+    font-family: roboto;
+    color: $darkgrey;
+  }
+}
+
+.workshop-info-right {
+  @include workshop-info-card-body-half(end);
+  border: none;
+
+  .room-manager {
+    display: flex;
+    justify-content: flex-end;
+
+    .room {
+      margin-right: 15px;
+    }
+  }
+
+  p {
+    font-family: roboto;
+    color: $darkgrey;
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  .open {
+    color: green;
+  }
+
+  .closed {
+    color: red;
+  }
+}
+
+.workshop-info-footer {
+  @include workshop-info-card-footer;
+
+  button {
+    @include button(30px, $blue);
+    margin-top: 0;
+  }
+}
+
+.attendees-table {
+  @include table;
+
+  td,
+  th {
+    @include td-and-th;
+  }
+
+  td {
+    @include td;
+  }
+
+  th {
+    @include th;
+  }
+}
+
+/***** DROPDOWN *****/
+
+.dropdown {
+  position: relative;
+}
+
+.options-icon {
+  @include options-btn;
+}
+
+.workshop-info-dropdown {
+  @include dropdown(28px);
+  right: 25px;
+
+  .delete-workshop-btn:hover {
+    @include dropdown-delete-btn-hover;
+  }
+
+  button {
+    @include dropdown-item;
+
+    &:hover {
+      @include dropdown-item-hover;
+
+      a {
+        color: white;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: $darkgrey;
+    }
+  }
+}
+
+.dropdown:hover .workshop-info-dropdown {
+  @include open-dropdown-hover;
+}

@@ -1,0 +1,60 @@
+@import '../../../styles/variables.scss';
+
+/***** TABLE *****/
+
+.workshops-table{
+    @include table;
+
+    td, th{
+        @include td-and-th;
+    }
+
+    td{
+        @include td;
+    }
+
+    th{
+       @include th;
+    }
+
+    .title-col{
+        width: 30%;
+    }
+}
+
+/***** DROPDOWN *****/
+
+.options-icon{
+    @include options-btn;
+}
+
+.btns-dropdown{
+    @include dropdown(35px);
+    left: 30px;
+
+    .delete-workshop-btn:hover{
+       @include dropdown-delete-btn-hover;
+    }
+
+    button{
+        @include dropdown-item;
+        
+
+        &:hover{
+            @include dropdown-item-hover;
+
+            a{
+                color: white; 
+            }
+        }
+
+        a{
+            text-decoration: none;
+            color: $darkgrey;
+        }
+    }
+}
+
+  .dropdown:hover .btns-dropdown {
+    @include open-dropdown-hover;
+  }

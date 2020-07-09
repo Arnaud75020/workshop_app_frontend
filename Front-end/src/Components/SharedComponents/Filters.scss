@@ -1,0 +1,43 @@
+@import '../../styles/variables.scss';
+
+
+.filters{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+    border-bottom: 1px solid $grey;
+    z-index: 10;
+
+    .filter-select{
+        display: flex;
+        align-items: center;
+
+        label{
+            font-family: roboto;
+            font-weight: 450;
+            font-size: 18px;
+            color: $darkgrey;
+            margin: 0 10px 0 0;
+        }
+
+        select{
+            padding: 3px 5px;
+            border: 1px solid $darkgrey;
+        }
+    }
+}
+
+.search-bar{
+    margin-right: 10px;
+
+    input{
+        width: 100%;
+        outline: none;
+        border: 1px solid $darkgrey;
+        border-radius: 3px;
+        padding: 0 5px;
+    }
+}
