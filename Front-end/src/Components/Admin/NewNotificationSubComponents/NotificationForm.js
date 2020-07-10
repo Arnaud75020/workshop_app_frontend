@@ -49,7 +49,8 @@ const NotificationForm = () => {
                 date: "",
                 to:"",
                 subject:"",
-                content:""
+                content:"",
+                checkbox: false
             })
         addTempNotification(newObject);
         
@@ -59,6 +60,7 @@ const NotificationForm = () => {
         if(data.workshop){
             setSelectWorkshop(false)
         }
+
     };
 
     const onChangeSelect = (event) => {
