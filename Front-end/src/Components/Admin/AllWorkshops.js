@@ -44,6 +44,10 @@ const AllWorkshops = (props) => {
     setContent(modalContent);
     setActive(activeModal);
     setDisplayModal(!displayModal);
+    if(activeModal === "message"){
+      setDisplayModal(true);
+      setTimeout(() => setDisplayModal(false), 1500);
+    }
     const editingWorkshop = workshops.filter(
       (workshop) => workshop.id === workshop_id
     );

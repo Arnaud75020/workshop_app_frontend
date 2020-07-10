@@ -45,7 +45,7 @@ const NewNotificationForm = ({ send_to , attendees, toggleDisplayModal}) => {
         }
 
         confirmNotification(newObject)
-        toggleDisplayModal()
+        toggleDisplayModal("message", "notification successfully sent")
     };
 
     return (

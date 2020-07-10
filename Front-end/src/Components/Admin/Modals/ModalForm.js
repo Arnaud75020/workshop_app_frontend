@@ -34,7 +34,10 @@ const ModalForm = ( { workshopInEdit, toggleDisplayModal, active , attendees, no
             {isActive !== "" && isActive === "workshop" && 
             <WorkshopFormEdit 
             workshopInEdit={workshopInEdit}
-            toggleDisplayModal={toggleDisplayModal}/>}
+            toggleDisplayModal={toggleDisplayModal}
+            active={active}
+            content={content}
+            />}
             {isActive !== "" && isActive === "notification" &&
             <NewNotificationForm send_to={workshopInEdit !== undefined ? workshopInEdit.title: `${attendees[0].firstname} ${attendees[0].lastname}`} attendees={attendees} toggleDisplayModal={toggleDisplayModal}/> }
             {isActive !== "" && isActive === "notificationInfo" &&

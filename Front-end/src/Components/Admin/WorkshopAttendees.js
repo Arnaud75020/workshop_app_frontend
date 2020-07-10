@@ -4,7 +4,6 @@ import WorkshopInfo from "./WorkshopAttendeesSubComponents/WorkshopInfo";
 import "./WorkshopAttendees.scss";
 import { WorkshopContext } from "../../Context/WorkshopContext";
 import ModalForm from "./Modals/ModalForm";
-import axios from "axios";
 
 const WorkshopAttendees = (props) => {
   const speakerId = props.match.params.id;
@@ -14,21 +13,25 @@ const WorkshopAttendees = (props) => {
   );
   const [displayModal, setDisplayModal] = useState(false);
   const [workshopInEdit, setWorkshopInEdit] = useState([]);
-  const [modal, setModal] = useState("");
+  const [active, setActive] = useState("");
+  const [content, setContent] = useState("");
+
 
   useEffect(() => {
     getWorkshop(speakerId);
     getAttendees(speakerId);
   }, [speakerId]);
 
-  const toggleDisplayModal = () => {
+  const toggleDisplayModal = (active, content) => {
     setDisplayModal(!displayModal);
     setWorkshopInEdit(workshop);
     getWorkshop(speakerId);
-  };
-
-  const selectModal = (modal) => {
-    setModal(modal);
+    setActive(active);
+    setContent(content)
+    if(active === "message"){
+      setDisplayModal(true);
+      setTimeout(() => setDisplayModal(false), 1500);
+    }
   };
 
   return (
@@ -38,8 +41,9 @@ const WorkshopAttendees = (props) => {
           <ModalForm
             workshopInEdit={workshopInEdit}
             toggleDisplayModal={toggleDisplayModal}
-            active={modal}
+            active={active}
             attendees={attendees}
+            content={content}
           />
         )}
         <div className="workshop-attendees-header">
@@ -49,7 +53,6 @@ const WorkshopAttendees = (props) => {
           <WorkshopInfo
             workshop={workshop}
             toggleDisplayModal={toggleDisplayModal}
-            selectModal={selectModal}
             attendees={attendees}
           />
           <AttendeesList attendees={attendees} />
