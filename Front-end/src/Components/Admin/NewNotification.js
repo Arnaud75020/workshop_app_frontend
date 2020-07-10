@@ -12,7 +12,7 @@ const NewNotification = () => {
     tempNotifications,
     confirmNotification,
     setTempNotifications,
-    deleteTempNotification
+    deleteTempNotification,
   } = useContext(NotificationContext);
 
   const [isModalDisplayed, setIsModalDisplayed] = useState(false);
@@ -21,50 +21,36 @@ const NewNotification = () => {
   const [notificationId, setNotificationId] = useState("");
 
   const toggleDisplayModal = (activeModal, modalContent, notification_id) => {
-    setNotificationId(notification_id)
-    setContent(modalContent)
-    setActive(activeModal)
+    setNotificationId(notification_id);
+    setContent(modalContent);
+    setActive(activeModal);
     setIsModalDisplayed(!isModalDisplayed);
-    if(activeModal === "message"){
+    if (activeModal === "message") {
       setTimeout(() => setIsModalDisplayed(false), 1500);
     }
   };
 
-  const handleConfirmAllNotifications = () =>
-    tempNotifications.map((tempNotification) => {
-      let to_id = null;
-
-      switch (tempNotification.to) {
-        case "All":
-          to_id = 1;
-          break;
-        case "All Attendees":
-          to_id = 2;
-          break;
-        case "All Speakers":
-          to_id = 3;
-          break;
-      }
-
-      const newObject = {
+  const handleConfirmAllNotifications = () => {
+    const notificationList = tempNotifications.map((tempNotification) => {
+      return {
         subject: tempNotification.subject,
         content: tempNotification.content,
         state: tempNotification.state,
-        send_to_id: to_id,
+        send_to: tempNotification.send_to,
         date: tempNotification.date,
       };
-
-      confirmNotification(newObject);
-      setTempNotifications([]);
     });
+
+    confirmNotification(notificationList);
+    setTempNotifications([]);
+  };
 
   return (
     <div className="new-notifications-body">
       <div className="new-notifications-header">
         <h1>New Notification</h1>
-        <button className='all-notifications-btn'>
-          <Link to='/admin/all-notifications'>All Notifications</Link>
-
+        <button className="all-notifications-btn">
+          <Link to="/admin/all-notifications">All Notifications</Link>
         </button>
         <button
           className="confirm-all-btn"
@@ -73,8 +59,15 @@ const NewNotification = () => {
           Confirm All
         </button>
         <div>
-        {isModalDisplayed && (
-            <ModalForm active={active} toggleDisplayModal={toggleDisplayModal} confirmFunction={deleteTempNotification} id={notificationId} confirmText={"confirm"} content={content} />
+          {isModalDisplayed && (
+            <ModalForm
+              active={active}
+              toggleDisplayModal={toggleDisplayModal}
+              confirmFunction={deleteTempNotification}
+              id={notificationId}
+              confirmText={"confirm"}
+              content={content}
+            />
           )}
         </div>
       </div>

@@ -8,9 +8,12 @@ import "./NewWorkshop.scss";
 import ModalForm from "./Modals/ModalForm";
 
 const NewWorkshop = () => {
-  const { tempWorkshops, setTempWorkshop, confirmWorkshop, deleteTempWorkshop } = useContext(
-    WorkshopContext
-  );
+  const {
+    tempWorkshops,
+    setTempWorkshop,
+    confirmWorkshop,
+    deleteTempWorkshop,
+  } = useContext(WorkshopContext);
 
   const [isModalDisplayed, setIsModalDisplayed] = useState(false);
   const [active, setActive] = useState("");
@@ -18,28 +21,27 @@ const NewWorkshop = () => {
   const [workshopId, setWorkshopId] = useState("");
 
   const toggleDisplayModal = (activeModal, modalContent, workshop_id) => {
-    setWorkshopId(workshop_id)
-    setContent(modalContent)
-    setActive(activeModal)
+    setWorkshopId(workshop_id);
+    setContent(modalContent);
+    setActive(activeModal);
     setIsModalDisplayed(!isModalDisplayed);
-    if(activeModal === "message"){
+    if (activeModal === "message") {
       setTimeout(() => setIsModalDisplayed(false), 1500);
     }
   };
 
   const { speakers } = useContext(UserContext);
-  console.log("speakers",speakers)
+  console.log("speakers", speakers);
 
   const handleConfirmAllWorkshops = () => {
-    tempWorkshops.map((tempWorkshop) => {
+    const workshopList = tempWorkshops.map((tempWorkshop) => {
       const speaker_id = speakers.filter((speaker) => {
         return (
           `${speaker.firstname} ${speaker.lastname}` === tempWorkshop.speaker
         );
       });
-      const room_type_id = tempWorkshop.room_type === "Banquet" ? 1 : 2;
 
-      const newObject = {
+      return {
         title: tempWorkshop.title,
         status_open: tempWorkshop.status_open,
         date: tempWorkshop.date,
@@ -50,24 +52,30 @@ const NewWorkshop = () => {
         room: tempWorkshop.room,
         room_capacity: tempWorkshop.room_capacity,
         room_manager: tempWorkshop.room_manager,
-        room_type_id: room_type_id,
+        room_type: tempWorkshop.room_type,
       };
-
-      confirmWorkshop(newObject);
-      setTempWorkshop([]);
     });
+    confirmWorkshop(workshopList);
+    setTempWorkshop([]);
   };
 
   return (
     <div className="new-workshops-body">
       <div className="new-workshops-header">
         <h1>New Workshops</h1>
-        <button className='all-workshops-btn'>
-          <Link to='/admin'>All Workshops</Link>
+        <button className="all-workshops-btn">
+          <Link to="/admin">All Workshops</Link>
         </button>
         <div>
           {isModalDisplayed && (
-            <ModalForm active={active} toggleDisplayModal={toggleDisplayModal} confirmFunction={deleteTempWorkshop} id={workshopId} confirmText={"confirm"} content={content} />
+            <ModalForm
+              active={active}
+              toggleDisplayModal={toggleDisplayModal}
+              confirmFunction={deleteTempWorkshop}
+              id={workshopId}
+              confirmText={"confirm"}
+              content={content}
+            />
           )}
         </div>
         <button className="confirm-all-btn" onClick={handleConfirmAllWorkshops}>
