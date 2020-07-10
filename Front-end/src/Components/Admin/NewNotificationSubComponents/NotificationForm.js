@@ -11,57 +11,59 @@ const NotificationForm = () => {
   const [checkboxCheck, setCheckboxCheck] = useState(false);
   const [selectWorkshop, setSelectWorkshop] = useState(false);
 
-  const toggleSchedule = () => {
-    setCheckboxCheck(!checkboxCheck);
-  };
-
-  const { register, handleSubmit, reset, errors } = useForm();
-
-  const onSubmit = (data) => {
-    let workshopTitle = "";
-
-    if (data.workshop) {
-      const workshop = data.workshop.split(",");
-      workshopTitle = workshop[0];
-    }
-
-    const now = new Date();
-
-    const now_formated = `${now.getFullYear()}-${
-      now.getMonth() + 1
-    }-${now.getDay()}T${now.getHours()}:${now.getMinutes()}`;
-
-    const date = data.checkbox ? data.date : now_formated;
-
-    const state = data.checkbox ? "scheduled" : "send";
-
-    const newObject = {
-      id: uuid(),
-      send_to: data.to,
-      workshop: data.workshop,
-      subject: data.subject,
-      content: data.content,
-      state: state,
-      date: date,
-      checkbox: data.checkbox,
+    const toggleSchedule = () => {
+        setCheckboxCheck(!checkboxCheck);
     };
-    reset({
-      date: "",
-      send_to: "",
-      subject: "",
-      content: "",
-    });
-    addTempNotification(newObject);
+  
+    const { register, handleSubmit, reset, errors } = useForm();
 
-    if (data.checkbox) {
-      toggleSchedule();
-    }
-    if (data.workshop) {
-      setSelectWorkshop(false);
-    }
-  };
+    const onSubmit = (data) => {
+        
 
-  const onChangeSelect = (event) => {
+        let workshopTitle = "";
+
+        if(data.workshop){
+            const workshop = data.workshop.split(",")
+            workshopTitle = workshop[0]
+        }
+
+        const now = new Date();
+
+        const now_formated = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDay()}T${now.getHours()}:${now.getMinutes()}`
+
+        const date = data.checkbox ? data.date : now_formated;
+
+        const state = data.checkbox ? "scheduled" : "send"
+
+        const newObject = {
+            id: uuid(),
+            to: data.to,
+            workshop: data.workshop ,
+            subject: data.subject,
+            content: data.content,
+            state: state,
+            date: date,
+            checkbox: data.checkbox
+            };
+            reset({
+                date: "",
+                to:"",
+                subject:"",
+                content:"",
+                checkbox: false
+            })
+        addTempNotification(newObject);
+        
+        if(data.checkbox){
+            toggleSchedule()
+        }
+        if(data.workshop){
+            setSelectWorkshop(false)
+        }
+
+    };
+
+    const onChangeSelect = (event) => {
     const { value } = event.target;
 
     if (value === "Workshop") {

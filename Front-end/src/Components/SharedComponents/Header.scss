@@ -43,17 +43,66 @@
   display: flex;
   align-items: center;
   margin-right: 10px;
+  height: 100%;
 
-  img{
-    border-radius: 50%;
-    width: 60%;
-  }
+  .options{
+    display: flex;
+    position: relative;
 
-  p{
-    font-size: 16px;
-    margin-right: 10px;
+    img{
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+  
+    p{
+      font-size: 16px;
+      margin-right: 10px;
+      color: $darkgrey;
+      font-family: roboto;
+      font-weight: 450;
+    }
   }
+  
 }
+
+.options{
+  @include options-btn;
+}
+
+.profile-dropdown{
+  @include dropdown(10vh);
+  right: 10px;
+  width: fit-content;
+  height: fit-content;
+
+  .profile,
+  .logout{
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    border-bottom: 1px solid $darkgrey;
+    cursor: pointer;
+
+    a, p{
+      text-decoration: none;
+      color: $darkgrey;
+      font-family: roboto;
+      font-weight: 450;
+    }
+
+    .header-icons{
+      margin-right: 10px;
+      color: $darkgrey;
+    }
+  }
+
+}
+
+.user:hover .profile-dropdown {
+  @include open-dropdown-hover;
+}
+
 
 
 

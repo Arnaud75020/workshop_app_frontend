@@ -4,7 +4,7 @@ import { UserContext } from '../../../Context/UserContext';
 import { WorkshopContext } from '../../../Context/WorkshopContext';
 
 
-const WorkshopFormEdit = ({workshopInEdit, toggleDisplayModal}) => {
+const WorkshopFormEdit = ({workshopInEdit, toggleDisplayModal, active, content}) => {
 
 
     const { register, handleSubmit, errors } = useForm();
@@ -33,7 +33,7 @@ const WorkshopFormEdit = ({workshopInEdit, toggleDisplayModal}) => {
             };
 
         confirmEditedWorkshop(newWorkshop);
-        toggleDisplayModal();
+        toggleDisplayModal("message", "workshop successfully updated");
         };
 
         console.log("speakers", speakers)

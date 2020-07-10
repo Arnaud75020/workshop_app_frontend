@@ -24,19 +24,13 @@ const WorkshopInfo = ({
 
   const listofemail = attendees.map(attendee =>  `${attendee.email}; `).join('')
 
-  const openModal = (modal) => {
-    toggleDisplayModal();
-    selectModal(modal);
+  const handleEdit = () => {
+    toggleDisplayModal("workshop");
   };
 
-  const handleDelete = () => {
-    toggleDisplayModal(
-      "confirm",
-      "are you sure you want to delete this workshop?",
-      workshop.id,
-      workshop.enrolled_attendees
-    );
-  };
+  const hanldeNotification = () => {
+    toggleDisplayModal("notification");
+  }
 
   return (
     workshop !==[] &&
@@ -71,10 +65,10 @@ const WorkshopInfo = ({
               <FaListUl />
             </button>
             <div className="workshop-info-dropdown">
-              <button className="workshop-icons" onClick={() => openModal("notification")}>
+              <button className="workshop-icons" onClick={hanldeNotification}>
                 notification
               </button>
-              <button className="workshop-icons" onClick={() => openModal("workshop")}>
+              <button className="workshop-icons" onClick={handleEdit}>
                 edit
               </button>
               <PDFDownloadLink

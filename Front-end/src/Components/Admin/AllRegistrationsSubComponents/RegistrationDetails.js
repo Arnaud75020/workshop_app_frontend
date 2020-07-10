@@ -5,19 +5,13 @@ import { MdDelete, MdEdit, MdMessage } from 'react-icons/md';
 
 const RegistrationDetails = ({user, handleSetUser, toggleDisplayModal}) => {
 
-    const { deleteUser } = useContext(UserContext)
-
-    const handleModal = (user) => {
-        handleSetUser(user)
-        toggleDisplayModal()
-    }
 
     const handleNotification = () => {
-        toggleDisplayModal("notification", user)
+        toggleDisplayModal("notification","", user)
     }
 
     const handleDelete = () => {
-        toggleDisplayModal("confirm", "", user.id, user.role )
+        toggleDisplayModal("confirm", "are you sure you want to delete this notification?",null, user.id, user.role )
     }
 
     const name = `${user.firstname} ${user.lastname}`
