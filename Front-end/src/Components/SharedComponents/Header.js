@@ -1,11 +1,22 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext'; //context to add state
 import './Header.scss';
+import { AuthContext } from '../../Context/AuthContext';
+import { FaUser } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+
+
 
 const Header = (props) => {
 
-  const { user } = useContext(UserContext)
+  const { user, logout } = useContext(UserContext)
+  const { setAuth } = useContext(AuthContext)
+
+  const handleLogout = () => {
+    logout()
+    setAuth(false)
+  }
 
   return (
     <div className='header'>
@@ -17,10 +28,22 @@ const Header = (props) => {
 
       {/* To be generated dynamicaly, connected to login state */}
       <div className='user'>
-        <p>{`${user.firstname} ${user.lastname}`}</p>
-        <Link to={`/attendee/profile`}>
+        <div className="options">
+          <p>{`${user.firstname} ${user.lastname}`}</p>
           <img src='avatar5.jpeg' alt='user avatar' />
-        </Link>
+        </div>
+        <div className="profile-dropdown">
+          <div className="profile">
+            <FaUser className="header-icons"/>
+            <p><Link to={`/attendee/profile`}>profile</Link></p> 
+          </div>
+          <div className="logout">
+            <FiLogOut className="header-icons"/>
+            <p onClick={handleLogout}>logout</p>
+          </div>
+        </div>
+       
+        
       </div>
     </div>
   );
