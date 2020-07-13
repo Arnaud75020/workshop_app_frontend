@@ -100,10 +100,23 @@ h1{
     }
 }
 
-.username-email,
+.email,
 .name,
 .password{
     display: flex;
+}
+
+.email{
+    width: 50%;
+
+    .label-input{
+        width: 100%;
+    }
+}
+
+.change-password-btn{
+    width: fit-content;
+    margin: 0 0 10px 10px;
 }
 
 /***** CONTACT SETTINGS *****/
@@ -138,8 +151,16 @@ h1{
 }
 
 .country-company,
-.position-role{
+.position{
     display: flex;
+}
+
+.position{
+    width: 50%;
+
+    .label-input{
+        width: 100%;
+    }
 }
 
 /***** FORM LABLEL/INPUT LAYOUT *****/

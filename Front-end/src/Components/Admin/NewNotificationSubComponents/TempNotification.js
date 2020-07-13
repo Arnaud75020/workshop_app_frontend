@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { NotificationContext } from "../../../Context/NotificationContext";
 import Modal from "../Modals/Modal";
 import { WorkshopContext } from "../../../Context/WorkshopContext";
+import { UserContext } from "../../../Context/UserContext";
 
 const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
   const {
@@ -11,6 +12,7 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
     confirmNotification,
   } = useContext(NotificationContext);
   const { allWorkshops, getAttendees, attendees } = useContext(WorkshopContext);
+  const { allAttendees, speakers, users } = useContext(UserContext);
 
   const [editMode, setEditMode] = useState(false);
   const [selectWorkshop, setSelectWorkshop] = useState(false);
@@ -27,8 +29,8 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
   const onSubmit = (data) => {
 
     const emailsList = attendees.map(attendee => {
-        return attendee.email
-    })
+      return attendee.email
+    }).join()
 
     let workshopTitle = "";
 
@@ -47,13 +49,15 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
     const state = data.checkbox ? "scheduled" : "send";
 
     const newObject = {
+      id:tempNotification.id,
       to: data.to,
-      workshop: data.workshop ,
+      workshop: data.workshop,
       subject: data.subject,
       content: data.content,
       state: state,
       date: date,
       checkbox: data.checkbox,
+      emailsList: emailsList
     };
 
     editNotification(newObject);
@@ -61,33 +65,30 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
   };
 
   const handleConfirmNotification = () => {
-    
-    let to_id = null;
 
-    switch(tempNotification.to){
-      case "All":
-        to_id = 1;
-        break;
-      case "All Attendees":
-        to_id = 2;
-        break;
-      case "All Speakers":
-        to_id = 3;
-        break;
-    }
+    let workshopTitle = ""
 
-    const newObject = {
+      if(tempNotification.workshop){
+        workshopTitle = tempNotification.workshop.split(",")[0]
+      }
+
+    const sendTo = tempNotification.workshop === undefined ? tempNotification.to : workshopTitle
+
+    const newObject = [{
       subject: tempNotification.subject,
       content: tempNotification.content,
       state: tempNotification.state,
-      send_to: tempNotification.to,
+      send_to: sendTo,
       date: tempNotification.date,
-    };
+      emailsList: tempNotification.emailsList
+    }];
 
     confirmNotification(newObject);
     toggleDisplayModal("message", "Notification successfully added");
     deleteTempNotification(tempNotification.id);
   };
+
+  console.log("tempNotification", tempNotification)
 
   const handleDelete = () => {
     toggleDisplayModal("confirm","Do you want to delete this Notification?", tempNotification.id)
@@ -109,6 +110,8 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
     getAttendees(workshopId)
 }
 
+const allUsers = users.filter(user => user.role !== "admin")
+
 const onChangeSelect = (event) => {
 
   const {value} = event.target;
@@ -117,6 +120,13 @@ const onChangeSelect = (event) => {
       setSelectWorkshop(true)
   } else {
       setSelectWorkshop(false)
+      if(value === "All"){
+        getAttendees(allUsers)
+      } else if(value === "All Speakers"){
+        getAttendees(speakers)
+      } else {
+        getAttendees(allAttendees)
+      }
   }
 }
 

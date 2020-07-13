@@ -32,12 +32,21 @@ const NewNotification = () => {
 
   const handleConfirmAllNotifications = () => {
     const notificationList = tempNotifications.map((tempNotification) => {
+      let workshopTitle = ""
+
+      if(tempNotification.workshop){
+        workshopTitle = tempNotification.workshop.split(",")[0]
+      }
+
+    const sendTo = tempNotification.workshop === undefined ? tempNotification.to : workshopTitle
+
       return {
         subject: tempNotification.subject,
         content: tempNotification.content,
         state: tempNotification.state,
-        send_to: tempNotification.send_to,
+        send_to: sendTo,
         date: tempNotification.date,
+        emailsList: tempNotification.emailsList
       };
     });
 

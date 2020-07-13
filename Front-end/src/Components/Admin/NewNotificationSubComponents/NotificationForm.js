@@ -3,13 +3,16 @@ import { useForm } from "react-hook-form";
 import { NotificationContext } from "../../../Context/NotificationContext";
 import { WorkshopContext } from "../../../Context/WorkshopContext";
 import uuid from "react-uuid";
+import { UserContext } from "../../../Context/UserContext";
 
 const NotificationForm = () => {
   const { addTempNotification } = useContext(NotificationContext);
   const { allWorkshops, getAttendees, attendees } = useContext(WorkshopContext);
+  const { allAttendees, speakers, users } = useContext(UserContext);
 
   const [checkboxCheck, setCheckboxCheck] = useState(false);
   const [selectWorkshop, setSelectWorkshop] = useState(false);
+
 
     const toggleSchedule = () => {
         setCheckboxCheck(!checkboxCheck);
@@ -18,7 +21,10 @@ const NotificationForm = () => {
     const { register, handleSubmit, reset, errors } = useForm();
 
     const onSubmit = (data) => {
-        
+      
+      const emailsList = attendees.map(attendee => {
+        return attendee.email
+      }).join()
 
         let workshopTitle = "";
 
@@ -38,12 +44,13 @@ const NotificationForm = () => {
         const newObject = {
             id: uuid(),
             to: data.to,
-            workshop: data.workshop ,
+            workshop: data.workshop,
             subject: data.subject,
             content: data.content,
             state: state,
             date: date,
-            checkbox: data.checkbox
+            checkbox: data.checkbox,
+            emailsList: emailsList
             };
             reset({
                 date: "",
@@ -63,14 +70,23 @@ const NotificationForm = () => {
 
     };
 
+    const allUsers = users.filter(user => user.role !== "admin")
+
     const onChangeSelect = (event) => {
     const { value } = event.target;
 
-    if (value === "Workshop") {
-      setSelectWorkshop(true);
-    } else {
-      setSelectWorkshop(false);
-    }
+    if(value === "Workshop"){
+      setSelectWorkshop(true)
+  } else {
+      setSelectWorkshop(false)
+      if(value === "All"){
+        getAttendees(allUsers)
+      } else if(value === "All Speakers"){
+        getAttendees(speakers)
+      } else {
+        getAttendees(allAttendees)
+      }
+  }
   };
 
   const handleToWorkshop = (event) => {
