@@ -20,8 +20,6 @@ const SignUp = ( props ) => {
       break;
   }
 
-  console.log('roleId', roleId)
-
   const { register, handleSubmit, reset, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch('password', '');
@@ -95,7 +93,7 @@ const SignUp = ( props ) => {
             <input
               name='role_id'
               type='hidden'
-              value='roleId'
+              value={roleId}
               contentEditable={false}
               ref={register}
             />
