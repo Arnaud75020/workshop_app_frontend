@@ -5,6 +5,7 @@ import { UserContext } from "../../../Context/UserContext";
 import Modal from "../Modals/Modal";
 import { MdDelete, MdEdit } from "react-icons/md";
 
+
 const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
   const { confirmWorkshop, editTempWorkshop, deleteTempWorkshop } = useContext(
     WorkshopContext
@@ -18,6 +19,7 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
 
   const onSubmit = (data) => {
     const newObject = {
+      id: tempWorkshop.id,
       title: data.title,
       status_open: data.status_open,
       date: data.date,
@@ -41,7 +43,7 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
       );
     });
 
-    const newObject = {
+    const newObject = [{
       title: tempWorkshop.title,
       status_open: tempWorkshop.status_open,
       date: tempWorkshop.date,
@@ -53,7 +55,7 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
       room_capacity: tempWorkshop.room_capacity,
       room_manager: tempWorkshop.room_manager,
       room_type: tempWorkshop.room_type,
-    };
+    }];
     confirmWorkshop(newObject);
     deleteTempWorkshop(tempWorkshop.id);
     toggleDisplayModal("message", "Workshop successfully added");

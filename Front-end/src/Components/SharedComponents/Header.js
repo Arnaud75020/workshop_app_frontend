@@ -13,6 +13,8 @@ const Header = (props) => {
   const { user, logout } = useContext(UserContext)
   const { setAuth } = useContext(AuthContext)
 
+  const { role } = user
+
   const handleLogout = () => {
     logout()
     setAuth(false)
@@ -21,10 +23,10 @@ const Header = (props) => {
   return (
     <div className='header'>
       {/* Tranform into useForm // Can be called as separate component? */}
-      <form className='search-form'>
+      {/*<form className='search-form'>
         <input id='searchbar' type='search' placeholder='Search for ...' />
         <input id='searchbtn' type='submit' value='&#128269;&#xFE0E;' />
-      </form>
+      </form>*/}
 
       {/* To be generated dynamicaly, connected to login state */}
       <div className='user'>
@@ -35,7 +37,7 @@ const Header = (props) => {
         <div className="profile-dropdown">
           <div className="profile">
             <FaUser className="header-icons"/>
-            <p><Link to={`/attendee/profile`}>profile</Link></p> 
+            <p><Link to={`/profile`}>profile</Link></p> 
           </div>
           <div className="logout">
             <FiLogOut className="header-icons"/>

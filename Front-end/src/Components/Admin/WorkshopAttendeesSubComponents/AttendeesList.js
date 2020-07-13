@@ -8,6 +8,8 @@ const AttendeeList = ({attendees} ) => {
 
     const { handleAttendeeSearch, searchAttendeeValue } = useContext(WorkshopContext)
 
+    console.log(attendees)
+
         return (
             <div>
                 <div className="search-attendee">

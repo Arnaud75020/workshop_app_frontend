@@ -1,7 +1,10 @@
-import React, { useRef } from "react";
-import { useForm } from "react-hook-form";
-import "./SignUp.scss";
-import axios from "axios";
+
+import React, { useRef } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link } from "react-router-dom";
+import './SignUp.scss';
+import axios from 'axios';
+
 
 const SignUp = () => {
   const { register, handleSubmit, reset, errors, watch } = useForm();
@@ -75,9 +78,9 @@ const SignUp = () => {
               {errors.password && <p>{errors.password.message}</p>}
             </div>
             <input
-              name="role_id"
-              type="hidden"
-              value="3"
+              name='role_id'
+              type='hidden'
+              value='3'
               contentEditable={false}
               ref={register}
             />
@@ -91,6 +94,7 @@ const SignUp = () => {
             <button type="submit">Register Account</button>
             <hr />
           </form>
+          <p>already have an account? <Link to="/login">login</Link></p>
           <p>Forgot your account?</p>
         </div>
       </div>
