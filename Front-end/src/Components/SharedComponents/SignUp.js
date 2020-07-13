@@ -3,7 +3,25 @@ import { useForm } from 'react-hook-form';
 import './SignUp.scss';
 import axios from 'axios';
 
-const SignUp = () => {
+const SignUp = ( props ) => {
+
+  const cryptedRoleId = props.match.params.id;
+  let roleId = '';
+
+  switch (cryptedRoleId) {
+    case 'DFJLMdk':
+      roleId = 1
+      break;
+    case 'dfqlQIF':
+      roleId = 2
+      break;
+    case 'edjDFKJ':
+      roleId = 3
+      break;
+  }
+
+  console.log('roleId', roleId)
+
   const { register, handleSubmit, reset, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch('password', '');
@@ -77,7 +95,7 @@ const SignUp = () => {
             <input
               name='role_id'
               type='hidden'
-              value='2'
+              value='roleId'
               contentEditable={false}
               ref={register}
             />
