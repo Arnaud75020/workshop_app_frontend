@@ -9,6 +9,7 @@ const WorkshopList = ({
   workshops,
   deleteWorkshop,
   attendees,
+  getAttendees
 }) => {
   return (
     <div>
@@ -40,6 +41,8 @@ const WorkshopList = ({
                 workshop={workshop}
                 toggleDisplayModal={toggleDisplayModal}
                 deleteWorkshop={deleteWorkshop}
+                attendees={attendees}
+                getAttendees={getAttendees}
               />
             );
           })}

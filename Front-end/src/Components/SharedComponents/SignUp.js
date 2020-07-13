@@ -95,7 +95,7 @@ const SignUp = ( props ) => {
             <input
               name='role_id'
               type='hidden'
-              value='roleId'
+              value={roleId}
               contentEditable={false}
               ref={register}
             />

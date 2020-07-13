@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WorkshopView from "../Documents/WorkshopView";
 import ReactDOM from "react-dom";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { Link } from "react-router-dom";
 import { FaListUl } from "react-icons/fa";
 
-const WorkshopDetails = ({ workshop, toggleDisplayModal, deleteWorkshop }) => {
+const WorkshopDetails = ({ workshop, toggleDisplayModal, getAttendees, attendees }) => {
   const workshopDate = workshop.date.substring(0, 10);
   const starting_at = workshop.starting_hour.substring(0, 5);
   const ending_at = workshop.ending_hour.substring(0, 5);
 
-  console.log("workshop", workshop);
+const [ statusClipboard, setStatusClipboard ] = useState(true)
+const [ emailList, setEmailList ] = useState('')
+
+useEffect(() => {
+  getAttendees(workshop.speaker_id)
+  console.log('id', workshop.speaker_id, workshop, attendees)
+  setEmailList(attendees.map(attendee =>  `${attendee.email}; `).join(''))
+}, [])
+
+  const toggleStatusClipboard = () => {
+      setStatusClipboard(false)
+      setInterval(() => {
+      setStatusClipboard(true)
+    }, 1000)
+  }
 
   const handleDelete = () => {
     toggleDisplayModal(
@@ -23,6 +38,8 @@ const WorkshopDetails = ({ workshop, toggleDisplayModal, deleteWorkshop }) => {
   const handleEdit = () => {
     toggleDisplayModal("workshop", "", workshop.id);
   };
+
+  console.log('emailList', emailList)
 
   return (
     <tr>
@@ -46,6 +63,11 @@ const WorkshopDetails = ({ workshop, toggleDisplayModal, deleteWorkshop }) => {
             </Link>
           </button>
           <button onClick={handleEdit}>edit</button>
+          <CopyToClipboard text={emailList}
+            onCopy={() => toggleStatusClipboard(workshop.speaker_id)}
+            >
+          <button>{statusClipboard ? 'Copy' : 'Copied'}</button>
+          </CopyToClipboard>
           <button className="delete-workshop-btn" onClick={handleDelete}>
             delete
           </button>
