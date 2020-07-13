@@ -15,12 +15,11 @@ const NewNotificationForm = ({ send_to , attendees, toggleDisplayModal}) => {
     
     const emailsList = attendees.map(attendee => {
         return attendee.email
-    })
-    
+    }).join()
 
     console.log("emailsList", emailsList)
   
-    const { register, handleSubmit, reset, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
 
@@ -32,13 +31,14 @@ const NewNotificationForm = ({ send_to , attendees, toggleDisplayModal}) => {
 
         const state = data.checkbox ? "scheduled" : "sent"
 
-        const newObject = {
+        const newObject = [{
             subject: data.subject,
             content: data.content,
             state: state,
             send_to: send_to,
             date: date,
-            };
+            emailsList: emailsList
+            }];
         
         if(data.checkbox){
             toggleSchedule()

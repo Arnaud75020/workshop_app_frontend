@@ -39,13 +39,13 @@ const WorkshopFormEdit = ({workshopInEdit, toggleDisplayModal, active, content})
         console.log("speakers", speakers)
         console.log("workshopInEdit", workshopInEdit)
 
-        const currentSpeaker = speakers.filter(speaker => `${speaker.firstname} ${speaker.lastname}` === workshopInEdit.workshop_speaker)
-
-        const currentSpeakerId = currentSpeaker[0].id;
-
-        const currentWorkshopSpeaker = `${currentSpeaker[0].firstname} ${currentSpeaker[0].lastname}`
-
-        console.log('speakerId', currentSpeakerId)
+        //const currentSpeaker = speakers.filter(speaker => `${speaker.firstname} ${speaker.lastname}` === //workshopInEdit.workshop_speaker)
+//
+        //const currentSpeakerId = currentSpeaker[0].id;
+//
+        //const currentWorkshopSpeaker = `${currentSpeaker[0].firstname} ${currentSpeaker[0].lastname}`
+//
+       // console.log('speakerId', currentSpeakerId)
 
         const formatingDate = new Date(workshopInEdit.date);
 
@@ -103,7 +103,7 @@ const WorkshopFormEdit = ({workshopInEdit, toggleDisplayModal, active, content})
                 defaultValue={workshopInEdit.title}
                 ref={register({ required: true })} />
             {errors.title && <p>please add title</p>}
-            <select name='speaker' ref={register({ required: true })} defaultValue={currentSpeakerId}>
+            <select name='speaker' ref={register({ required: true })} defaultValue={workshopInEdit.speaker_id}>
                 <option value="">Speaker</option>
                 {speakers.map((speaker) => {
                 return (

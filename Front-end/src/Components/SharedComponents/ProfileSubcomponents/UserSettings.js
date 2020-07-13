@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const UserSettings = ({ user }) => {
+const UserSettings = ({ user, handleChangePassword }) => {
 
     const {register, handleSubmit, errors, watch} = useForm();
 
@@ -14,25 +14,6 @@ const UserSettings = ({ user }) => {
         <div className="user-settings">
           <h2 className="user-settings-title">User Settings</h2>
           <form className="user-settings-form" onSubmit={handleSubmit(onSubmit)}>
-            <div className="username-email">
-              <div className="label-input">
-                <label htmlFor="username">Username</label>
-                <input
-                  name="username"
-                  id="username"
-                  type="text"
-                  ref={register} />
-              </div>
-              <div className="label-input">
-                <label htmlFor="email">Email Address</label>
-                <input
-                  name="email"
-                  id="email"
-                  defaultValue={user.email}
-                  type="text"
-                  ref={register} />
-              </div>
-            </div>
             <div className="name">
               <div className="label-input">
                 <label htmlFor="firstname">First Name</label>
@@ -53,31 +34,21 @@ const UserSettings = ({ user }) => {
                   ref={register} />
               </div>
             </div>
-            <button type="submit">Save Settings</button>
-          </form>
-          <form className="password-form" onSubmit={handleSubmit(onSubmit)}>
-            <div className="password">
+            <div className="email">
               <div className="label-input">
-                <label htmlFor="change-password">Change Password</label>
+                <label htmlFor="email">Email Address</label>
                 <input
-                  name="change-password"
-                  id="change-password"
-                  defaultValue={user.password}
-                  type="password"
+                  name="email"
+                  id="email"
+                  defaultValue={user.email}
+                  type="text"
                   ref={register} />
               </div>
-                <div className="label-input">
-                  <label htmlFor="confirm-password">Confirm Password</label>
-                  <input
-                    name="confirm-password"
-                    id="confirm-password"
-                    defaultValue={user.password}
-                    type="text"
-                    ref={register} />
-                </div>
             </div>
-              <button type="submit">Save Password</button>
+            
+            <button type="submit">Save Settings</button>
           </form>
+          <button onClick={handleChangePassword} className="change-password-btn">change password</button>
         </div>
     );
 }

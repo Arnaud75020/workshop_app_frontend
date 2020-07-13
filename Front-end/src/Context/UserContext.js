@@ -16,12 +16,12 @@ const UserContextProvider = (props) => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    getSpeakers();
-    getAttendees();
+    getAllSpeakers();
+    getAllAttendees();
     getAllUsers();
   }, []);
 
-  const getSpeakers = () => {
+  const getAllSpeakers = () => {
     axios
       .get('/users/speakers')
       .then((response) => response.data)
@@ -31,12 +31,12 @@ const UserContextProvider = (props) => {
       });
   };
 
-  const getAttendees = () => {
+  const getAllAttendees = () => {
     axios
       .get('/users/attendees')
       .then((response) => response.data)
       .then((attendeesList) => {
-        setAttendees(attendeesList);
+        setAllattendees(attendeesList);
         console.log('attendees', attendeesList);
       });
   };
@@ -70,7 +70,7 @@ const UserContextProvider = (props) => {
         break;
       case 'Attendees':
         setFilterUser(role);
-        setUsers(attendees);
+        setUsers(allAttendees);
         break;
       case 'Speakers':
         setFilterUser(role);
@@ -123,6 +123,7 @@ const UserContextProvider = (props) => {
         value={{
           users,
           attendees,
+          allAttendees,
           handleFilterUser,
           filterUser,
           speakers,
@@ -132,7 +133,7 @@ const UserContextProvider = (props) => {
           deleteUser, 
           user, 
           setUserInformation,
-          getSpeakers,
+          getAllSpeakers,
           logout
         }}>
         {props.children}
