@@ -5,8 +5,23 @@ import { Link } from "react-router-dom";
 import './SignUp.scss';
 import axios from 'axios';
 
+const SignUp = ( props ) => {
 
-const SignUp = () => {
+  const cryptedRoleId = props.match.params.id;
+  let roleId = '';
+
+  switch (cryptedRoleId) {
+    case 'DFJLMdk123CDLEcjks':
+      roleId = 1
+      break;
+    case 'dfqlQIF':
+      roleId = 2
+      break;
+    case 'edjDFKJ':
+      roleId = 3
+      break;
+  }
+
   const { register, handleSubmit, reset, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
@@ -80,7 +95,7 @@ const SignUp = () => {
             <input
               name='role_id'
               type='hidden'
-              value='3'
+              value={roleId}
               contentEditable={false}
               ref={register}
             />
