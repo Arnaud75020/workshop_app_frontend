@@ -9,7 +9,7 @@ const SignUp = ( props ) => {
   let roleId = '';
 
   switch (cryptedRoleId) {
-    case 'DFJLMdk':
+    case 'DFJLMdk123CDLEcjks':
       roleId = 1
       break;
     case 'dfqlQIF':
