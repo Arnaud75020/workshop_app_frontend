@@ -37,7 +37,7 @@ const Login = () => {
             if (error.response.data.message === 'Incorrect email.') {
               setIncorrectEmail(true)
               if(incorrectPassword === true){
-                setIncorrectPassword(true)
+                setIncorrectPassword(false)
               }
               //console.log(error.response.data);
               //console.log(error.response.status);

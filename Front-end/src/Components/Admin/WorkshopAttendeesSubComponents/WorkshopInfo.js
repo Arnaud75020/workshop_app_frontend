@@ -143,9 +143,9 @@ const WorkshopInfo = ({
               <p>
                 <span>Room capacity:</span> {workshop.room_capacity}
               </p>
-              <p className={workshop.status_open === "1" ? "open" : "closed"}>
+              <p className={workshop.status_open === 1 ? "open" : "closed"}>
                 <span>Registrations:</span>{" "}
-                {workshop.status_open === "1" ? "OPEN" : "CLOSED"}
+                {workshop.status_open === 1 ? "OPEN" : "CLOSED"}
               </p>
             </div>
           </div>
