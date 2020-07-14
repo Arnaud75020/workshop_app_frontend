@@ -99,12 +99,13 @@ const WorkshopInfo = ({
                   <button className="workshop-icons" onClick={handleEdit}>
                     edit
                   </button>
+                  {attendees.length !== 0 &&
                   <CopyToClipboard
                     text={listofemail}
                     onCopy={() => setStatusClipboard(!statusClipboard)}
                   >
                     <button>{statusClipboard ? "copy" : "copied"}</button>
-                  </CopyToClipboard>
+                  </CopyToClipboard>}
                   <PDFDownloadLink
                     document={
                       <WorkshopView workshop={workshop} attendees={attendees} />
