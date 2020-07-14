@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 export const AuthContext = createContext();
 
 const AuthContextProvider = (props) => {
-  const [auth, setAuth] = useState(Cookies.get('authToken'));
+  const [auth, setAuth] = useState(Cookies.get('_p_s'));
 
   return (
     <div>

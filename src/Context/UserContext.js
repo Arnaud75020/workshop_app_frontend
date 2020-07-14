@@ -53,12 +53,12 @@ const UserContextProvider = (props) => {
 
   const setUserInformation = ({ user, token }) => {
     setUser(user);
-    Cookies.set('authToken', token, { secure: false });
+    Cookies.set('_p_s', token, { secure: false });
   };
 
   const logout = () => {
-    Cookies.remove('authToken')
-  }
+    Cookies.remove('_p_s');
+  };
 
   const handleFilterUser = (event) => {
     const role = event.target.value;
@@ -128,13 +128,13 @@ const UserContextProvider = (props) => {
           filterUser,
           speakers,
           allUsers,
-          searchValue, 
-          handleChangeSearch, 
-          deleteUser, 
-          user, 
+          searchValue,
+          handleChangeSearch,
+          deleteUser,
+          user,
           setUserInformation,
           getAllSpeakers,
-          logout
+          logout,
         }}>
         {props.children}
       </UserContext.Provider>
