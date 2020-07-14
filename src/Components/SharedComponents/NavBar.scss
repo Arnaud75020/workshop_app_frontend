@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/breakpoints.scss';
 
 .item ul,
 .nav input[type='checkbox'] {
@@ -40,6 +41,9 @@ label {
   background-color: $blue;
   overflow-x: hidden;
   border-bottom: 1px solid #e6e6e6;
+  @include media('<=desktop'){
+    display: none;
+}
 }
 
 .nav ul,
