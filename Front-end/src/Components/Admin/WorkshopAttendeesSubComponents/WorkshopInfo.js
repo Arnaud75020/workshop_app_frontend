@@ -81,7 +81,7 @@ const WorkshopInfo = ({
                 text={listofemail}
                 onCopy={() => setStatusClipboard(!statusClipboard)}
               >
-                <button>{statusClipboard ? "Copy" : "Copied"}</button>
+                <button>{statusClipboard ? "copy" : "copied"}</button>
               </CopyToClipboard>
             )}
             {user.role !== "speaker" && (
@@ -99,6 +99,12 @@ const WorkshopInfo = ({
                   <button className="workshop-icons" onClick={handleEdit}>
                     edit
                   </button>
+                  <CopyToClipboard
+                    text={listofemail}
+                    onCopy={() => setStatusClipboard(!statusClipboard)}
+                  >
+                    <button>{statusClipboard ? "copy" : "copied"}</button>
+                  </CopyToClipboard>
                   <PDFDownloadLink
                     document={
                       <WorkshopView workshop={workshop} attendees={attendees} />

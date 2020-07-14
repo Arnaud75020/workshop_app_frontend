@@ -89,6 +89,8 @@ const AllWorkshops = (props) => {
           workshops={workshops}
           toggleDisplayModal={toggleDisplayModal}
           deleteWorkshop={deleteWorkshop}
+          attendees={attendees}
+          getAttendees={getAttendees}
         />
       </div>
     </div>
