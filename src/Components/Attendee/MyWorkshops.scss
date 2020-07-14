@@ -1,49 +1,83 @@
 @import '../../styles/variables.scss';
+@import '../../styles/breakpoints.scss';
+
 
 .myWorkshops-header{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin: 10px 2.5% 10px 2.5%;
+    @include media('<=phone'){
+        margin: 10px 5% 10px 5%;
+
+    }
 
     .myWorkshops-header-left{
         display: flex;
         align-items: center;
+        @include media('<=desktop'){
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
         h1{
             margin-left: 0;
+            @include media('<=phone'){
+                font-size: 24px;
+              }
+        }
+
+        .myworkshops-btns-wrapper{
+            display: flex;
+            flex-wrap: wrap;
+
+            .myWorkshops-month-btn{
+                @include button(40px, $darkgrey);
+                margin: 0 10px 0 0;
+                @include media('<=phone'){
+                    font-size: 16px;
+                    margin: 10px 10px 0 0 ;
+                  }
+            }
+        
+            .active{
+                background-color: $blue;
+            }
         }
     
-        .myWorkshops-month-btn{
-            @include button(40px, $darkgrey);
-            margin: 0 10px 0 0;
-        }
-    
-        .active{
-            background-color: $blue;
-        }
+        
     }
 
     .myWorkshops-limit-warning{
         background-color: $grey;
         padding: 10px;
-        margin:0;
+        margin-top: 20px;
         box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
         color: $darkgrey;
         font-family: roboto;
         font-weight: 450;
         justify-self: flex-end;
+        @include media('<=phone'){
+            position: absolute;
+            bottom: 30px;
+            right: 15px;
+        }
     }
 
     .myWorkshops-limit-warning-reached{
         background-color: $grey;
         padding: 10px;
-        margin:0;
+        margin-top:20px;
         box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
         color: red;
         font-family: roboto;
         font-weight: 450;
         justify-self: flex-end;
+        @include media('<=phone'){
+            position: absolute;
+            bottom: 30px;
+            right: 15px;
+        }
     }
 }
 
@@ -52,6 +86,11 @@
     margin: 20px auto 40px auto;
     background-color: white;
     box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
+    @include media('<=phone'){
+        width: 90%;
+        margin-bottom: 100px;
+
+    }
 }
 
 .myWorkshop-details-header{
@@ -83,6 +122,10 @@
     align-items: center;
     box-sizing: border-box;
     border-top: 1px solid $darkgrey;
+    @include media('<=phone'){
+        flex-direction: column;
+        height: fit-content;
+      }
 }
 
 .myWorkshop-basic-info-left-enrolled{
@@ -94,6 +137,12 @@
     background-color: #65BB8D;
     border-right: 1px solid $darkgrey;
     transition: all .3s ease-in-out;
+    @include media('<=phone'){
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid $darkgrey ;
+        padding: 20px 20px;
+      }
 }
 
 .myWorkshop-basic-info-left{
@@ -104,6 +153,13 @@
     box-sizing: border-box;
     border-right: 1px solid $darkgrey;
     transition: all .3s ease-in-out;
+    @include media('<=phone'){
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid $darkgrey ;
+        padding: 20px 20px;
+
+      }
 }
 
 .myWorkshop-details-title{
@@ -171,6 +227,11 @@
     padding: 10px 40px 10px 10px;
     height: 100%;
     box-sizing: border-box;
+    @include media('<=phone'){
+        width: 100%;
+        align-items: flex-start;
+        padding: 20px 20px;
+      }
 
     button{
         width: fit-content;
