@@ -25,10 +25,12 @@ const NotificationContextProvider = (props) => {
   };
 
   const addTempNotification = (newObject) => {
+    console.log(newObject)
     setTempNotifications([...tempNotifications, newObject]);
   };
 
   const confirmNotification = (newObject) => {
+    console.log("newObject", newObject)
     axios
       .post('/notifications', newObject)
 

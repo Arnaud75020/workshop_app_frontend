@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../Context/UserContext';
 import { WorkshopContext } from '../../Context/WorkshopContext';
+import { Link } from "react-router-dom";
 import './Login.scss';
 import axios from 'axios';
 import { AuthContext } from '../../Context/AuthContext';
@@ -12,32 +13,56 @@ const Login = () => {
   const { userWorkshops, getUserWorkshops, getWorkshop, getAttendees } = useContext(WorkshopContext);
   const { setAuth } = useContext(AuthContext);
 
+  const [incorrectEmail, setIncorrectEmail] = useState(false)
+  const [incorrectPassword, setIncorrectPassword] = useState(false)
+
   const onSubmit = async (data) => {
     //run validation
-    //  axios
-    //       .post('/auth/login', data)
-    //       .then((response) => response.data)
-    //       .then((user) => {
-    //         getUser(user);
-    //         if (user.role === 'attendee') {
-    //           getUserWorkshops(user.id);
-    //         }
-    //       })
-    //       .then(() => setAuth(true))
-    //       .catch(() => console.log('Error logging in'));
-    const response = await axios.post('/auth/login', data);
-    console.log("response",response.data.message)
-    await setUserInformation(response.data);
-    const { id, role } = response.data.user
-    if(role === "attendee"){
-      getUserWorkshops(id)
-    }
-    if(role === "speaker"){
-        getWorkshop(id);
-        getAttendees(id)
-    }
-    setAuth(true);
-    //redirect to role-based view
+      axios
+           .post('/auth/login', data)
+           .then((response) => response.data)
+           .then((user) => {
+            setUserInformation(user);
+            const { id, role } = user.user
+             if (role === 'attendee') {
+               getUserWorkshops(user.id);
+             }
+             if(role === "speaker"){
+                  getWorkshop(id);
+                  getAttendees(id)
+              }
+           })
+           .then(() => setAuth(true))
+           .catch((error) => {
+            if (error.response.data.message === 'Incorrect email.') {
+              setIncorrectEmail(true)
+              if(incorrectPassword === true){
+                setIncorrectPassword(false)
+              }
+              //console.log(error.response.data);
+              //console.log(error.response.status);
+              //console.log(error.response.headers);
+            } else if (error.response.data.message === 'Incorrect password.') {
+              setIncorrectPassword(true)
+              if(incorrectEmail === true){
+                setIncorrectEmail(false)
+              }
+              //console.log(error.request);
+            } 
+           })
+    //const response = await axios.post('/auth/login', data);
+    //console.log("response",response)
+    //await setUserInformation(response.data);
+    //const { id, role } = response.data.user
+    //if(role === "attendee"){
+    //  getUserWorkshops(id)
+    //}
+    //if(role === "speaker"){
+    //    getWorkshop(id);
+    //    getAttendees(id)
+    //}
+    //setAuth(true);
+    ////redirect to role-based view
   };
 
   return (
@@ -53,15 +78,22 @@ const Login = () => {
               placeholder='Email Address'
               ref={register}
             />
+            {incorrectEmail && 
+            <p>no user found with this email</p>
+            }
             <input
               name='password'
               type='password'
               placeholder='Password'
               ref={register}
             />
+            {incorrectPassword && 
+            <p>incorrect password</p>
+            }
             <button type='submit'>Login</button>
             <hr />
           </form>
+          <p>don't have an account yet? <Link to="/signup">create an account</Link></p>
           <p>Forgot your account?</p>
         </div>
       </div>

@@ -15,7 +15,7 @@ const Speaker = (props) => {
                   <Header />
                     <Switch>
                       <Route path={props.match.path} exact component={MyWorkshopAttendees} />
-                      <Route path={`${props.match.path}/profile`} component={Profile} />
+                      <Route path="/profile"component={Profile} />
                     </Switch>
                 </div>
               </div>

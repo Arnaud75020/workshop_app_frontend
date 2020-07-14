@@ -35,7 +35,7 @@ const ContactSettings = ({ user }) => {
                           ref={register} />
                     </div>
                 </div>
-                <div className="position-role">
+                <div className="position">
                     <div className="label-input">
                         <label htmlFor="position">Position</label>
                         <input
@@ -45,14 +45,6 @@ const ContactSettings = ({ user }) => {
                           type="text"
                           ref={register} />
                     </div>
-                    <div className="label-input">
-                        <label htmlFor="user-type">User Type</label>
-                        <select name="role" id="user-type" ref={register}>
-                            <option value="attendee">attendee</option>
-                            <option value="speaker">speaker</option>
-                        </select>
-                    </div>
-                    
                 </div>
                 <button type="submit">Save Settings</button>
             </form>

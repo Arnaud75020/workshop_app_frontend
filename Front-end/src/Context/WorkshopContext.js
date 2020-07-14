@@ -43,13 +43,21 @@ const WorkshopContextProvider = (props) => {
   };
 
   const getAttendees = (speakerId) => {
-    axios
-      .get(`/workshops/${speakerId}/attendees`)
-      .then((response) => response.data)
-      .then((attendeesList) => {
-        setAttendees(attendeesList);
-        setAllAttendees(attendeesList);
+    console.log("SPEAKER ID",typeof speakerId )
+    if(typeof speakerId !== "string" && typeof speakerId != "number"){ 
+      console.log("GROUP")
+      setAttendees(speakerId)
+      setAllAttendees(speakerId)
+    } else {
+      console.log("ONE ONE ONE")
+        axios
+          .get(`/workshops/${speakerId}/attendees`)
+          .then((response) => response.data)
+          .then((attendeesList) => {
+            setAttendees(attendeesList);
+            setAllAttendees(attendeesList);
       });
+    }
   };
 
   const getUserWorkshops = (id) => {
@@ -57,6 +65,7 @@ const WorkshopContextProvider = (props) => {
       .get(`/workshops/user-workshops/${id}`)
       .then((response) => response.data)
       .then((userWorkshops) => {
+        console.log(userWorkshops)
         setUserWorkshops(userWorkshops);
       });
   };
@@ -106,9 +115,12 @@ const WorkshopContextProvider = (props) => {
 
   const confirmEditedWorkshop = (newWorkshop) => {
     const newWorkshopId = newWorkshop.id;
-
-    axios.put(`/workshops/${newWorkshopId}`, newWorkshop);
-
+    //axios
+      //.put(`/workshops/workshop-user-workshops/${newWorkshopId}`, newWorkshop)
+      //.then(() => {
+        axios
+          .put(`/workshops/${newWorkshopId}`, newWorkshop)
+      //})
     getWorkshops();
     getMonth();
   };
@@ -134,9 +146,12 @@ const WorkshopContextProvider = (props) => {
 
   const deleteWorkshop = (id, enrolled_attendees) => {
     if (enrolled_attendees > 0) {
-      axios.delete(`/workshops/workshop-user-workshops/${id}`).then(() => {
-        axios.delete(`/workshops/${id}`);
-      });
+      axios
+        .delete(`/workshops/workshop-user-workshops/${id}`)
+        .then(() => {
+          axios
+            .delete(`/workshops/${id}`);
+        });
     }
     axios.delete(`/workshops/${id}`);
 
