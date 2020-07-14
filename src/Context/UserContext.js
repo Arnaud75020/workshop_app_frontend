@@ -53,11 +53,11 @@ const UserContextProvider = (props) => {
 
   const setUserInformation = ({ user, token }) => {
     setUser(user);
-    Cookies.set('_p_s', token, { secure: false });
+    // Cookies.set('_p_s', token, { secure: false });
   };
 
   const logout = () => {
-    Cookies.remove('_p_s');
+    Cookies.remove('token');
   };
 
   const handleFilterUser = (event) => {

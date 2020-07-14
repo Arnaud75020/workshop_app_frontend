@@ -10,17 +10,16 @@ import { WorkshopContext } from './Context/WorkshopContext';
 import AuthContextProvider, { AuthContext } from './Context/AuthContext';
 
 function App() {
-
   return (
     <div className='App'>
       <AuthContextProvider>
         <BrowserRouter>
           <Switch>
-            <LoginSignUpRoute path='/login' component={Login} />
-            <LoginSignUpRoute path='/signup/:id' component={SignUp} />
             <ProtectedRoute path='/admin' component={Admin} />
             <ProtectedRoute path='/speaker' component={Speaker} />
             <ProtectedRoute path='/attendee' component={Attendee} />
+            <LoginSignUpRoute path='/login' component={Login} />
+            <LoginSignUpRoute path='/signup/:id' component={SignUp} />
           </Switch>
         </BrowserRouter>
       </AuthContextProvider>
@@ -28,13 +27,13 @@ function App() {
   );
 }
 
-const LoginSignUpRoute = ({ component: Component, ...props }) => {
+const LoginSignUpRoute = ({ component: Component, ...rest }) => {
   const { auth } = useContext(AuthContext);
   const { user } = useContext(UserContext);
 
   return (
     <Route
-      {...props}
+      {...rest}
       component={(props) =>
         !auth ? <Component {...props} /> : <Redirect to={`/${user.role}`} />
       }
@@ -42,11 +41,11 @@ const LoginSignUpRoute = ({ component: Component, ...props }) => {
   );
 };
 
-const ProtectedRoute = ({ component: Component, ...props }) => {
+const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { auth, setAuth } = useContext(AuthContext);
   return (
     <Route
-      {...props}
+      {...rest}
       component={(props) =>
         auth ? <Component {...props} /> : <Redirect to='/login' />
       }
