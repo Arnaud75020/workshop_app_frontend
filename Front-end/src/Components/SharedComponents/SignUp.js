@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from "react-router-dom";
 import './SignUp.scss';
@@ -26,15 +26,35 @@ const SignUp = ( props ) => {
   const password = useRef({});
   password.current = watch("password", "");
 
+  const [passwordsMatch, setPasswordsMatch] = useState(true)
+
   const onSubmit = (data) => {
-    console.log(data);
-    //run validation
-    axios
-      .post("/auth/signup", data)
+    const {password, repeatPassword} = data;
+    if(password === repeatPassword){
+      const { firstname, lastname, company, country, email, role_id, max_workshops} = data;
+      const formData = {
+        firstname: firstname, 
+        lastname: lastname,
+        company: company,
+        country: country,
+        email: email,
+        role_id: role_id,
+        max_workshops: max_workshops,
+        //registration_date: registration_date,
+        password: password
+      }
+    console.log(formData);
+
+      axios
+      .post("/auth/signup", formData)
       .then((response) => console.log(response.data));
     reset();
     //redirect to role-based view
-  };
+    }else{
+      setPasswordsMatch(false)
+    }
+    }
+    
 
   return (
     <div className="signUp-page-container">
@@ -49,15 +69,17 @@ const SignUp = ( props ) => {
                 type="text"
                 placeholder="First Name"
                 ref={register({
-                  required: "First Name is required",
+                  required: true,
                 })}
               />
+              {errors.firstname && <p>please add your firstname</p>}
               <input
                 name="lastname"
                 type="text"
                 placeholder="Last Name"
-                ref={register({ required: "Last Name is required" })}
+                ref={register({ required: true })}
               />
+              {errors.lastname && <p>please add your lastname</p>}
             </div>
             <div className="comp-country">
               <input
@@ -70,27 +92,38 @@ const SignUp = ( props ) => {
                 name="country"
                 type="text"
                 placeholder="Country"
-                ref={register({ required: "Country is required" })}
+                ref={register({ required: true })}
               />
+              {errors.country && <p>please add your country</p>}
             </div>
             <input
               id="email"
               name="email"
               type="text"
               placeholder="Email Address"
-              ref={register({ required: "Email is required" })}
+              ref={register({ required: true })}
             />
+              {errors.email && <p>please add your email</p>}
             <div className="password">
               <input
                 name="password"
                 type="password"
                 placeholder="Password"
                 ref={register({
-                  required: "Password is required",
+                  required: true,
                   minLength: { value: 8, message: "minimum 8 characters" },
                 })}
               />
               {errors.password && <p>{errors.password.message}</p>}
+              <input
+                name="repeatPassword"
+                type="password"
+                placeholder="Repeat Password"
+                ref={register({
+                  required: true })}
+              />
+              {errors.repeatPassword && <p>please repeat your password</p>}
+              {!passwordsMatch && <p>passwords don't match</p>}
             </div>
             <input
               name='role_id'
