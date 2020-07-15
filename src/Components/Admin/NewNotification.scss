@@ -1,30 +1,42 @@
 @import '../../styles/variables.scss';
-
+@import '../../styles/breakpoints.scss';
 
 .new-notifications-header{
     display: flex;
     align-items: center;
     margin: 10px 10px 10px 2.5%;
+    @include media('<=desktop'){
+        margin: 50px 5% 10px 5%;
+    }
+    @include media('<=tablet'){
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     h1{
         margin-left: 0;
     }
 
-    .all-notifications-btn{
-        @include button(40px, $darkgrey);
-        margin-right: 20px;
-        margin-top: 0;
+    .new-notification-btn-wrapper{
+        display: flex;
 
-        a{
-            text-decoration: none;
-            color: white;
+        .all-notifications-btn{
+            @include button(40px, $darkgrey);
+            margin-right: 20px;
+            margin-top: 0;
+    
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    
+        .confirm-all-btn{
+            @include button(40px, $blue);
+            margin-top: 0;
         }
     }
-
-    .confirm-all-btn{
-        @include button(40px, $blue);
-        margin-top: 0;
-    }
+    
 }
 
 .new-notification-form{
@@ -35,6 +47,9 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
+    @include media('<=tablet'){
+        width: 90%;
+    }
 }
 
 .new-notification-form-header{
@@ -63,6 +78,9 @@
         border: 2px solid $grey;
         border-radius: 5px;
         color: $darkgrey;
+        @include media('<=tablet'){
+            width: 90%;
+        }
     }
 }  
 
@@ -80,6 +98,10 @@
         border: 2px solid $grey;
         border-radius: 5px;
         color: $darkgrey;
+        @include media('<=tablet'){
+            width: 90%;
+        }
+        
     }
 
     .content{
@@ -92,6 +114,9 @@
         border: 2px solid $grey;
         border-radius: 5px;
         color: $darkgrey;
+        @include media('<=tablet'){
+            width: 90%;
+        }
     }
 
     select{
@@ -104,6 +129,9 @@
         border: 2px solid $grey;
         border-radius: 5px;
         color: $darkgrey;
+        @include media('<=tablet'){
+            width: 90%;
+        }
     }
 
     p{
@@ -123,6 +151,9 @@
         width: 70%;
         margin: 20px auto;
         align-items: center;
+        @include media('<=tablet'){
+            width: 90%;
+        }
 
         label{
             width: fit-content;
@@ -136,6 +167,7 @@
         input{
             width: fit-content;
             margin: 0 16px 0 0;
+            display: flex;
         }
     }
 }
@@ -165,6 +197,9 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
+    @include media('<=tablet'){
+        width: 90%;
+    }
 }
 
 .temp-notification-info-header{
@@ -183,6 +218,14 @@
     font-weight: 450;
     font-size: 16px;
     color: $blue;
+
+    .temp-notification-info-header-btns{
+        margin-right: 10px;
+
+        .notification-icons{
+            @include workshop-info-card-header-btns;
+        }
+    }
 
     button{
         margin-right: 10px;

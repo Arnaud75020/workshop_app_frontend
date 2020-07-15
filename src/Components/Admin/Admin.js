@@ -21,7 +21,7 @@ const Admin = (props) => {
         <div className='page'>
           <NavBar />
           <div className='body'>
-            <Header props={props} />
+            {/* <Header props={props} /> */}
             <Switch>
               <Route
                 path={`${props.match.path}`}

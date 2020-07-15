@@ -12,7 +12,7 @@ const Speaker = (props) => {
               <div className="page">
                 <NavBar />
                 <div className="body">
-                  <Header />
+                  {/* <Header /> */}
                     <Switch>
                       <Route path={props.match.path} exact component={MyWorkshopAttendees} />
                       <Route path="/profile"component={Profile} />
