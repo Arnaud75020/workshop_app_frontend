@@ -27,7 +27,7 @@ const Profile = () => {
           </div>
           <div className="right">
             <UserSettings user={user} handleChangePassword={handleChangePassword} confirmUpdatedUser={confirmUpdatedUser} />
-            <ContactSettings user={user} />
+            <ContactSettings user={user} confirmUpdatedUser={confirmUpdatedUser} />
           </div>
         </div>
         {changePasswordDisplaying && 

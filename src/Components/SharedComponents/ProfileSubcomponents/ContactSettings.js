@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-const ContactSettings = ({ user }) => {
+const ContactSettings = ({ user, confirmUpdatedUser }) => {
 
-    const [newContact, setNewContact] = useState();
     const {register, handleSubmit, errors, watch} = useForm();
 
     const onSubmit = (data) => {
-        console.log(data)
-        setNewContact(data)
-        console.log('updated contact', newContact)
-        //edit user in the database
-    }
+
+        const updatedUser = {
+        id: user.id,
+        country: data.country,
+        company: data.company,
+        position: data.position
+        };
+
+        confirmUpdatedUser(updatedUser);
+        console.log('newuser', updatedUser)
+    // toggleDisplayModal("message", "workshop successfully updated");
+    };
 
 
     return(

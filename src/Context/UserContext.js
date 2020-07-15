@@ -15,6 +15,7 @@ const UserContextProvider = (props) => {
   const [searchValue, setsearchValue] = useState('');
   const [user, setUser] = useState([]);
 
+
   useEffect(() => {
     getAllSpeakers();
     getAllAttendees();
@@ -118,13 +119,24 @@ const UserContextProvider = (props) => {
   };
 
   const confirmUpdatedUser = (updatedUser) => {
+
     const updatedUserId = updatedUser.id;
+
     console.log('updatedUserId', updatedUserId)
         axios
           .put(`/users/${updatedUserId}`, updatedUser)
           .then(() => getAllUsers())
+          .then(() => {
+            axios
+              .get(`/users/getuser/${updatedUserId}`)
+              .then((response) => response.data[0])
+              .then((userInfo) => setUser(userInfo))
+          }
+          )
           console.log('confirm', updatedUser)
   };
+
+  console.log('user', user)
 
   return (
     <div>
