@@ -21,14 +21,12 @@ const Profile = () => {
       <div className="profile"> 
         <h1>Profile</h1>
         <div className="profile-body">
-          <div className="left">
+          {/* <div className="left">
             <ChangePhoto />
             <EditMyWorkshops />
-          </div>
-          <div className="right">
+          </div> */}
             <UserSettings user={user} handleChangePassword={handleChangePassword} />
             <ContactSettings user={user} />
-          </div>
         </div>
         {changePasswordDisplaying && 
         <ChangePasswordForm  user={user} handleChangePassword={handleChangePassword}/>}

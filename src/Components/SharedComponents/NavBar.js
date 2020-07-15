@@ -16,9 +16,13 @@ const NavBar = () => {
 
   const toggleNavExpanded = () => {
     setNavExpanded(!isNavExpanded)
-   // if(isNavExpanded === true){
-   //   setNavExpanded(false)
-   // }
+  }
+
+  const closeNavExpanded = () => {
+    if(isNavExpanded === true){
+      setNavExpanded(false)
+
+    }
   }
 
   const handleLogout = () => {
@@ -32,18 +36,18 @@ const NavBar = () => {
       <div className='multi-level'>
         {user.role === "speaker" &&
         <div className="item">
-            <Link to="/speaker" onClick={toggleNavExpanded}>MY WORKSHOP</Link>
+            <Link to="/speaker" onClick={closeNavExpanded}>MY WORKSHOP</Link>
         </div>
         }
         {user.role === "attendee" &&
         <div className="item">
-            <Link to="/attendee" onClick={toggleNavExpanded}>MY WORKSHOPS</Link>
+            <Link to="/attendee" onClick={closeNavExpanded}>MY WORKSHOPS</Link>
         </div>
         }
         {user.role === "admin" &&
         <div>
             <div className='item'>
-              <Link to='/admin' onClick={toggleNavExpanded}>ALL WORKSHOPS</Link>
+              <Link to='/admin' onClick={closeNavExpanded}>ALL WORKSHOPS</Link>
             </div>
             <div className='item'>
               <input type='checkbox' id='A' />
@@ -64,7 +68,7 @@ const NavBar = () => {
                         <img src='chevron-right-1.png' className='arrow' />
                      </label>
                      <ul>
-                      <MonthlySpeakers month={month.month} toggleNavExpanded={toggleNavExpanded}/>
+                      <MonthlySpeakers month={month.month} closeNavExpanded={closeNavExpanded}/>
                      </ul>
                     </div>
                   </li>
@@ -73,14 +77,14 @@ const NavBar = () => {
               </ul>
             </div>
             <div className='item'>
-              <Link to='/admin/all-registrations' onClick={toggleNavExpanded}>ALL DATA</Link>
+              <Link to='/admin/all-registrations' onClick={closeNavExpanded}>ALL DATA</Link>
             </div>
             <div className='item'>
-              <Link to='/admin/all-notifications' onClick={toggleNavExpanded}>NOTIFICATIONS</Link>
+              <Link to='/admin/all-notifications' onClick={closeNavExpanded}>NOTIFICATIONS</Link>
             </div>
         </div>}
             <div className='item'>
-              <Link to={`/profile`} onClick={toggleNavExpanded}>MY PROFILE</Link>
+              <Link to={`/profile`} onClick={closeNavExpanded}>MY PROFILE</Link>
             </div>
             <div className='item'>
               <p onClick={handleLogout}>LOGOUT</p>
