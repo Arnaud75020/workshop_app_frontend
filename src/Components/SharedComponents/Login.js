@@ -5,7 +5,6 @@ import { WorkshopContext } from '../../Context/WorkshopContext';
 import { Link } from 'react-router-dom';
 import './Login.scss';
 import axios from 'axios';
-import { AuthContext } from '../../Context/AuthContext';
 
 const Login = () => {
   const { register, handleSubmit, reset, errors } = useForm();
@@ -30,11 +29,11 @@ const Login = () => {
         setUserInformation(user);
         const { id, role } = user.user;
         if (role === 'attendee') {
-          getUserWorkshops(user.id);
+          // getUserWorkshops(user.id);
         }
         if (role === 'speaker') {
-          getWorkshop(id);
-          getAttendees(id);
+          // getWorkshop(id);
+          // getAttendees(id);
         }
       })
       .then(() => setAuth(true))

@@ -7,7 +7,6 @@ import Login from './Components/SharedComponents/Login';
 import SignUp from './Components/SharedComponents/SignUp';
 import { UserContext } from './Context/UserContext';
 import { WorkshopContext } from './Context/WorkshopContext';
-import AuthContextProvider, { AuthContext } from './Context/AuthContext';
 
 function App() {
   return (

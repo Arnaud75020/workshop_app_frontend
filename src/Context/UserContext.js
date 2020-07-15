@@ -25,10 +25,12 @@ const UserContextProvider = (props) => {
         setAuth(true);
         setUser(response.data);
       })
+      .then(() => {
+        console.log('UNIQUE NAME ', user);
+      })
       .catch(() => setAuth(false));
-
-    getAllSpeakers();
     getAllAttendees();
+    getAllSpeakers();
     getAllUsers();
   }, []);
 

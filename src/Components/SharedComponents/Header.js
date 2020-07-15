@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext'; //context to add state
 import './Header.scss';
-import { AuthContext } from '../../Context/AuthContext';
 import { FaUser } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 
