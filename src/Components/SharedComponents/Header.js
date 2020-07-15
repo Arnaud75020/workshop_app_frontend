@@ -37,7 +37,6 @@ const Header = (props) => {
         <div className="profile-dropdown">
           <div className="profile">
             <FaUser className="header-icons"/>
-            <p><Link to={`/profile`}>profile</Link></p> 
           </div>
           <div className="logout">
             <FiLogOut className="header-icons"/>

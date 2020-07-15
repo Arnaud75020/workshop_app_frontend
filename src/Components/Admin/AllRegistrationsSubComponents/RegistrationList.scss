@@ -1,4 +1,5 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/breakpoints.scss';
 
 .registrations-table{
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -43,7 +44,21 @@
         background-color: white;
     }
 
-    .content-col{
-        width: 40%;
+    .company-col,
+    .position-col{
+        @include media('<=tablet'){
+            display: none;
+         }
+    }
+
+    .email-col,
+    .position-col,
+    .company-col,
+    .workshops-col,
+    .country-col,
+    .type-col{
+        @include media('<=phone'){
+            display: none;
+         }
     }
 }

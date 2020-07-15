@@ -1,29 +1,43 @@
 @import '../../styles/variables.scss';
+@import '../../styles/breakpoints.scss';
 
 .new-workshops-header{
     display: flex;
     align-items: center;
     margin: 10px 10px 10px 2.5%;
+    @include media('<=desktop'){
+        margin: 50px 5% 10px 5%;
+    }
+    @include media('<=tablet'){
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     h1{
         margin-left: 0;
     }
 
-    .all-workshops-btn{
-        @include button(40px, $darkgrey);
-        margin-right: 20px;
-        margin-top: 0;
+    .new-workshop-btn-wrapper{
+        display: flex;
 
-        a{
-            text-decoration: none;
-            color: white;
+        .all-workshops-btn{
+            @include button(40px, $darkgrey);
+            margin-right: 20px;
+            margin-top: 0;
+    
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    
+        .confirm-all-btn{
+            @include button(40px, $blue);
+            margin-top: 0;
         }
     }
 
-    .confirm-all-btn{
-        @include button(40px, $blue);
-        margin-top: 0;
-    }
+    
 }
 
 .new-workshop-form{
@@ -34,6 +48,9 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
+    @include media('<=tablet'){
+        width: 90%;
+    }
 }
 
 .new-workshop-form-header{
@@ -75,6 +92,9 @@
             margin: 0;
             width: fit-content;
             font-family: roboto;
+            @include media('<=tablet'){
+                display: none;
+            }
 
         }
     }
@@ -85,6 +105,10 @@
 .new-workshop-form-body{
     display:flex;
     justify-content: space-evenly;
+    @include media('<=tablet'){
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .new-workshop-form-left{
@@ -94,6 +118,13 @@
     width: 50%;
     border-right: 1px solid $darkgrey;
     padding: 10px 20px;
+    box-sizing: border-box;
+    @include media('<=tablet'){
+        width: 100%;
+        align-items: flex-start;
+        border-right: none;
+        border-bottom: 1px solid $darkgrey;
+    }
 
 
     input{
@@ -106,6 +137,9 @@
         border: 2px solid $grey;
         border-radius: 5px;
         color: $darkgrey;
+        @include media('<=tablet'){
+            width: 90%;
+        }
     }
 
     select{
@@ -118,6 +152,9 @@
         border: 2px solid $grey;
         border-radius: 5px;
         color: $darkgrey;
+        @include media('<=tablet'){
+            width: 90%;
+        }
     }
 
     p{
@@ -138,6 +175,11 @@
     align-items: center;
     width: 50%;
     padding: 10px 20px;
+    box-sizing: border-box;
+    @include media('<=tablet'){
+        width: 100%;
+        align-items: flex-start;
+    }
 
     input{
         box-sizing: border-box;
@@ -149,6 +191,9 @@
         border: 2px solid $grey;
         border-radius: 5px;
         color: $darkgrey;
+        @include media('<=tablet'){
+            width: 90%;
+        }
     }
 
     p{
@@ -175,6 +220,9 @@
             border: 2px solid $grey;
             border-radius: 5px;
             color: $darkgrey;
+            @include media('<=tablet'){
+                width: 90%;
+            }
         }
     }
 }
@@ -199,6 +247,9 @@
 
 .temp-workshop-info{
     @include workshop-info-card;
+    @include media('<=tablet'){
+        width: 90%;
+    }
 }
 
 .temp-workshop-info-header{
@@ -225,10 +276,20 @@
 
 .temp-workshop-info-body{
     @include workshop-info-card-body;
+    @include media('<=tablet'){
+        flex-direction: column;
+    }
 }
 
 .temp-workshop-info-left{
     @include workshop-info-card-body-half(start);
+    box-sizing: border-box;
+    @include media('<=tablet'){
+        width: 100%;
+        align-items: flex-start;
+        border-bottom: 1px solid $darkgrey;
+        border-right: none;
+    }
 
     h2,
     h4,
@@ -240,11 +301,22 @@
 
 .temp-workshop-info-right{
     @include workshop-info-card-body-half(end);
+    border-right: none;
+    box-sizing: border-box;
+    @include media('<=tablet'){
+        width: 100%;
+        align-items: flex-start;
+    }
 
 
     .room-manager{
         display: flex;
         justify-content: flex-end;
+        @include media('<=tablet'){
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
 
         .room{
             margin-right: 15px;
