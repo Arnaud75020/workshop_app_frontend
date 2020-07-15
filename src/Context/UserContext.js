@@ -117,6 +117,15 @@ const UserContextProvider = (props) => {
     getAllUsers();
   };
 
+  const confirmUpdatedUser = (updatedUser) => {
+    const updatedUserId = updatedUser.id;
+    console.log('updatedUserId', updatedUserId)
+        axios
+          .put(`/users/${updatedUserId}`, updatedUser)
+          .then(() => getAllUsers())
+          console.log('confirm', updatedUser)
+  };
+
   return (
     <div>
       <UserContext.Provider
@@ -134,7 +143,8 @@ const UserContextProvider = (props) => {
           user, 
           setUserInformation,
           getAllSpeakers,
-          logout
+          logout,
+          confirmUpdatedUser
         }}>
         {props.children}
       </UserContext.Provider>

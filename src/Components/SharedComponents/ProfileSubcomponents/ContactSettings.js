@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const ContactSettings = ({ user }) => {
 
+    const [newContact, setNewContact] = useState();
     const {register, handleSubmit, errors, watch} = useForm();
 
     const onSubmit = (data) => {
         console.log(data)
+        setNewContact(data)
+        console.log('updated contact', newContact)
         //edit user in the database
     }
 

@@ -1,14 +1,23 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const UserSettings = ({ user, handleChangePassword }) => {
+const UserSettings = ({ user, handleChangePassword, confirmUpdatedUser }) => {
 
     const {register, handleSubmit, errors, watch} = useForm();
 
     const onSubmit = (data) => {
-        console.log(data)
-        //edit user in the database
-    }
+
+      const updatedUser = {
+      id: user.id,
+      firstname: data.firstname,
+      lastname: data.lastname,
+      email: data.email
+      };
+
+      confirmUpdatedUser(updatedUser);
+      console.log('newuser', updatedUser)
+  // toggleDisplayModal("message", "workshop successfully updated");
+  };
     
     return(
         <div className="user-settings">
@@ -45,7 +54,6 @@ const UserSettings = ({ user, handleChangePassword }) => {
                   ref={register} />
               </div>
             </div>
-            
             <button type="submit">Save Settings</button>
           </form>
           <button onClick={handleChangePassword} className="change-password-btn">change password</button>

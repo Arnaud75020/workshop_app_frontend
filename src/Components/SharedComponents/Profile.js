@@ -9,7 +9,7 @@ import { UserContext } from '../../Context/UserContext';
 
 const Profile = () => {
 
-  const { user } = useContext(UserContext)
+  const { user, confirmUpdatedUser } = useContext(UserContext)
 
   const [changePasswordDisplaying, setChangePasswordDisplaying] = useState(false)
 
@@ -26,7 +26,7 @@ const Profile = () => {
             <EditMyWorkshops />
           </div>
           <div className="right">
-            <UserSettings user={user} handleChangePassword={handleChangePassword} />
+            <UserSettings user={user} handleChangePassword={handleChangePassword} confirmUpdatedUser={confirmUpdatedUser} />
             <ContactSettings user={user} />
           </div>
         </div>
