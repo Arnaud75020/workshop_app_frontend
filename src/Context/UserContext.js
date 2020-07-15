@@ -15,7 +15,18 @@ const UserContextProvider = (props) => {
   const [searchValue, setsearchValue] = useState('');
   const [user, setUser] = useState([]);
 
+  const [auth, setAuth] = useState(false);
+
   useEffect(() => {
+    axios
+      .get('/auth/verify-token')
+      .then((response) => {
+        console.log('RESPONSE DATA', response.data);
+        setAuth(true);
+        setUser(response.data);
+      })
+      .catch(() => setAuth(false));
+
     getAllSpeakers();
     getAllAttendees();
     getAllUsers();
@@ -136,6 +147,8 @@ const UserContextProvider = (props) => {
           setUserInformation,
           getAllSpeakers,
           logout,
+          auth,
+          setAuth,
         }}>
         {props.children}
       </UserContext.Provider>

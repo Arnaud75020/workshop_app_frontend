@@ -12,24 +12,21 @@ import AuthContextProvider, { AuthContext } from './Context/AuthContext';
 function App() {
   return (
     <div className='App'>
-      <AuthContextProvider>
-        <BrowserRouter>
-          <Switch>
-            <ProtectedRoute path='/admin' component={Admin} />
-            <ProtectedRoute path='/speaker' component={Speaker} />
-            <ProtectedRoute path='/attendee' component={Attendee} />
-            <LoginSignUpRoute path='/login' component={Login} />
-            <LoginSignUpRoute path='/signup/:id' component={SignUp} />
-          </Switch>
-        </BrowserRouter>
-      </AuthContextProvider>
+      <BrowserRouter>
+        <Switch>
+          <ProtectedRoute path='/admin' component={Admin} />
+          <ProtectedRoute path='/speaker' component={Speaker} />
+          <ProtectedRoute path='/attendee' component={Attendee} />
+          <LoginSignUpRoute path='/login' component={Login} />
+          <LoginSignUpRoute path='/signup/:id' component={SignUp} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
 
 const LoginSignUpRoute = ({ component: Component, ...rest }) => {
-  const { auth } = useContext(AuthContext);
-  const { user } = useContext(UserContext);
+  const { user, auth, setAuth } = useContext(UserContext);
 
   return (
     <Route
@@ -46,7 +43,7 @@ const LoginSignUpRoute = ({ component: Component, ...rest }) => {
 };
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const { auth, setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(UserContext);
   console.log(auth);
   return (
     <Route
