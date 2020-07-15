@@ -53,11 +53,12 @@ const UserContextProvider = (props) => {
 
   const setUserInformation = ({ user, token }) => {
     setUser(user);
-    // Cookies.set('_p_s', token, { secure: false });
+    window.localStorage.setItem('userRole', user.role);
   };
 
   const logout = () => {
-    Cookies.remove('token');
+    axios.post('/auth/logout');
+    window.localStorage.removeItem('userRole');
   };
 
   const handleFilterUser = (event) => {

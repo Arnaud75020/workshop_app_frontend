@@ -35,7 +35,11 @@ const LoginSignUpRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       component={(props) =>
-        !auth ? <Component {...props} /> : <Redirect to={`/${user.role}`} />
+        !auth ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={`/${window.localStorage.getItem('userRole')}`} />
+        )
       }
     />
   );
@@ -43,6 +47,7 @@ const LoginSignUpRoute = ({ component: Component, ...rest }) => {
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { auth, setAuth } = useContext(AuthContext);
+  console.log(auth);
   return (
     <Route
       {...rest}
