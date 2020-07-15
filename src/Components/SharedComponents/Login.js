@@ -32,8 +32,10 @@ const Login = () => {
           // getUserWorkshops(user.id);
         }
         if (role === 'speaker') {
-          // getWorkshop(id);
-          // getAttendees(id);
+          ////////???////////
+          getWorkshop(id);
+          getAttendees(id);
+          ////////???///////
         }
       })
       .then(() => setAuth(true))

@@ -29,9 +29,11 @@ const UserContextProvider = (props) => {
         console.log('UNIQUE NAME ', user);
       })
       .catch(() => setAuth(false));
+    //////////
     getAllAttendees();
     getAllSpeakers();
     getAllUsers();
+    //////////
   }, []);
 
   const getAllSpeakers = () => {
