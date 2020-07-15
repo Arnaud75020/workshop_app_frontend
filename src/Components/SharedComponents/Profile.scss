@@ -10,55 +10,9 @@ h1{
 
 .profile-body{
     display: flex;
-}
-
-.left{
-    display: flex;
     flex-direction: column;
-    width: 40%;
-}
-
-.right{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-}
-
-/***** CHANGE PHOTO *****/
-
-.change-photo{
-    @include edit-profile-box(90%);
-    height: 40%;
-    margin-left: 20px;
-    align-items: center;
-    justify-content:center;
-
-    img{
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-    }
-
-    button{
-        @include button(30px, $blue);
-    }
-}
-
-/***** MY WORKSHOPS *****/
-
-.edit-myWorkshops{
-    @include edit-profile-box(90%);
-    height: 30%;
-    margin: 20px 0 0 20px;
-    align-items: center;
-
-    button{
-        @include button(30px, $blue);
-    }
-}
-
-.edit-myWorkshops-title{
-    @include edit-profile-title(40px);
+    width: 90%;
+    margin: 10px auto;
 }
 
 /***** USER SETTINGS *****/
@@ -84,7 +38,8 @@ h1{
     }
 
     input{
-        @include edit-profile-input
+        @include edit-profile-input;
+        margin-left: 0;
     }
 }
 
@@ -142,7 +97,9 @@ h1{
     }
 
     input{
-        @include edit-profile-input
+        @include edit-profile-input;
+        margin-left: 0;
+
     }
 
     select{

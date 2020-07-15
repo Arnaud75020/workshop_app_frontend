@@ -69,8 +69,10 @@ const ChangePasswordForm = ({ user, handleChangePassword }) => {
                     type="password"
                     ref={register} />
                 {passwordErr && <p>incorrect password</p>}
-                
-                <button type="submit">submit</button>
+                <div className="change-password-btns">
+                    <button type="submit">submit</button>
+                    <button className="cancel" onClick={handleChangePassword}>cancel</button>
+                </div>
             </form>}
             {active === "new" &&
             <form className="password-form" onSubmit={handleSubmit(changePassword)}> 
@@ -81,24 +83,27 @@ const ChangePasswordForm = ({ user, handleChangePassword }) => {
                     contentEditable={false}
                     ref={register}
                 />
-                <div className="label-input">
-                    <label htmlFor="new-password">New Password</label>
-                    <input
-                        name="newPassword"
-                        id="new-password"
-                        type="password"
-                        ref={register} />
-                </div>
-                <div className="label-input">
-                    <label htmlFor="confirm-password">Confirm New Password</label>
-                    <input
-                        name="confirmPassword"
-                        id="confirm-password"
-                        type="password"
-                        ref={register} />
-                </div>
-                {passwordsDontMatch && <p>passwords don't match</p>}
-                <button type="submit">submit</button>
+                
+                <label htmlFor="new-password">New Password</label>
+                <input
+                    name="newPassword"
+                    id="new-password"
+                    type="password"
+                    ref={register({
+                        required: true,
+                        minLength: { value: 8, message: "minimum 8 characters" },
+                      })} 
+                />
+                {errors.newPassword && <p>{errors.newPassword.message}</p>}
+                <label htmlFor="confirm-password">Confirm New Password</label>
+                <input
+                    name="confirmPassword"
+                    id="confirm-password"
+                    type="password"
+                    ref={register} 
+                />
+            {passwordsDontMatch && <p>passwords don't match</p>}
+            <button type="submit">submit</button>
             </form>}
             {active === "success" &&
             <div className="password-form">

@@ -8,17 +8,17 @@ const NotificationsList = ({notifications, handleSelectedNotification, toggleDis
         return ( 
             <table className="notifications-table">
                 <colgroup>
-                    <col className="date-col" />
-                    <col className="subject-col" />
-                    <col className="to-col" />
-                    <col className="state-col" />
+                    <col  />
+                    <col  />
+                    <col  />
+                    <col  />
                 </colgroup>
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Subject</th>
-                    <th>To</th>
-                    <th>State</th>
+                    <th className="date-col">Date</th>
+                    <th className="subject-col">Subject</th>
+                    <th className="to-col">To</th>
+                    <th className="state-col">State</th>
                     <th></th>
                 </tr>
             </thead>

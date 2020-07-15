@@ -22,10 +22,10 @@ const NotificationDetails = ({notification, handleSelectedNotification, toggleDi
 
     return ( 
         <tr>
-            <td>{`${notificationDate} ${notificationHour} `}</td>
-            <td>{notification.subject}</td>
-            <td>{notification.send_to}</td>
-            <td>{notification.state}</td>
+            <td className="date-col">{`${notificationDate} ${notificationHour} `}</td>
+            <td className="subject-col">{notification.subject}</td>
+            <td className="to-col">{notification.send_to}</td>
+            <td className="state-col">{notification.state}</td>
             <td>
                 <button className="notification-info-btn" onClick={handleInfo} ><MdInfo /></button>
                 <button className="delete-notification-btn" onClick={handleDelete}><MdDelete /></button>
