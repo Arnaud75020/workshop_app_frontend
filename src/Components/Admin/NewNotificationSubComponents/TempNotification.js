@@ -4,6 +4,8 @@ import { NotificationContext } from "../../../Context/NotificationContext";
 import Modal from "../Modals/Modal";
 import { WorkshopContext } from "../../../Context/WorkshopContext";
 import { UserContext } from "../../../Context/UserContext";
+import { MdDelete, MdEdit } from "react-icons/md";
+
 
 const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
   const {
@@ -145,8 +147,8 @@ const onChangeSelect = (event) => {
           <div className="temp-notification-info-header">
             <div>{tempNotification.date}</div>
             <div className="temp-notification-info-header-btns">
-              <button onClick={handleEdit}>Edit Notification</button>
-              <button onClick={handleDelete}>Delete Notification</button>
+              <button onClick={handleEdit} className="notification-icons"><MdEdit /></button>
+              <button onClick={handleDelete} className="notification-icons"><MdDelete /></button>
             </div>
           </div>
           <div className="temp-notification-info-body">
@@ -251,7 +253,6 @@ const onChangeSelect = (event) => {
           </div>
         </form>
       )}
-      )
     </div>
   );
 };

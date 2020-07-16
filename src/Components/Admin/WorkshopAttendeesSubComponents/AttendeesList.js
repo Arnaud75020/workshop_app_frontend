@@ -26,12 +26,12 @@ const AttendeeList = ({attendees} ) => {
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Position</th>
-                        <th>Company</th>
-                        <th>Country</th>
-                        <th>Registration Date</th>
+                        <th className="name-col">Name</th>
+                        <th className="email-col">Email</th>
+                        <th className="position-col">Position</th>
+                        <th className="company-col">Company</th>
+                        <th className="country-col">Country</th>
+                        <th className="reg-date-col">Registration Date</th>
                         <th></th>
                     </tr>
                 </thead>

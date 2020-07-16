@@ -14,7 +14,7 @@ const Attendee = (props) => {
       <div className="page">
         <NavBar />
         <div className="body">
-          <Header />
+          {/* <Header /> */}
           <Switch>
             <Route path={props.match.path} exact component={MyWorkshops} />
             <Route path="/profile" component={Profile} />

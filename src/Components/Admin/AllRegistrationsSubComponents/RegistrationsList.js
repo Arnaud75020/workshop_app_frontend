@@ -9,23 +9,23 @@ const RegistrationsList = ({ users, handleSetUser, toggleDisplayModal}) => {
         return (
             <table className="registrations-table">
                 <colgroup>
-                    <col className="name-col" />
-                    <col className="email-col" />
-                    <col className="position-col" />
-                    <col className="company-col" />
-                    <col className="workshops-col" />
-                    <col className="country-col" />
-                    <col className="type-col" />
+                    <col  />
+                    <col  />
+                    <col  />
+                    <col  />
+                    <col  />
+                    <col  />
+                    <col  />
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Position</th>
-                        <th>Company</th>
-                        <th>Workshops</th>
-                        <th>Country</th>
-                        <th>Type</th>
+                        <th className="name-col">Name</th>
+                        <th className="email-col">Email</th>
+                        <th className="position-col">Position</th>
+                        <th className="company-col">Company</th>
+                        <th className="workshops-col">Workshops</th>
+                        <th className="country-col">Country</th>
+                        <th className="type-col">Type</th>
                         <th></th>
                     </tr>
                 </thead>

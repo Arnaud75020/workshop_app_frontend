@@ -58,15 +58,17 @@ const NewNotification = () => {
     <div className="new-notifications-body">
       <div className="new-notifications-header">
         <h1>New Notification</h1>
-        <button className="all-notifications-btn">
-          <Link to="/admin/all-notifications">All Notifications</Link>
-        </button>
-        <button
-          className="confirm-all-btn"
-          onClick={handleConfirmAllNotifications}
-        >
-          Confirm All
-        </button>
+        <div className="new-notification-btn-wrapper">
+          <button className="all-notifications-btn">
+            <Link to="/admin/all-notifications">All Notifications</Link>
+          </button>
+          <button
+            className="confirm-all-btn"
+            onClick={handleConfirmAllNotifications}
+          >
+            Confirm All
+          </button>
+        </div>
         <div>
           {isModalDisplayed && (
             <ModalForm

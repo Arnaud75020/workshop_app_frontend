@@ -1,14 +1,21 @@
+@import '../../../styles/breakpoints.scss';
+
 .workshop-edit-form{
     position: absolute;
-    top: 10vh;
+    top: 0;
     left: 20%;
     width: 80%;
-    height: 90vh;
+    height: 100vh;
     background-color: rgba(0,0,0,.6);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
+    @include media('<=desktop'){
+        left: 0;
+        width: 100%;
+
+    }
 
     button{
         margin: 0 5px;

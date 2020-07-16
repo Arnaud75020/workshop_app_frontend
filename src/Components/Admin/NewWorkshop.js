@@ -63,9 +63,14 @@ const NewWorkshop = () => {
     <div className="new-workshops-body">
       <div className="new-workshops-header">
         <h1>New Workshops</h1>
-        <button className="all-workshops-btn">
-          <Link to="/admin">All Workshops</Link>
-        </button>
+        <div className="new-workshop-btn-wrapper">
+          <button className="all-workshops-btn">
+            <Link to="/admin">All Workshops</Link>
+          </button>
+          <button className="confirm-all-btn" onClick={handleConfirmAllWorkshops}>
+            Confirm All
+          </button>
+        </div>
         <div>
           {isModalDisplayed && (
             <ModalForm
@@ -78,9 +83,7 @@ const NewWorkshop = () => {
             />
           )}
         </div>
-        <button className="confirm-all-btn" onClick={handleConfirmAllWorkshops}>
-          Confirm All
-        </button>
+        
       </div>
       {tempWorkshops.map((tempWorkshop) => {
         return (

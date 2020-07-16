@@ -15,21 +15,21 @@ const WorkshopList = ({
     <div>
       <table className="workshops-table">
         <colgroup>
-          <col className="date-col" />
-          <col className="title-col" />
-          <col className="speaker-col" />
-          <col className="registrations-col" />
-          <col className="room-setup-col" />
-          <col className="room-manager-col" />
+          <col  />
+          <col  />
+          <col  />
+          <col  />
+          <col  />
+          <col  />
         </colgroup>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Workshop Title</th>
-            <th>Speaker</th>
-            <th>Total Regs.</th>
-            <th>Room Setup</th>
-            <th>Room Manager</th>
+            <th className="date-col">Date</th>
+            <th className="title-col">Workshop Title</th>
+            <th className="speaker-col">Speaker</th>
+            <th className="registrations-col">Total Regs.</th>
+            <th className="room-setup-col">Room Setup</th>
+            <th className="room-manager-col">Room Manager</th>
             <th></th>
           </tr>
         </thead>
