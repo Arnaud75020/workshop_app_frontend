@@ -1,24 +1,19 @@
-import React, {useContext, useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext'; //context to add state
 import './Header.scss';
-import { AuthContext } from '../../Context/AuthContext';
-import { FaUser } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
-
-
+import { FaUser } from 'react-icons/fa';
+import { FiLogOut } from 'react-icons/fi';
 
 const Header = (props) => {
+  const { user, logout, setAuth } = useContext(UserContext);
 
-  const { user, logout } = useContext(UserContext)
-  const { setAuth } = useContext(AuthContext)
-
-  const { role } = user
+  const { role } = user;
 
   const handleLogout = () => {
-    logout()
-    setAuth(false)
-  }
+    logout();
+    setAuth(false);
+  };
 
   return (
     <div className='header'>
@@ -30,21 +25,22 @@ const Header = (props) => {
 
       {/* To be generated dynamicaly, connected to login state */}
       <div className='user'>
-        <div className="options">
+        <div className='options'>
           <p>{`${user.firstname} ${user.lastname}`}</p>
           <img src='avatar5.jpeg' alt='user avatar' />
         </div>
-        <div className="profile-dropdown">
-          <div className="profile">
-            <FaUser className="header-icons"/>
+        <div className='profile-dropdown'>
+          <div className='profile'>
+            <FaUser className='header-icons' />
+            <p>
+              <Link to={`/profile`}>profile</Link>
+            </p>
           </div>
-          <div className="logout">
-            <FiLogOut className="header-icons"/>
+          <div className='logout'>
+            <FiLogOut className='header-icons' />
             <p onClick={handleLogout}>logout</p>
           </div>
         </div>
-       
-        
       </div>
     </div>
   );

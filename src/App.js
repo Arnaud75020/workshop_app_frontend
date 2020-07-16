@@ -7,47 +7,47 @@ import Login from './Components/SharedComponents/Login';
 import SignUp from './Components/SharedComponents/SignUp';
 import { UserContext } from './Context/UserContext';
 import { WorkshopContext } from './Context/WorkshopContext';
-import AuthContextProvider, { AuthContext } from './Context/AuthContext';
 
 function App() {
-
   return (
     <div className='App'>
-      <AuthContextProvider>
-        <BrowserRouter>
-          <Switch>
-            <LoginSignUpRoute path='/login' component={Login} />
-            <LoginSignUpRoute path='/signup/:id' component={SignUp} />
-            <LoginSignUpRoute path='/signup' component={SignUp} />
-            <ProtectedRoute path='/admin' component={Admin} />
-            <ProtectedRoute path='/speaker' component={Speaker} />
-            <ProtectedRoute path='/attendee' component={Attendee} />
-          </Switch>
-        </BrowserRouter>
-      </AuthContextProvider>
+      <BrowserRouter>
+        <Switch>
+          <ProtectedRoute path='/admin' component={Admin} />
+          <ProtectedRoute path='/speaker' component={Speaker} />
+          <ProtectedRoute path='/attendee' component={Attendee} />
+          <LoginSignUpRoute path='/login' component={Login} />
+          <LoginSignUpRoute path='/signup/:id' component={SignUp} />
+          <LoginSignUpRoute path='/signup' component={SignUp} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
 
-const LoginSignUpRoute = ({ component: Component, ...props }) => {
-  const { auth } = useContext(AuthContext);
-  const { user } = useContext(UserContext);
+const LoginSignUpRoute = ({ component: Component, ...rest }) => {
+  const { user, auth, setAuth } = useContext(UserContext);
 
   return (
     <Route
-      {...props}
+      {...rest}
       component={(props) =>
-        !auth ? <Component {...props} /> : <Redirect to={`/${user.role}`} />
+        !auth ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={`/${window.localStorage.getItem('userRole')}`} />
+        )
       }
     />
   );
 };
 
-const ProtectedRoute = ({ component: Component, ...props }) => {
-  const { auth, setAuth } = useContext(AuthContext);
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const { auth, setAuth } = useContext(UserContext);
+  console.log(auth);
   return (
     <Route
-      {...props}
+      {...rest}
       component={(props) =>
         auth ? <Component {...props} /> : <Redirect to='/login' />
       }
