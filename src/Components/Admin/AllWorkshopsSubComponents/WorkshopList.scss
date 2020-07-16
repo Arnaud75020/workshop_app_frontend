@@ -1,4 +1,5 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/breakpoints.scss';
 
 /***** TABLE *****/
 
@@ -20,7 +21,18 @@
     .title-col{
         width: 30%;
     }
+
+    .registrations-col,
+    .room-setup-col,
+    .room-manager-col,
+    .speaker-col{
+        @include media('<=phone'){
+            display: none;
+         }
 }
+}
+
+
 
 /***** DROPDOWN *****/
 

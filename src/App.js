@@ -18,6 +18,7 @@ function App() {
           <ProtectedRoute path='/attendee' component={Attendee} />
           <LoginSignUpRoute path='/login' component={Login} />
           <LoginSignUpRoute path='/signup/:id' component={SignUp} />
+          <LoginSignUpRoute path='/signup' component={SignUp} />
         </Switch>
       </BrowserRouter>
     </div>

@@ -1,7 +1,48 @@
 @import '../../styles/variables.scss';
+@import '../../styles/breakpoints.scss';
+
+.nav-burguer-menu{
+  display: none;
+  @include media('<=desktop'){
+    display: flex;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    top: 0;
+    left: 0;
+    padding: 10px 0 10px 2.5%;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: $blue;
+    cursor: pointer;
+    z-index: 10;
+    transition: all .3s ease-in-out;
+  }
+  @include media('<=tablet'){
+    padding-left: 5%;
+  }
+}
+
+.nav-close-menu{
+  display: none;
+  @include media('<=desktop'){
+    display: flex;
+    position: fixed;
+    top: 20px;
+    left: 45%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 60;
+    transition: all .3s ease-in-out;
+  }
+  @include media('<=phone'){
+    left: 55%;
+  }
+}
 
 .item ul,
-.nav input[type='checkbox'] {
+input[type='checkbox'] {
   display: none;
 }
 
@@ -40,6 +81,34 @@ label {
   background-color: $blue;
   overflow-x: hidden;
   border-bottom: 1px solid #e6e6e6;
+  @include media('<=desktop'){
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    z-index: 20;
+    transition: all .3s ease-in-out;
+  }
+}
+
+.nav-expanded{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100vh;
+  background-color: $blue;
+  overflow-x: hidden;
+  border-bottom: 1px solid #e6e6e6;
+  transition: all .3s ease-in-out;
+  @include media('<=desktop'){
+    width: 50%;
+    z-index: 20;
+  }
+  @include media('<=phone'){
+    width: 70%;
+    z-index: 20;
+  }
 }
 
 .nav ul,
@@ -51,18 +120,37 @@ label {
   list-style: none;
   text-decoration: none;
   color: #e6e6e6;
-  font-weight: 100;
   width: 100%;
+  font-weight: 400;
+  font-family: roboto;
 }
 
-.item a {
-  line-height: 50px;
-  margin: 0;
-  padding: 0 1em;
-  list-style: none;
-  text-decoration: none;
-  color: #e6e6e6;
-  font-weight: 100;
+.item{
+  padding: 0;
+  width: 100%;
+  border-bottom: 1px solid white;
+
+  a{
+    width: 100%;
+    line-height: 50px;
+    margin: 0;
+    padding: 0 1em;
+    text-decoration: none;
+    color: #e6e6e6;
+    font-weight: 400;
+    font-family: roboto;
+  }
+
+  p{
+    width: 100%;
+    line-height: 50px;
+    margin: 0;
+    padding: 0 1em;
+    text-decoration: none;
+    color: #e6e6e6;
+    font-weight: 400;
+    font-family: roboto;
+  }
 }
 
 .item ul {
@@ -77,4 +165,22 @@ label {
   text-decoration: none;
   color: #e6e6e6;
   font-weight: 100;
+}
+
+.multi-level{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding-top: 50px;
+}
+
+.productized-logo{
+  padding-top: 200px;
+  margin: 0 auto;
+  width: 80%;
+  z-index: 40;
+  background-image: url('../../styles/images/conf-productized-8\ \(1\).png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }

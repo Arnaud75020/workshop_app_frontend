@@ -10,28 +10,23 @@ import { UserContext } from '../../Context/UserContext';
 const Profile = () => {
   const { user } = useContext(UserContext);
 
-  const [changePasswordDisplaying, setChangePasswordDisplaying] = useState(
-    false
-  );
+
+  const { user, confirmUpdatedUser } = useContext(UserContext)
+
+  const [changePasswordDisplaying, setChangePasswordDisplaying] = useState(false)
 
   const handleChangePassword = () => {
     setChangePasswordDisplaying(!changePasswordDisplaying);
   };
 
-  return (
-    <div className='profile'>
-      <h1>Profile</h1>
-      <div className='profile-body'>
-        <div className='left'>
-          <ChangePhoto />
-          <EditMyWorkshops />
-        </div>
-        <div className='right'>
-          <UserSettings
-            user={user}
-            handleChangePassword={handleChangePassword}
-          />
-          <ContactSettings user={user} />
+    return(
+      <div className="profile"> 
+        <h1>Profile</h1>
+        <div className="profile-body">
+          <div className="right">
+            <UserSettings user={user} handleChangePassword={handleChangePassword} confirmUpdatedUser={confirmUpdatedUser} />
+            <ContactSettings user={user} confirmUpdatedUser={confirmUpdatedUser} />
+          </div>
         </div>
       </div>
       {changePasswordDisplaying && (

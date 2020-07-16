@@ -1,34 +1,53 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import { Link } from 'react-router-dom';
 import './NavBar.scss';
 import { WorkshopContext } from '../../Context/WorkshopContext';
+import { MdMenu, MdClose} from 'react-icons/md';
+
 
 import MonthlySpeakers from './MonthlySpeakers'
+import { AuthContext } from '../../Context/AuthContext';
 const NavBar = () => {
-  const { speakers, user } = useContext(UserContext);
+  const { speakers, user, logout } = useContext(UserContext);
+  const { setAuth} = useContext(AuthContext);
   const { months } = useContext(WorkshopContext);
+  const [isNavExpanded, setNavExpanded] = useState(false)
+
+  const toggleNavExpanded = () => {
+    setNavExpanded(!isNavExpanded)
+  }
+
+  const closeNavExpanded = () => {
+    if(isNavExpanded === true){
+      setNavExpanded(false)
+
+    }
+  }
+
+  const handleLogout = () => {
+    logout()
+    setAuth(false)
+  }
 
   return (
-    <div className='nav'>
+    <div className={isNavExpanded ? 'nav-expanded' : 'nav'}>
+      <div className={isNavExpanded ? 'nav-close-menu' : 'nav-burguer-menu'} onClick={toggleNavExpanded}>{isNavExpanded ? <MdClose /> : <MdMenu />}</div>
       <div className='multi-level'>
-        <div className='item'>
-          <img src='Logo_productized.png' className='logo' />
-        </div>
         {user.role === "speaker" &&
         <div className="item">
-            <Link to="/speaker">My Workshop</Link>
+            <Link to="/speaker" onClick={closeNavExpanded}>MY WORKSHOP</Link>
         </div>
         }
         {user.role === "attendee" &&
         <div className="item">
-            <Link to="/attendee">My Workshops</Link>
+            <Link to="/attendee" onClick={closeNavExpanded}>MY WORKSHOPS</Link>
         </div>
         }
         {user.role === "admin" &&
         <div>
             <div className='item'>
-              <Link to='/admin'>ALL WORKSHOPS</Link>
+              <Link to='/admin' onClick={closeNavExpanded}>ALL WORKSHOPS</Link>
             </div>
             <div className='item'>
               <input type='checkbox' id='A' />
@@ -49,7 +68,7 @@ const NavBar = () => {
                         <img src='chevron-right-1.png' className='arrow' />
                      </label>
                      <ul>
-                      <MonthlySpeakers month={month.month}/>
+                      <MonthlySpeakers month={month.month} closeNavExpanded={closeNavExpanded}/>
                      </ul>
                     </div>
                   </li>
@@ -58,12 +77,19 @@ const NavBar = () => {
               </ul>
             </div>
             <div className='item'>
-              <Link to='/admin/all-registrations'>ALL DATA</Link>
+              <Link to='/admin/all-registrations' onClick={closeNavExpanded}>ALL DATA</Link>
             </div>
             <div className='item'>
-              <Link to='/admin/all-notifications'>NOTIFICATIONS</Link>
+              <Link to='/admin/all-notifications' onClick={closeNavExpanded}>NOTIFICATIONS</Link>
             </div>
         </div>}
+            <div className='item'>
+              <Link to={`/profile`} onClick={closeNavExpanded}>MY PROFILE</Link>
+            </div>
+            <div className='item'>
+              <p onClick={handleLogout}>LOGOUT</p>
+            </div>
+        <div className='productized-logo' />
       </div>
     </div>
   );

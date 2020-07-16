@@ -133,6 +133,26 @@ const UserContextProvider = (props) => {
     getAllUsers();
   };
 
+  const confirmUpdatedUser = (updatedUser) => {
+
+    const updatedUserId = updatedUser.id;
+
+    console.log('updatedUserId', updatedUserId)
+        axios
+          .put(`/users/${updatedUserId}`, updatedUser)
+          .then(() => getAllUsers())
+          .then(() => {
+            axios
+              .get(`/users/getuser/${updatedUserId}`)
+              .then((response) => response.data[0])
+              .then((userInfo) => setUser(userInfo))
+          }
+          )
+          console.log('confirm', updatedUser)
+  };
+
+  console.log('user', user)
+
   return (
     <div>
       <UserContext.Provider
@@ -153,6 +173,7 @@ const UserContextProvider = (props) => {
           logout,
           auth,
           setAuth,
+          confirmUpdatedUser
         }}>
         {props.children}
       </UserContext.Provider>

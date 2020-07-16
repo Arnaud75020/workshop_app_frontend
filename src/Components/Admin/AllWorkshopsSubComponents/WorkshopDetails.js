@@ -26,15 +26,15 @@ const WorkshopDetails = ({ workshop, toggleDisplayModal, deleteWorkshop }) => {
 
   return (
     <tr>
-      <td>
+      <td className="date-col">
         <div>{workshopDate}</div>
         <div>{`${starting_at}-${ending_at}`}</div>
       </td>
-      <td>{workshop.title}</td>
-      <td>{workshop.workshop_speaker}</td>
-      <td>{`${workshop.enrolled_attendees}/${workshop.room_capacity}`}</td>
-      <td>{workshop.room_type}</td>
-      <td>{workshop.room_manager}</td>
+      <td className="title-col">{workshop.title}</td>
+      <td className="speaker-col">{workshop.workshop_speaker}</td>
+      <td className="registrations-col">{`${workshop.enrolled_attendees}/${workshop.room_capacity}`}</td>
+      <td className="room-setup-col">{workshop.room_type}</td>
+      <td className="room-manager-col">{workshop.room_manager}</td>
       <td className="dropdown">
         <button className="options-icon">
           <FaListUl />

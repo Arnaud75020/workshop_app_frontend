@@ -3,7 +3,7 @@ import { WorkshopContext } from '../../Context/WorkshopContext';
 import './NavBar.scss';
 import { Link } from 'react-router-dom';
 
-const MonthlySpeakers = ({ month }) => {
+const MonthlySpeakers = ({ month, closeNavExpanded }) => {
 
     const { workshops } = useContext(WorkshopContext);
 
@@ -14,7 +14,7 @@ const MonthlySpeakers = ({ month }) => {
 
     return(
             filteredWorkshops.map(workshop => {
-                return <li><Link to={`/admin/workshop-attendees/${workshop.speaker_id}`}>{workshop.workshop_speaker}</Link></li>
+                return <li onClick={closeNavExpanded}><Link to={`/admin/workshop-attendees/${workshop.speaker_id}`}>{workshop.workshop_speaker}</Link></li>
             })
         
     )
