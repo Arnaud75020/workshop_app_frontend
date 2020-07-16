@@ -15,11 +15,25 @@ const UserContextProvider = (props) => {
   const [searchValue, setsearchValue] = useState('');
   const [user, setUser] = useState([]);
 
+  const [auth, setAuth] = useState(false);
 
   useEffect(() => {
-    getAllSpeakers();
+    axios
+      .get('/auth/verify-token')
+      .then(async (response) => {
+        console.log('RESPONSE DATA', response.data);
+        setAuth(true);
+        setUser(response.data);
+      })
+      .then(() => {
+        console.log('UNIQUE NAME ', user);
+      })
+      .catch(() => setAuth(false));
+    /////???/////
     getAllAttendees();
+    getAllSpeakers();
     getAllUsers();
+    /////???/////
   }, []);
 
   const getAllSpeakers = () => {
@@ -54,12 +68,13 @@ const UserContextProvider = (props) => {
 
   const setUserInformation = ({ user, token }) => {
     setUser(user);
-    Cookies.set('authToken', token, { secure: false });
+    window.localStorage.setItem('userRole', user.role);
   };
 
   const logout = () => {
-    Cookies.remove('authToken')
-  }
+    axios.post('/auth/logout');
+    window.localStorage.removeItem('userRole');
+  };
 
   const handleFilterUser = (event) => {
     const role = event.target.value;
@@ -149,13 +164,15 @@ const UserContextProvider = (props) => {
           filterUser,
           speakers,
           allUsers,
-          searchValue, 
-          handleChangeSearch, 
-          deleteUser, 
-          user, 
+          searchValue,
+          handleChangeSearch,
+          deleteUser,
+          user,
           setUserInformation,
           getAllSpeakers,
           logout,
+          auth,
+          setAuth,
           confirmUpdatedUser
         }}>
         {props.children}

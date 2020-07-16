@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ChangePhoto from './ProfileSubcomponents/ChangePhoto';
-import './Profile.scss'
+import './Profile.scss';
 import EditMyWorkshops from './ProfileSubcomponents/EditMyWorkshops';
 import UserSettings from './ProfileSubcomponents/UserSettings';
 import ContactSettings from './ProfileSubcomponents/ContactSettings';
@@ -8,14 +8,16 @@ import ChangePasswordForm from './ProfileSubcomponents/ChangePasswordForm';
 import { UserContext } from '../../Context/UserContext';
 
 const Profile = () => {
+  const { user } = useContext(UserContext);
+
 
   const { user, confirmUpdatedUser } = useContext(UserContext)
 
   const [changePasswordDisplaying, setChangePasswordDisplaying] = useState(false)
 
   const handleChangePassword = () => {
-    setChangePasswordDisplaying(!changePasswordDisplaying)
-  }
+    setChangePasswordDisplaying(!changePasswordDisplaying);
+  };
 
     return(
       <div className="profile"> 
@@ -26,11 +28,15 @@ const Profile = () => {
             <ContactSettings user={user} confirmUpdatedUser={confirmUpdatedUser} />
           </div>
         </div>
-        {changePasswordDisplaying && 
-        <ChangePasswordForm  user={user} handleChangePassword={handleChangePassword}/>}
       </div>
-       
-    )
-}
+      {changePasswordDisplaying && (
+        <ChangePasswordForm
+          user={user}
+          handleChangePassword={handleChangePassword}
+        />
+      )}
+    </div>
+  );
+};
 
-export default Profile
+export default Profile;
