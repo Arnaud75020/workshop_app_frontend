@@ -15,7 +15,7 @@ const SignUp = (props) => {
     case "dfqlQIF":
       roleId = 2;
       break;
-    case "edjDFKJ":
+    default:
       roleId = 3;
       break;
   }
@@ -58,6 +58,7 @@ const SignUp = (props) => {
 
   useEffect(() => {
     console.log("Newdate", todayDate);
+    console.log('id', props.match.params.id)
   });
 
   return (
