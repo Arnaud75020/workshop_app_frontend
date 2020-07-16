@@ -21,7 +21,6 @@ const Profile = () => {
       <div className="profile"> 
         <h1>Profile</h1>
         <div className="profile-body">
-          </div>
           <div className="right">
             <UserSettings user={user} handleChangePassword={handleChangePassword} confirmUpdatedUser={confirmUpdatedUser} />
             <ContactSettings user={user} confirmUpdatedUser={confirmUpdatedUser} />
