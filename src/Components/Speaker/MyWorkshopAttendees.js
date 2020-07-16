@@ -11,7 +11,21 @@ const MyWorkshopAttendees = () => {
   );
   const { user } = useContext(UserContext);
 
-  console.log('attendees', attendees);
+  useEffect(() => {
+    getAttendees(user.id);
+    getWorkshop(user.id);
+    console.log('MWA_ATTENDEES', attendees);
+  }, []);
+
+  useEffect(() => {
+    if (user !== []) {
+      getAttendees(user.id);
+      getWorkshop(user.id);
+      console.log('MWA_ATTENDEES 2', attendees);
+    }
+  }, [user]);
+
+  console.log('USER ID', user);
 
   return (
     <div>
@@ -22,9 +36,12 @@ const MyWorkshopAttendees = () => {
           <div className='workshop-attendees-header'>
             <h1>Workshop Info</h1>
           </div>
-          <div className='workshop-attendees-body'>
-            <WorkshopInfo workshop={workshop} attendees={attendees} />
-            <AttendeesList attendees={attendees} />
+
+          <div cl_assName='workshop-attendees-body'>
+            {attendees !== undefined && (
+              <WorkshopInfo workshop={workshop} attendees={attendees} />
+            )}
+            {attendees !== undefined && <AttendeesList attendees={attendees} />}
           </div>
         </div>
       )}

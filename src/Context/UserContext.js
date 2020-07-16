@@ -20,7 +20,7 @@ const UserContextProvider = (props) => {
   useEffect(() => {
     axios
       .get('/auth/verify-token')
-      .then((response) => {
+      .then(async (response) => {
         console.log('RESPONSE DATA', response.data);
         setAuth(true);
         setUser(response.data);
@@ -29,11 +29,11 @@ const UserContextProvider = (props) => {
         console.log('UNIQUE NAME ', user);
       })
       .catch(() => setAuth(false));
-    //////////
+    /////???/////
     getAllAttendees();
     getAllSpeakers();
     getAllUsers();
-    //////////
+    /////???/////
   }, []);
 
   const getAllSpeakers = () => {

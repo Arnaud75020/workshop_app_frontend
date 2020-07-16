@@ -35,7 +35,7 @@ const Login = () => {
           ////////???////////
           getWorkshop(id);
           getAttendees(id);
-          ////////???///////
+          ////////???//////
         }
       })
       .then(() => setAuth(true))
