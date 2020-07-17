@@ -5,11 +5,16 @@ import uuid from 'react-uuid';
 import { UserContext } from '../../../Context/UserContext';
 
 const WorkshopForm = () => {
-  const { addTempWorkshop } = useContext(WorkshopContext);
+  const { addTempWorkshop, allWorkshops } = useContext(WorkshopContext);
   const { speakers } = useContext(UserContext);
   const { register, handleSubmit, reset, errors } = useForm();
 
-  console.log("speakers",speakers)
+  const workshopSpeakers = allWorkshops.map( workshop => workshop.speaker_id)
+
+  const speakersLeft = speakers.filter( speaker => !workshopSpeakers.includes(speaker.id))
+
+
+  console.log("speakersLeft", speakersLeft)
 
   const onSubmit = (data) => {
     console.log(data);
@@ -91,7 +96,7 @@ const WorkshopForm = () => {
           {errors.title && <p>please add title</p>}
           <select name='speaker' ref={register({ required: true })}>
             <option value="">Speaker</option>
-            {speakers.length > 0 && speakers.map((speaker) => {
+            {speakersLeft.length > 0 && speakersLeft.map((speaker) => {
               return (
                 <option
                   value={`${speaker.firstname} ${speaker.lastname}`}>{`${speaker.firstname} ${speaker.lastname}`}</option>
