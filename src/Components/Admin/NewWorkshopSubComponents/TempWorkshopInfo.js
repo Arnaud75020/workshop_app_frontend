@@ -7,7 +7,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 
 
 const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
-  const { confirmWorkshop, editTempWorkshop, deleteTempWorkshop } = useContext(
+  const { confirmWorkshop, editTempWorkshop, deleteTempWorkshop, allWorkshops } = useContext(
     WorkshopContext
   );
 
@@ -16,6 +16,10 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
   const [editMode, setEditMode] = useState(false);
 
   const { register, handleSubmit, errors } = useForm();
+
+  const workshopSpeakers = allWorkshops.map( workshop => workshop.speaker_id)
+
+  const speakersLeft = speakers.filter( speaker => !workshopSpeakers.includes(speaker.id))
 
   const onSubmit = (data) => {
     const newObject = {
@@ -186,7 +190,7 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
                 ref={register({ required: true })}
               >
                 <option value="">To:</option>
-                {speakers.map((speaker) => {
+                {speakersLeft.map((speaker) => {
                   return (
                     <option
                       value={`${speaker.firstname} ${speaker.lastname}`}
