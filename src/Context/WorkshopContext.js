@@ -43,20 +43,20 @@ const WorkshopContextProvider = (props) => {
   };
 
   const getAttendees = (speakerId) => {
-    console.log("SPEAKER ID",typeof speakerId )
-    if(typeof speakerId !== "string" && typeof speakerId != "number"){ 
-      console.log("GROUP")
-      setAttendees(speakerId)
-      setAllAttendees(speakerId)
+    console.log("SPEAKER ID", typeof speakerId);
+    if (typeof speakerId !== "string" && typeof speakerId != "number") {
+      console.log("GROUP");
+      setAttendees(speakerId);
+      setAllAttendees(speakerId);
     } else {
-      console.log("ONE ONE ONE")
-        axios
-          .get(`/workshops/${speakerId}/attendees`)
-          .then((response) => response.data)
-          .then((attendeesList) => {
-            setAttendees(attendeesList);
-            setAllAttendees(attendeesList);
-      });
+      console.log("ONE ONE ONE");
+      axios
+        .get(`/workshops/${speakerId}/attendees`)
+        .then((response) => response.data)
+        .then((attendeesList) => {
+          setAttendees(attendeesList);
+          setAllAttendees(attendeesList);
+        });
     }
   };
 
@@ -65,7 +65,7 @@ const WorkshopContextProvider = (props) => {
       .get(`/workshops/user-workshops/${id}`)
       .then((response) => response.data)
       .then((userWorkshops) => {
-        console.log(userWorkshops)
+        console.log(userWorkshops);
         setUserWorkshops(userWorkshops);
       });
   };
@@ -116,20 +116,20 @@ const WorkshopContextProvider = (props) => {
   const confirmEditedWorkshop = (newWorkshop) => {
     const newWorkshopId = newWorkshop.id;
     //axios
-      //.put(`/workshops/workshop-user-workshops/${newWorkshopId}`, newWorkshop)
-      //.then(() => {
-        axios
-          .put(`/workshops/${newWorkshopId}`, newWorkshop)
-      //})
-    getWorkshops();
-    getMonth();
+    //.put(`/workshops/workshop-user-workshops/${newWorkshopId}`, newWorkshop)
+    //.then(() => {
+    axios.put(`/workshops/${newWorkshopId}`, newWorkshop).then(() => {
+      getWorkshops();
+      getMonth();
+    });
+    //})
   };
 
   const confirmWorkshop = (newObject) => {
-    axios.post("/workshops", newObject);
-    console.log(newObject);
-    getWorkshops();
-    getMonth();
+    axios.post("/workshops", newObject).then(() => {
+      getWorkshops();
+      getMonth();
+    });
   };
 
   const editTempWorkshop = (newObject) => {
@@ -146,16 +146,11 @@ const WorkshopContextProvider = (props) => {
 
   const deleteWorkshop = (id, enrolled_attendees) => {
     if (enrolled_attendees > 0) {
-      axios
-        .delete(`/workshops/workshop-user-workshops/${id}`)
-        .then(() => {
-          axios
-            .delete(`/workshops/${id}`);
-        });
+      axios.delete(`/workshops/workshop-user-workshops/${id}`).then(() => {
+        axios.delete(`/workshops/${id}`);
+      });
     }
-    axios.delete(`/workshops/${id}`);
-
-    getWorkshops();
+    axios.delete(`/workshops/${id}`).then(() => getWorkshops());
   };
 
   const handleFilterDate = (event) => {

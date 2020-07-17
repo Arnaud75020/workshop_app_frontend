@@ -1,6 +1,6 @@
-import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export const UserContext = createContext();
 
@@ -10,23 +10,23 @@ const UserContextProvider = (props) => {
   const [allUsers, setAllUsers] = useState([]);
   const [allAttendees, setAllattendees] = useState([]);
   const [users, setUsers] = useState([]);
-  const [filterUser, setFilterUser] = useState('All users');
+  const [filterUser, setFilterUser] = useState("All users");
   const [speakers, setSpeakers] = useState([]);
-  const [searchValue, setsearchValue] = useState('');
+  const [searchValue, setsearchValue] = useState("");
   const [user, setUser] = useState([]);
 
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {
     axios
-      .get('/auth/verify-token')
+      .get("/auth/verify-token")
       .then(async (response) => {
-        console.log('RESPONSE DATA', response.data);
+        console.log("RESPONSE DATA", response.data);
         setAuth(true);
         setUser(response.data);
       })
       .then(() => {
-        console.log('UNIQUE NAME ', user);
+        console.log("UNIQUE NAME ", user);
       })
       .catch(() => setAuth(false));
     /////???/////
@@ -38,27 +38,27 @@ const UserContextProvider = (props) => {
 
   const getAllSpeakers = () => {
     axios
-      .get('/users/speakers')
+      .get("/users/speakers")
       .then((response) => response.data)
       .then((speakersList) => {
         setSpeakers(speakersList);
-        console.log('speakers', speakersList);
+        console.log("speakers", speakersList);
       });
   };
 
   const getAllAttendees = () => {
     axios
-      .get('/users/attendees')
+      .get("/users/attendees")
       .then((response) => response.data)
       .then((attendeesList) => {
         setAllattendees(attendeesList);
-        console.log('attendees', attendeesList);
+        console.log("attendees", attendeesList);
       });
   };
 
   const getAllUsers = () => {
     axios
-      .get('/users')
+      .get("/users")
       .then((response) => response.data)
       .then((allUsersList) => {
         setUsers(allUsersList);
@@ -68,27 +68,27 @@ const UserContextProvider = (props) => {
 
   const setUserInformation = ({ user, token }) => {
     setUser(user);
-    window.localStorage.setItem('userRole', user.role);
+    window.localStorage.setItem("userRole", user.role);
   };
 
   const logout = () => {
-    axios.post('/auth/logout');
-    window.localStorage.removeItem('userRole');
+    axios.post("/auth/logout");
+    window.localStorage.removeItem("userRole");
   };
 
   const handleFilterUser = (event) => {
     const role = event.target.value;
 
     switch (role) {
-      case 'All users':
+      case "All users":
         setFilterUser(role);
         setUsers(allUsers);
         break;
-      case 'Attendees':
+      case "Attendees":
         setFilterUser(role);
         setUsers(allAttendees);
         break;
-      case 'Speakers':
+      case "Speakers":
         setFilterUser(role);
         setUsers(speakers);
         break;
@@ -111,8 +111,8 @@ const UserContextProvider = (props) => {
   };
 
   const deleteUser = (id, role) => {
-    if (role == 'speaker') {
-      console.log('deleteUser', id, role);
+    if (role == "speaker") {
+      console.log("deleteUser", id, role);
       axios.delete(`/workshops/all-speaker-workshops/${id}`).then(() => {
         axios.delete(`/workshops/speaker/${id}`).then(() => {
           axios.delete(`/users/${id}`).then(() => {
@@ -121,7 +121,7 @@ const UserContextProvider = (props) => {
         });
       });
     }
-    if (role == 'attendee') {
+    if (role == "attendee") {
       axios.delete(`/workshops/all-user-workshops/${id}`).then(() => {
         axios.delete(`/users/${id}`).then(() => {
           getAllUsers();
@@ -134,24 +134,22 @@ const UserContextProvider = (props) => {
   };
 
   const confirmUpdatedUser = (updatedUser) => {
-
     const updatedUserId = updatedUser.id;
 
-    console.log('updatedUserId', updatedUserId)
+    console.log("updatedUserId", updatedUserId);
+    axios
+      .put(`/users/${updatedUserId}`, updatedUser)
+      .then(() => getAllUsers())
+      .then(() => {
         axios
-          .put(`/users/${updatedUserId}`, updatedUser)
-          .then(() => getAllUsers())
-          .then(() => {
-            axios
-              .get(`/users/getuser/${updatedUserId}`)
-              .then((response) => response.data[0])
-              .then((userInfo) => setUser(userInfo))
-          }
-          )
-          console.log('confirm', updatedUser)
+          .get(`/users/getuser/${updatedUserId}`)
+          .then((response) => response.data[0])
+          .then((userInfo) => setUser(userInfo));
+      });
+    console.log("confirm", updatedUser);
   };
 
-  console.log('user', user)
+  console.log("user", user);
 
   return (
     <div>
@@ -173,8 +171,10 @@ const UserContextProvider = (props) => {
           logout,
           auth,
           setAuth,
-          confirmUpdatedUser
-        }}>
+          confirmUpdatedUser,
+          getAllUsers,
+        }}
+      >
         {props.children}
       </UserContext.Provider>
     </div>

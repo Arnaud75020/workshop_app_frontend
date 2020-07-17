@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 export const NotificationContext = createContext();
 
@@ -16,7 +16,7 @@ const NotificationContextProvider = (props) => {
 
   const getNotifications = () => {
     axios
-      .get('/notifications')
+      .get("/notifications")
       .then((response) => response.data)
       .then((notificationsList) => {
         setNotifications(notificationsList);
@@ -25,16 +25,13 @@ const NotificationContextProvider = (props) => {
   };
 
   const addTempNotification = (newObject) => {
-    console.log(newObject)
+    console.log(newObject);
     setTempNotifications([...tempNotifications, newObject]);
   };
 
   const confirmNotification = (newObject) => {
-    console.log("newObject", newObject)
-    axios
-      .post('/notifications', newObject)
-
-    getNotifications();
+    console.log("newObject", newObject);
+    axios.post("/notifications", newObject).then(() => getNotifications());
   };
 
   const editNotification = (newObject) => {
@@ -44,7 +41,7 @@ const NotificationContextProvider = (props) => {
     );
     notificationsList.splice(i, 1, newObject);
     setTempNotifications(notificationsList);
-};
+  };
 
   const deleteTempNotification = (id) => {
     const notificationList = tempNotifications.filter(
@@ -57,38 +54,35 @@ const NotificationContextProvider = (props) => {
     axios
       .delete(`/notifications/${id}`)
 
-      getNotifications()
-  }
+      .then(() => getNotifications());
+  };
 
   const handleFilterState = (event) => {
-
     const { value } = event.target;
 
-      if (value === "All notifications") {
-        setStateFilter(value)
-        setNotifications(allNotifications);
-      } else {
-        const filterdNotifications = allNotifications.filter((notification) => {
-          const notificationState = notification.state;
-          return notificationState === value;
-        });
-        setStateFilter(value)
-        setNotifications(filterdNotifications);
-        setSearchNotificationValue("")
-      };
+    if (value === "All notifications") {
+      setStateFilter(value);
+      setNotifications(allNotifications);
+    } else {
+      const filterdNotifications = allNotifications.filter((notification) => {
+        const notificationState = notification.state;
+        return notificationState === value;
+      });
+      setStateFilter(value);
+      setNotifications(filterdNotifications);
+      setSearchNotificationValue("");
+    }
   };
 
   const handleNotificationSearch = (event) => {
     const { value } = event.target;
     if (value.length) {
       const filteredNotifications = allNotifications.filter((notification) => {
-        return (
-          notification.subject.toLowerCase().includes(value.toLowerCase())
-        );
+        return notification.subject.toLowerCase().includes(value.toLowerCase());
       });
       setSearchNotificationValue(value);
       setNotifications(filteredNotifications);
-      setStateFilter("All notifications")
+      setStateFilter("All notifications");
     } else {
       setSearchNotificationValue(value);
       setNotifications(allNotifications);
@@ -111,8 +105,9 @@ const NotificationContextProvider = (props) => {
           stateFilter,
           handleNotificationSearch,
           searchNotificationValue,
-          deleteNotification
-        }}>
+          deleteNotification,
+        }}
+      >
         {props.children}
       </NotificationContext.Provider>
     </div>

@@ -13,80 +13,81 @@ const NotificationForm = () => {
   const [checkboxCheck, setCheckboxCheck] = useState(false);
   const [selectWorkshop, setSelectWorkshop] = useState(false);
 
+  const toggleSchedule = () => {
+    setCheckboxCheck(!checkboxCheck);
+  };
 
-    const toggleSchedule = () => {
-        setCheckboxCheck(!checkboxCheck);
+  const { register, handleSubmit, reset, errors } = useForm();
+
+  const onSubmit = (data) => {
+    const emailsList = attendees
+      .map((attendee) => {
+        return attendee.email;
+      })
+      .join();
+
+    let workshopTitle = "";
+
+    if (data.workshop) {
+      const workshop = data.workshop.split(",");
+      workshopTitle = workshop[0];
+    }
+
+    const now = new Date();
+
+    const now_formated = `${now.getFullYear()}-${
+      now.getMonth() + 1
+    }-${now.getDay()}T${now.getHours()}:${now.getMinutes()}`;
+
+    const date = data.checkbox ? data.date : now_formated;
+
+    const state = data.checkbox ? "scheduled" : "send";
+
+    const newObject = {
+      id: uuid(),
+      send_to: data.to,
+      workshop: data.workshop,
+      subject: data.subject,
+      content: data.content,
+      state: state,
+      date: date,
+      checkbox: data.checkbox,
+      emailsList: emailsList,
     };
-  
-    const { register, handleSubmit, reset, errors } = useForm();
+    reset({
+      date: "",
+      to: "",
+      subject: "",
+      content: "",
+      checkbox: false,
+    });
+    addTempNotification(newObject);
 
-    const onSubmit = (data) => {
-      
-      const emailsList = attendees.map(attendee => {
-        return attendee.email
-      }).join()
+    if (data.checkbox) {
+      toggleSchedule();
+    }
+    if (data.workshop) {
+      setSelectWorkshop(false);
+    }
+  };
 
-        let workshopTitle = "";
+  const allUsers = users.filter((user) => user.role !== "admin");
 
-        if(data.workshop){
-            const workshop = data.workshop.split(",")
-            workshopTitle = workshop[0]
-        }
-
-        const now = new Date();
-
-        const now_formated = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDay()}T${now.getHours()}:${now.getMinutes()}`
-
-        const date = data.checkbox ? data.date : now_formated;
-
-        const state = data.checkbox ? "scheduled" : "send"
-
-        const newObject = {
-            id: uuid(),
-            to: data.to,
-            workshop: data.workshop,
-            subject: data.subject,
-            content: data.content,
-            state: state,
-            date: date,
-            checkbox: data.checkbox,
-            emailsList: emailsList
-            };
-            reset({
-                date: "",
-                to:"",
-                subject:"",
-                content:"",
-                checkbox: false
-            })
-        addTempNotification(newObject);
-        
-        if(data.checkbox){
-            toggleSchedule()
-        }
-        if(data.workshop){
-            setSelectWorkshop(false)
-        }
-
-    };
-
-    const allUsers = users.filter(user => user.role !== "admin")
-
-    const onChangeSelect = (event) => {
+  const onChangeSelect = (event) => {
     const { value } = event.target;
 
-    if(value === "Workshop"){
-      setSelectWorkshop(true)
-  } else {
-      setSelectWorkshop(false)
-      if(value === "All"){
-        getAttendees(allUsers)
-      } else if(value === "All Speakers"){
-        getAttendees(speakers)
+    if (value === "Workshop") {
+      setSelectWorkshop(true);
+    } else {
+      setSelectWorkshop(false);
+      if (value === "All") {
+        getAttendees(allUsers);
+      } else if (value === "All Speakers") {
+        getAttendees(speakers);
       } else {
-        getAttendees(allAttendees)
+        getAttendees(allAttendees);
       }
-  }
+    }
   };
 
   const handleToWorkshop = (event) => {
