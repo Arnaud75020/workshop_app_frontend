@@ -40,6 +40,7 @@ const Login = () => {
       })
       .then(() => setAuth(true))
       .catch((error) => {
+        console.log(error);
         if (error.response.data.message === 'Incorrect email.') {
           setIncorrectEmail(true);
           if (incorrectPassword === true) {
