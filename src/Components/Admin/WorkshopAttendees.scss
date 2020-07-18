@@ -15,6 +15,7 @@
     }
 
     h1{
+      @include page-title;
       margin-left: 0;
       @include media('<=phone'){
           font-size: 24px;
@@ -51,6 +52,22 @@
 
 .workshop-info-header {
   @include workshop-info-card-header;
+
+  .copy-to-clipboard{
+    display: flex;
+    align-items: center;
+    
+    p{
+      margin-right: 10px;
+      color: $blue;
+    }
+
+    button{
+      &:hover{
+        color: $blue;
+      }
+    }
+  }
 
   .workshop-info-date {
     display: flex;
@@ -182,10 +199,39 @@
 
 .workshop-info-dropdown {
   @include dropdown(28px);
-  right: 25px;
+  right: 15px;
 
   .delete-workshop-btn:hover {
     @include dropdown-delete-btn-hover;
+  }
+
+  a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $grey;
+    border-radius: 0;
+    color: $darkgrey;
+    border-bottom: 1px solid $darkgrey;
+    font-family: roboto;
+    font-weight: 450;
+    text-decoration: none;
+
+    button{
+      padding: 10px;
+      border-bottom: none;
+    }
+  }
+
+  .workshop-csv{
+    padding: 10px;
+    font-size: 14px;
+    font-family: roboto;
+    font-weight: 450;
+    text-decoration: none;
+    &:hover {
+      @include dropdown-item-hover;
+    }
   }
 
   button {
@@ -196,12 +242,15 @@
 
       a {
         color: white;
+        text-decoration: none;
+        width: 100%;
       }
     }
 
     a {
       text-decoration: none;
       color: $darkgrey;
+      width: 100%;
     }
   }
 }

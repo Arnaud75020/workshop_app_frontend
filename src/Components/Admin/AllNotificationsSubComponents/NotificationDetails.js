@@ -27,8 +27,8 @@ const NotificationDetails = ({notification, handleSelectedNotification, toggleDi
             <td className="to-col">{notification.send_to}</td>
             <td className="state-col">{notification.state}</td>
             <td>
-                <button className="notification-info-btn" onClick={handleInfo} ><MdInfo /></button>
-                <button className="delete-notification-btn" onClick={handleDelete}><MdDelete /></button>
+                <button title="Info" className="notification-info-btn" onClick={handleInfo} ><MdInfo /></button>
+                <button title="Delete Notification" className="delete-notification-btn" onClick={handleDelete}><MdDelete /></button>
             </td>
         </tr>
      );

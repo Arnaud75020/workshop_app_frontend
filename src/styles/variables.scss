@@ -163,8 +163,10 @@ $darkgrey: #8f8f8f;
   color: $darkgrey;
   border-bottom: 1px solid $darkgrey;
   padding: 10px;
+  font-size: 14px;
   font-family: roboto;
   font-weight: 450;
+  text-decoration: none;
 }
 
 @mixin dropdown-item-hover{

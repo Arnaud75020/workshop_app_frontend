@@ -139,7 +139,6 @@ const UserContextProvider = (props) => {
 
     const updatedUserId = updatedUser.id;
 
-    console.log('updatedUserId', updatedUserId)
         axios
           .put(`/users/${updatedUserId}`, updatedUser)
           .then(() => getAllUsers())
@@ -150,10 +149,7 @@ const UserContextProvider = (props) => {
               .then((userInfo) => setUser(userInfo))
           }
           )
-          console.log('confirm', updatedUser)
   };
-
-  console.log('user', user)
 
   return (
     <div>

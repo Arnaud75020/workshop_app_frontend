@@ -1,9 +1,40 @@
 @import "../../styles/variables.scss";
+@import "../../styles//breakpoints.scss";
 
 /***** PAGE TITLE *****/
 
-h1{
-    @include page-title;
+.profile-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 10px 2.5% 10px 2.5%;
+    @include media('<=phone'){
+        margin: 40px 5% 10px 5%;
+    }
+
+    h1{
+        @include page-title;
+        margin-left: 0;
+        @include media('<=phone'){
+            font-size: 24px;
+          }
+    }
+
+    p{
+        background-color: $grey;
+        padding: 10px;
+        margin-top: 20px;
+        box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
+        color: $darkgrey;
+        font-family: roboto;
+        font-weight: 450;
+        justify-self: flex-end;
+        @include media('<=phone'){
+            position: absolute;
+            bottom: 30px;
+            right: 15px;
+        }
+    }
 }
 
 /***** BODY LAYOUT *****/
@@ -11,8 +42,11 @@ h1{
 .profile-body{
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 95%;
     margin: 10px auto;
+    @include media('<=tablet'){
+        width: 90%;
+    }
 }
 
 /***** USER SETTINGS *****/

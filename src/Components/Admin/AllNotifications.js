@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import NotificationsList from './AllNotificationsSubComponents/NotificationsList';
 import Filters from '../SharedComponents/Filters'
 import { Link } from 'react-router-dom';
@@ -10,11 +10,16 @@ import { UserContext } from '../../Context/UserContext';
 
 const AllNotifications = () => {
 
-    const { notifications, handleFilterState, stateFilter, handleNotificationSearch, searchNotificationValue, deleteNotification } = useContext(NotificationContext)
+    const { notifications, handleFilterState, stateFilter, handleNotificationSearch, searchNotificationValue, deleteNotification, confirmedAll } = useContext(NotificationContext)
 
     const {user} = useContext(UserContext)
 
-    console.log("USER USER USER",user)
+    useEffect(() => {
+        if(confirmedAll){
+          toggleDisplayModal("message", "notifications successfully added")
+        }
+      },[confirmedAll])
+
 
     const [displayModal, setDisplayModal] = useState(false);
     const [notification, setNotification] = useState(false);
@@ -28,6 +33,10 @@ const AllNotifications = () => {
         setActive(activeModal)
         setDisplayModal(!displayModal)
         setNotification(selectedNotification)
+        if(activeModal === "message"){
+            setDisplayModal(true);
+            setTimeout(() => setDisplayModal(false), 1500);
+          }
 
     }
 

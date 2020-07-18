@@ -7,7 +7,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 
 
 const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
-  const { confirmWorkshop, editTempWorkshop, deleteTempWorkshop, allWorkshops } = useContext(
+  const { confirmWorkshop, editTempWorkshop, deleteTempWorkshop, allWorkshops, tempWorkshops } = useContext(
     WorkshopContext
   );
 
@@ -17,7 +17,7 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
 
   const { register, handleSubmit, errors } = useForm();
 
-  const workshopSpeakers = allWorkshops.map( workshop => workshop.speaker_id)
+  const workshopSpeakers = [...allWorkshops.map( workshop => workshop.speaker_id), ...tempWorkshops.map( workshop => workshop.speaker_id)]
 
   const speakersLeft = speakers.filter( speaker => !workshopSpeakers.includes(speaker.id))
 
@@ -92,12 +92,13 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
             </div>
             <div className="temp-workshop-info-header-btns">
               <button
+                title="Edit Workshop"
                 className="workshop-icons"
                 onClick={() => setEditMode(!editMode)}
               >
                 <MdEdit />
               </button>
-              <button onClick={handleDelete} className="workshop-icons">
+              <button title="Delete Workshop" onClick={handleDelete} className="workshop-icons">
                 <MdDelete />
               </button>
             </div>

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { MdDelete, MdEdit, MdMessage } from 'react-icons/md';
+import { IoIosCopy} from 'react-icons/io';
 import { UserContext } from '../../../Context/UserContext';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ReactPDF, {
@@ -34,6 +34,11 @@ const WorkshopInfo = ({
   const hanldeNotification = () => {
     toggleDisplayModal('notification');
   };
+
+  const handleStatusClipboard = () => {
+    setStatusClipboard(false)
+    setTimeout(() => setStatusClipboard(true), 1500)
+  }
 
   const headers = [
     { label: 'Title', key: 'title' },
@@ -74,13 +79,17 @@ const WorkshopInfo = ({
                 )}-${workshop.ending_hour.substring(0, 5)}`}</div>
               )}
             </div>
-            {user.role === 'speaker' && <div>Welcome {user.firstname}</div>}
             {user.role === 'speaker' && (
-              <CopyToClipboard
-                text={listofemail}
-                onCopy={() => setStatusClipboard(!statusClipboard)}>
-                <button>{statusClipboard ? 'copy' : 'copied'}</button>
-              </CopyToClipboard>
+              <div className="copy-to-clipboard">
+                {!statusClipboard && <p>copied</p>}
+                <CopyToClipboard
+                  text={listofemail}
+                  onCopy={() => handleStatusClipboard()}>
+                  <button title="Copy Emails to clipboard" className='options-icon'><IoIosCopy /></button>
+                </CopyToClipboard>
+                
+              </div>
+              
             )}
             {user.role !== 'speaker' && (
               <div className='dropdown'>
@@ -99,8 +108,8 @@ const WorkshopInfo = ({
                   {attendees.length !== 0 && (
                     <CopyToClipboard
                       text={listofemail}
-                      onCopy={() => setStatusClipboard(!statusClipboard)}>
-                      <button>{statusClipboard ? 'copy' : 'copied'}</button>
+                      onCopy={() => handleStatusClipboard()}>
+                      <button className='workshop-icons'>{statusClipboard ? 'copy' : 'copied'}</button>
                     </CopyToClipboard>
                   )}
                   <PDFDownloadLink
@@ -109,14 +118,14 @@ const WorkshopInfo = ({
                     }
                     fileName='Test.pdf'>
                     {({ blob, url, loading, error }) =>
-                      loading ? <button>loading</button> : <button>PDF</button>
+                      loading ? <button className='workshop-icons'>loading</button> : <button className='workshop-icons'>PDF</button>
                     }
                   </PDFDownloadLink>
                   <CSVLink
                     data={data}
                     headers={headers}
                     filename={'Workshop.csv'}
-                    className='workshop-icons'
+                    className='workshop-csv'
                     target='_blank'>
                     CSV
                   </CSVLink>

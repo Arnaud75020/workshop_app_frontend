@@ -25,21 +25,11 @@ const Login = () => {
       .post('/auth/login', data)
       .then((response) => response.data)
       .then((user) => {
-        console.log(user);
         setUserInformation(user);
-        const { id, role } = user.user;
-        if (role === 'attendee') {
-          // getUserWorkshops(user.id);
-        }
-        if (role === 'speaker') {
-          ////////???////////
-          getWorkshop(id);
-          getAttendees(id);
-          ////////???//////
-        }
       })
       .then(() => setAuth(true))
       .catch((error) => {
+        if(error){
         if (error.response.data.message === 'Incorrect email.') {
           setIncorrectEmail(true);
           if (incorrectPassword === true) {
@@ -55,6 +45,7 @@ const Login = () => {
           }
           //console.log(error.request);
         }
+      }
       });
     //const response = await axios.post('/auth/login', data);
     //console.log("response",response)
@@ -99,7 +90,6 @@ const Login = () => {
             don't have an account yet?{' '}
             <Link to='/signup/edjDFKJ'>create an account</Link>
           </p>
-m
           <p>Forgot your account?</p>
         </div>
       </div>

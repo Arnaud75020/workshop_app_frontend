@@ -5,11 +5,13 @@ import uuid from 'react-uuid';
 import { UserContext } from '../../../Context/UserContext';
 
 const WorkshopForm = () => {
-  const { addTempWorkshop, allWorkshops } = useContext(WorkshopContext);
+  const { addTempWorkshop, allWorkshops, tempWorkshops } = useContext(WorkshopContext);
   const { speakers } = useContext(UserContext);
   const { register, handleSubmit, reset, errors } = useForm();
 
-  const workshopSpeakers = allWorkshops.map( workshop => workshop.speaker_id)
+  console.log("speakers", speakers)
+
+  const workshopSpeakers = [...allWorkshops.map( workshop => workshop.speaker_id), ...tempWorkshops.map( workshop => workshop.speaker_id)]
 
   const speakersLeft = speakers.filter( speaker => !workshopSpeakers.includes(speaker.id))
 

@@ -147,8 +147,8 @@ const onChangeSelect = (event) => {
           <div className="temp-notification-info-header">
             <div>{tempNotification.date}</div>
             <div className="temp-notification-info-header-btns">
-              <button onClick={handleEdit} className="notification-icons"><MdEdit /></button>
-              <button onClick={handleDelete} className="notification-icons"><MdDelete /></button>
+              <button title="Edit Notification" onClick={handleEdit} className="notification-icons"><MdEdit /></button>
+              <button title="Delete Notification" onClick={handleDelete} className="notification-icons"><MdDelete /></button>
             </div>
           </div>
           <div className="temp-notification-info-body">

@@ -19,11 +19,11 @@ const Modal = ({ toggleDisplayModal, content, confirmFunction, confirmText, id, 
   return (
     <div className="modal-bg">
       <div className="modal">
-        <button className="close-modal" onClick={toggleDisplayModal} >
-        X
-        </button>
         <p>{content}</p>
-        <button className="confirm-modal" onClick={confirm}>{confirmText}</button>
+        <div className="modal-btns-wrapper">
+          <button className="confirm-modal" onClick={confirm}>{confirmText}</button>
+          <button className="close-modal" onClick={toggleDisplayModal} >cancel</button>
+        </div>
       </div>
     </div>
     

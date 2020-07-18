@@ -9,6 +9,8 @@ const NotificationContextProvider = (props) => {
   const [allNotifications, setAllNotifications] = useState([]);
   const [searchNotificationValue, setSearchNotificationValue] = useState([]);
   const [stateFilter, setStateFilter] = useState("All notifications");
+  const [confirmedAll, setConfirmedAll] = useState(false)
+
 
   useEffect(() => {
     getNotifications();
@@ -97,6 +99,11 @@ const NotificationContextProvider = (props) => {
     }
   };
 
+  const handleConfirmedAll = () => {
+    setConfirmedAll(true)
+    setTimeout(() => setConfirmedAll(false), 20000)
+  }
+
   return (
     <div>
       <NotificationContext.Provider
@@ -113,7 +120,9 @@ const NotificationContextProvider = (props) => {
           stateFilter,
           handleNotificationSearch,
           searchNotificationValue,
-          deleteNotification
+          deleteNotification,
+          confirmedAll,
+          handleConfirmedAll
         }}>
         {props.children}
       </NotificationContext.Provider>

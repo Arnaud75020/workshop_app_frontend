@@ -13,6 +13,7 @@ const NewWorkshop = () => {
     setTempWorkshop,
     confirmWorkshop,
     deleteTempWorkshop,
+    handleConfirmedAll
   } = useContext(WorkshopContext);
 
   const [isModalDisplayed, setIsModalDisplayed] = useState(false);
@@ -57,6 +58,7 @@ const NewWorkshop = () => {
     });
     confirmWorkshop(workshopList);
     setTempWorkshop([]);
+    handleConfirmedAll()
   };
 
   return (
@@ -68,7 +70,7 @@ const NewWorkshop = () => {
             <Link to="/admin">All Workshops</Link>
           </button>
           <button className="confirm-all-btn" onClick={handleConfirmAllWorkshops}>
-            Confirm All
+            <Link to="/admin">Confirm All</Link>
           </button>
         </div>
         <div>
