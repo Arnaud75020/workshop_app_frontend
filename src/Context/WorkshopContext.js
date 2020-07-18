@@ -82,8 +82,10 @@ const WorkshopContextProvider = (props) => {
       .then((newUserWorkshops) => {
         console.log("ADD USER", newUserWorkshops);
         setUserWorkshops(newUserWorkshops);
-      });
-    getWorkshops();
+      })
+      .then(() => {
+        getWorkshops();
+      })
   };
 
   const deleteUserWorkshop = (workshopId, userId) => {
@@ -95,8 +97,10 @@ const WorkshopContextProvider = (props) => {
         console.log("DELETE USER", newUserWorkshops);
 
         setUserWorkshops(newUserWorkshops);
-      });
-    getWorkshops();
+      })
+      .then(() => {
+        getWorkshops();
+      })
   };
 
   const getMonth = () => {
@@ -126,10 +130,11 @@ const WorkshopContextProvider = (props) => {
   };
 
   const confirmWorkshop = (newObject) => {
-    axios.post("/workshops", newObject);
-    console.log(newObject);
-    getWorkshops();
-    getMonth();
+    axios.post("/workshops", newObject)
+    .then(() => {
+      getWorkshops();
+      getMonth();
+    })
   };
 
   const editTempWorkshop = (newObject) => {

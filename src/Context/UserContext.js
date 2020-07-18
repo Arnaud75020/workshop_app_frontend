@@ -128,9 +128,11 @@ const UserContextProvider = (props) => {
         });
       });
     }
-    axios.delete(`/users/${id}`);
+    axios.delete(`/users/${id}`)
+    .then(() => {
+      getAllUsers();
+    })
 
-    getAllUsers();
   };
 
   const confirmUpdatedUser = (updatedUser) => {

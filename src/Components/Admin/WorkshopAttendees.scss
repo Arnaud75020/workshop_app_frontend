@@ -71,14 +71,14 @@
 
 .workshop-info-body {
   @include workshop-info-card-body;
-  @include media('<=tablet'){
+  @include media('<=phone'){
     flex-direction: column;
   }
 }
 
 .workshop-info-left {
   @include workshop-info-card-body-half(start);
-  @include media('<=tablet'){
+  @include media('<=phone'){
     width: 100%;
     align-items: flex-start;
     border-bottom: 1px solid $darkgrey;
@@ -96,7 +96,7 @@
 .workshop-info-right {
   @include workshop-info-card-body-half(end);
   border: none;
-  @include media('<=tablet'){
+  @include media('<=phone'){
     width: 100%;
     align-items: flex-start;
 }
@@ -106,8 +106,11 @@
     justify-content: flex-end;
     @include media('<=tablet'){
       flex-direction: column;
+      align-items: flex-end;
+    }
+    @include media('<=phone'){
       align-items: flex-start;
-  }
+    }
 
     .room {
       margin-right: 15px;

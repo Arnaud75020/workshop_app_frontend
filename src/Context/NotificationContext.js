@@ -33,8 +33,9 @@ const NotificationContextProvider = (props) => {
     console.log("newObject", newObject)
     axios
       .post('/notifications', newObject)
-
-    getNotifications();
+      .then(() => {
+        getNotifications();
+      })
   };
 
   const editNotification = (newObject) => {
@@ -56,8 +57,9 @@ const NotificationContextProvider = (props) => {
   const deleteNotification = (id) => {
     axios
       .delete(`/notifications/${id}`)
-
-      getNotifications()
+      .then(() => {
+        getNotifications()
+      })
   }
 
   const handleFilterState = (event) => {

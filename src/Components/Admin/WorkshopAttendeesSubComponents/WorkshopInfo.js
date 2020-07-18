@@ -62,7 +62,6 @@ const WorkshopInfo = ({
 
   return (
     workshop !== [] && (
-      <div>
         <div className='workshop-info'>
           <div className='workshop-info-header'>
             <div className='workshop-info-date'>
@@ -153,7 +152,6 @@ const WorkshopInfo = ({
             </div>
           </div>
         </div>
-      </div>
     )
   );
 };
