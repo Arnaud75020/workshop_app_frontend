@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom';
 import Admin from './Components/Admin/Admin';
 import Speaker from './Components/Speaker/Speaker';
 import Attendee from './Components/Attendee/Attendee';
@@ -16,6 +16,7 @@ function App() {
           <ProtectedRoute path='/admin' component={Admin} />
           <ProtectedRoute path='/speaker' component={Speaker} />
           <ProtectedRoute path='/attendee' component={Attendee} />
+          <LoginSignUpRoute path='/' component={Login} />
           <LoginSignUpRoute path='/login' component={Login} />
           <LoginSignUpRoute path='/signup/:id' component={SignUp} />
           <LoginSignUpRoute path='/signup' component={SignUp} />
