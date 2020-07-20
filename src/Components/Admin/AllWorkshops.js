@@ -36,7 +36,7 @@ const AllWorkshops = (props) => {
 
   useEffect(() => {
     if(confirmedAll){
-      toggleDisplayModal("message", "workshop successfully added")
+      toggleDisplayModal("message", "Workshop successfully added!")
     }
   },[confirmedAll])
 
@@ -78,7 +78,7 @@ const AllWorkshops = (props) => {
           confirmFunction={deleteWorkshop}
           workshopEnrolled={workshopEnrolled}
           id={workshopId}
-          confirmText="delete"
+          confirmText="Delete"
           content={content}
         />
       )}

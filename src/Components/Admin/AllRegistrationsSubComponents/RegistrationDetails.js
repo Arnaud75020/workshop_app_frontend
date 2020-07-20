@@ -11,7 +11,7 @@ const RegistrationDetails = ({user, handleSetUser, toggleDisplayModal}) => {
     }
 
     const handleDelete = () => {
-        toggleDisplayModal("confirm", "are you sure you want to delete this notification?",null, user.id, user.role )
+        toggleDisplayModal("confirm", "Are you sure you want to delete this user?",null, user.id, user.role )
     }
 
     const name = `${user.firstname} ${user.lastname}`

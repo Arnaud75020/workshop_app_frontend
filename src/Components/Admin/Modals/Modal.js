@@ -22,7 +22,7 @@ const Modal = ({ toggleDisplayModal, content, confirmFunction, confirmText, id, 
         <p>{content}</p>
         <div className="modal-btns-wrapper">
           <button className="confirm-modal" onClick={confirm}>{confirmText}</button>
-          <button className="close-modal" onClick={toggleDisplayModal} >cancel</button>
+          <button className="close-modal" onClick={toggleDisplayModal} >Cancel</button>
         </div>
       </div>
     </div>
