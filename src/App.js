@@ -17,7 +17,7 @@ function App() {
           <ProtectedRoute path='/admin' component={Admin} />
           <ProtectedRoute path='/speaker' component={Speaker} />
           <ProtectedRoute path='/attendee' component={Attendee} />
-          <LoginSignUpRoute path='/' component={Login} />
+          <LoginSignUpRoute exact path='/' component={Login} />
           <LoginSignUpRoute path='/login' component={Login} />
           <LoginSignUpRoute path='/signup/:id' component={SignUp} />
           <LoginSignUpRoute path='/signup' component={SignUp} />

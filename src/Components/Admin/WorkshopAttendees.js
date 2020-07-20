@@ -4,6 +4,8 @@ import WorkshopInfo from "./WorkshopAttendeesSubComponents/WorkshopInfo";
 import "./WorkshopAttendees.scss";
 import { WorkshopContext } from "../../Context/WorkshopContext";
 import ModalForm from "./Modals/ModalForm";
+import { Link } from "react-router-dom";
+
 
 const WorkshopAttendees = (props) => {
   const speakerId = props.match.params.id;
@@ -48,6 +50,9 @@ const WorkshopAttendees = (props) => {
         )}
         <div className="workshop-attendees-header">
           <h1>Workshop Info</h1>
+          <button className="all-workshops-btn">
+            <Link to="/admin">All Workshops</Link>
+          </button>
         </div>
         <div className="workshop-attendees-body">
           <WorkshopInfo

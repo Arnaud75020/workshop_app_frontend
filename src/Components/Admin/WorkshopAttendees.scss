@@ -14,13 +14,24 @@
         margin: 50px 5% 10px 5%;
     }
 
+    .all-workshops-btn{
+      @include button(40px, $darkgrey);
+      margin-right: 20px;
+      margin-top: 0;
+
+      a{
+          text-decoration: none;
+          color: white;
+      }
+  }
+
     h1{
       @include page-title;
       margin-left: 0;
       @include media('<=phone'){
           font-size: 24px;
         }
-  }
+    }
 }
 
 .workshop-attendees-body {
@@ -28,6 +39,7 @@
   margin: 0 auto 40px auto;
   background-color: white;
   box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
+  border-radius: 5px;
   @include media('<=tablet'){
     width: 90%;
 }
@@ -48,6 +60,8 @@
   width: 100%;
   margin-bottom: 0;
   border-bottom: 1px solid $darkgrey;
+  border-radius: 5px;
+
 }
 
 .workshop-info-header {
