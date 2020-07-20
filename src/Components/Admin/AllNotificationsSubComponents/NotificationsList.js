@@ -19,7 +19,7 @@ const NotificationsList = ({notifications, handleSelectedNotification, toggleDis
                     <th className="subject-col">Subject</th>
                     <th className="to-col">To</th>
                     <th className="state-col">State</th>
-                    <th></th>
+                    <th className="icons-col"></th>
                 </tr>
             </thead>
             <tbody>

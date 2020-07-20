@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { UserContext } from '../../../Context/UserContext';
 
-const ContactSettings = ({ user, confirmUpdatedUser }) => {
+const ContactSettings = () => {
 
     const {register, handleSubmit, errors, watch} = useForm();
+
+  const { user, confirmUpdatedUser } = useContext(UserContext);
+
 
     const onSubmit = (data) => {
 

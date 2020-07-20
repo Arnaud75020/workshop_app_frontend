@@ -78,6 +78,7 @@ const MyWorkshops = () => {
       <div className='myWorkshops-header'>
         <div className='myWorkshops-header-left'>
           <h1>My Workshops</h1>
+          <div className="myworkshops-btns-wrapper">
           {months.length > 0 &&
             months.map((month) => {
               return (
@@ -92,6 +93,7 @@ const MyWorkshops = () => {
                 </button>
               );
             })}
+            </div>
         </div>
         <p
           className={

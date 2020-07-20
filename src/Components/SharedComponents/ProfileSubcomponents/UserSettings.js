@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useForm } from 'react-hook-form';
+import { UserContext } from '../../../Context/UserContext';
 
-const UserSettings = ({ user, handleChangePassword, confirmUpdatedUser }) => {
+const UserSettings = ({ handleChangePassword, handleIsSaved }) => {
 
     const {register, handleSubmit, errors, watch} = useForm();
+
+  const { user, confirmUpdatedUser } = useContext(UserContext);
+
 
     const onSubmit = (data) => {
 
@@ -14,8 +18,9 @@ const UserSettings = ({ user, handleChangePassword, confirmUpdatedUser }) => {
       email: data.email
       };
 
+      handleIsSaved()
+
       confirmUpdatedUser(updatedUser);
-      console.log('newuser', updatedUser)
   // toggleDisplayModal("message", "workshop successfully updated");
   };
     
@@ -43,12 +48,12 @@ const UserSettings = ({ user, handleChangePassword, confirmUpdatedUser }) => {
                   ref={register} />
               </div>
             </div>
-            <div className="email">
+            <div className="profile-email">
               <div className="label-input">
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="profile-email">Email Address</label>
                 <input
                   name="email"
-                  id="email"
+                  id="profile-email"
                   defaultValue={user.email}
                   type="text"
                   ref={register} />

@@ -16,6 +16,7 @@ const WorkshopContextProvider = (props) => {
   const [allAttendees, setAllAttendees] = useState([]);
   const [dateFilter, setdDateFilter] = useState("All workshops");
   const [myAttendeesList, setMyAttendeesList] = useState([]);
+  const [confirmedAll, setConfirmedAll] = useState(false)
 
   useEffect(() => {
     getWorkshops();
@@ -37,7 +38,6 @@ const WorkshopContextProvider = (props) => {
       .get(`/workshops/${speakerId}`)
       .then((response) => response.data[0])
       .then((workshopInfo) => {
-        console.log("WORKSHOP CONTEXT", workshopInfo);
         setWorkshop(workshopInfo);
       });
   };
@@ -214,6 +214,11 @@ const WorkshopContextProvider = (props) => {
     }
   };
 
+  const handleConfirmedAll = () => {
+    setConfirmedAll(true)
+    setTimeout(() => setConfirmedAll(false), 20000)
+  }
+
   return (
     <div>
       <WorkshopContext.Provider
@@ -244,6 +249,8 @@ const WorkshopContextProvider = (props) => {
           handleAttendeeSearch,
           dateFilter,
           deleteWorkshop,
+          confirmedAll,
+          handleConfirmedAll
         }}
       >
         {props.children}

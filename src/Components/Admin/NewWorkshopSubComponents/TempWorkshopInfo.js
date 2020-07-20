@@ -7,7 +7,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 
 
 const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
-  const { confirmWorkshop, editTempWorkshop, deleteTempWorkshop, allWorkshops } = useContext(
+  const { confirmWorkshop, editTempWorkshop, deleteTempWorkshop, allWorkshops, tempWorkshops } = useContext(
     WorkshopContext
   );
 
@@ -21,7 +21,15 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
 
   const speakersLeft = speakers.filter( speaker => !workshopSpeakers.includes(speaker.id))
 
+
+  const speaker_name = tempWorkshop.speaker[0]
+
   const onSubmit = (data) => {
+
+    const speakerInfo = data.speaker.split(",");
+
+    const speaker_id = Number(speakerInfo[1]);
+
     const newObject = {
       id: tempWorkshop.id,
       title: data.title,
@@ -30,7 +38,8 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
       starting_hour: data.starting_hour,
       ending_hour: data.ending_hour,
       description: data.description,
-      speaker: data.speaker,
+      speaker: speakerInfo,
+      speaker_id: speaker_id,
       room: data.room,
       room_capacity: data.room_capacity,
       room_manager: data.room_manager,
@@ -41,11 +50,6 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
   };
 
   const handleConfirmWorkshop = () => {
-    const speaker_id = speakers.filter((speaker) => {
-      return (
-        `${speaker.firstname} ${speaker.lastname}` === tempWorkshop.speaker
-      );
-    });
 
     const newObject = [{
       title: tempWorkshop.title,
@@ -54,7 +58,7 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
       starting_hour: tempWorkshop.starting_hour,
       ending_hour: tempWorkshop.ending_hour,
       description: tempWorkshop.description,
-      speaker_id: speaker_id[0].id,
+      speaker_id: tempWorkshop.speaker[1],
       room: tempWorkshop.room,
       room_capacity: tempWorkshop.room_capacity,
       room_manager: tempWorkshop.room_manager,
@@ -92,12 +96,13 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
             </div>
             <div className="temp-workshop-info-header-btns">
               <button
+                title="Edit Workshop"
                 className="workshop-icons"
                 onClick={() => setEditMode(!editMode)}
               >
                 <MdEdit />
               </button>
-              <button onClick={handleDelete} className="workshop-icons">
+              <button title="Delete Workshop" onClick={handleDelete} className="workshop-icons">
                 <MdDelete />
               </button>
             </div>
@@ -105,7 +110,7 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
           <div className="temp-workshop-info-body">
             <div className="temp-workshop-info-left">
               <h2>{tempWorkshop.title}</h2>
-              <h4>{tempWorkshop.speaker}</h4>
+              <h4>{speaker_name}</h4>
               <p>{tempWorkshop.description}</p>
             </div>
             <div className="temp-workshop-info-right">
@@ -193,7 +198,7 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
                 {speakersLeft.map((speaker) => {
                   return (
                     <option
-                      value={`${speaker.firstname} ${speaker.lastname}`}
+                      value={`${speaker.firstname} ${speaker.lastname},${speaker.id}`}
                     >{`${speaker.firstname} ${speaker.lastname}`}</option>
                   );
                 })}

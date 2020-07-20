@@ -20,6 +20,7 @@
         }
 
         h1{
+            @include page-title;
             margin-left: 0;
             @include media('<=phone'){
                 font-size: 24px;
@@ -83,7 +84,6 @@
 .myWorkshops-list{
     width: 95%;
     margin: 20px auto 40px auto;
-    background-color: white;
     box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
     @include media('<=phone'){
         width: 90%;
@@ -118,6 +118,7 @@
     height:200px;
     display: flex;
     justify-content: space-between;
+    background-color: white;
     align-items: center;
     box-sizing: border-box;
     border-top: 1px solid $darkgrey;
@@ -234,7 +235,12 @@
 
     button{
         width: fit-content;
+        padding: 10px 15px;
+        border-radius: 20px;
+        outline: none;
         margin-top: 10px;
+        color: white;
+        cursor: pointer;
     }
 }
 

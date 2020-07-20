@@ -56,7 +56,7 @@ const NewNotificationForm = ({ send_to, attendees, toggleDisplayModal }) => {
     <form className='new-notification-form' onSubmit={handleSubmit(onSubmit)}>
       <div className='new-notification-form-header' />
       <div className='new-notification-form-body'>
-        <p>to: {send_to}</p>
+        <p className="defined-to">To: {send_to}</p>
         <input
           style={errors.subject && { border: '1px solid #3B65B0' }}
           type='text'
