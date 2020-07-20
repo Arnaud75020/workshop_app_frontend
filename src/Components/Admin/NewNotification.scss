@@ -36,6 +36,11 @@
             @include button(40px, $blue);
             margin-top: 0;
         }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
     }
     
 }

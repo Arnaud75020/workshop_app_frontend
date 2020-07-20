@@ -40,11 +40,11 @@ const Admin = (props) => {
                 path={`${props.match.path}/new-notification`}
                 component={NewNotification}
               />
-              <Route path="/profile" component={Profile} />
               <Route
                 path={`${props.match.path}/all-registrations`}
                 component={AllRegistrations}
               />
+              <Route path="/profile" component={Profile} />
             </Switch>
           </div>
         </div>

@@ -15,6 +15,7 @@ const UserContextProvider = (props) => {
   const [searchValue, setsearchValue] = useState('');
   const [user, setUser] = useState([]);
 
+
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {

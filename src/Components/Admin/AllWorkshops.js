@@ -78,7 +78,7 @@ const AllWorkshops = (props) => {
           confirmFunction={deleteWorkshop}
           workshopEnrolled={workshopEnrolled}
           id={workshopId}
-          confirmText={"confirm"}
+          confirmText="delete"
           content={content}
         />
       )}

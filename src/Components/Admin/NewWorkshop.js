@@ -36,11 +36,6 @@ const NewWorkshop = () => {
 
   const handleConfirmAllWorkshops = () => {
     const workshopList = tempWorkshops.map((tempWorkshop) => {
-      const speaker_id = speakers.filter((speaker) => {
-        return (
-          `${speaker.firstname} ${speaker.lastname}` === tempWorkshop.speaker
-        );
-      });
 
       return {
         title: tempWorkshop.title,
@@ -49,7 +44,7 @@ const NewWorkshop = () => {
         starting_hour: tempWorkshop.starting_hour,
         ending_hour: tempWorkshop.ending_hour,
         description: tempWorkshop.description,
-        speaker_id: speaker_id[0].id,
+        speaker_id: tempWorkshop.speaker[1],
         room: tempWorkshop.room,
         room_capacity: tempWorkshop.room_capacity,
         room_manager: tempWorkshop.room_manager,
@@ -80,7 +75,7 @@ const NewWorkshop = () => {
               toggleDisplayModal={toggleDisplayModal}
               confirmFunction={deleteTempWorkshop}
               id={workshopId}
-              confirmText={"confirm"}
+              confirmText="delete"
               content={content}
             />
           )}

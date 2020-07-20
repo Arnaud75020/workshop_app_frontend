@@ -78,7 +78,7 @@ const NewNotification = () => {
               toggleDisplayModal={toggleDisplayModal}
               confirmFunction={deleteTempNotification}
               id={notificationId}
-              confirmText={"confirm"}
+              confirmText="delete"
               content={content}
             />
           )}

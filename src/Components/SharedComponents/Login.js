@@ -87,10 +87,9 @@ const Login = () => {
             <hr />
           </form>
           <p>
-            don't have an account yet?{' '}
-            <Link to='/signup/edjDFKJ'>create an account</Link>
+            Don't have an account? <Link to='/signup/edjDFKJ'>create one</Link>
           </p>
-          <p>Forgot your account?</p>
+          <p><Link to='/forgot-password'>Forgot your password?</Link></p>
         </div>
       </div>
     </div>

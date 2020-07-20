@@ -167,11 +167,13 @@ $darkgrey: #8f8f8f;
   font-family: roboto;
   font-weight: 450;
   text-decoration: none;
+  outline: none;
 }
 
 @mixin dropdown-item-hover{
   background-color: $blue;
   color: white;
+  cursor: pointer;
 }
 
 @mixin open-dropdown-hover{

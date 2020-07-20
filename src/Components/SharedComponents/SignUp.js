@@ -163,10 +163,7 @@ const SignUp = (props) => {
             <button type='submit'>Register Account</button>
             <hr />
           </form>
-          <p>
-            already have an account? <Link to='/login'>login</Link>
-          </p>
-          <p>Forgot your account?</p>
+          <p>Already have an account? <Link to='/login'>login</Link></p>
         </div>
       </div>
     </div>

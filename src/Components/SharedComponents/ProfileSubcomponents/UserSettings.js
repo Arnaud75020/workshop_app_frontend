@@ -48,12 +48,12 @@ const UserSettings = ({ handleChangePassword, handleIsSaved }) => {
                   ref={register} />
               </div>
             </div>
-            <div className="email">
+            <div className="profile-email">
               <div className="label-input">
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="profile-email">Email Address</label>
                 <input
                   name="email"
-                  id="email"
+                  id="profile-email"
                   defaultValue={user.email}
                   type="text"
                   ref={register} />
