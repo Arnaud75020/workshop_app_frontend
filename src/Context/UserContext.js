@@ -15,6 +15,7 @@ const UserContextProvider = (props) => {
   const [searchValue, setsearchValue] = useState('');
   const [user, setUser] = useState([]);
 
+
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {
@@ -128,16 +129,17 @@ const UserContextProvider = (props) => {
         });
       });
     }
-    axios.delete(`/users/${id}`);
+    axios.delete(`/users/${id}`)
+    .then(() => {
+      getAllUsers();
+    })
 
-    getAllUsers();
   };
 
   const confirmUpdatedUser = (updatedUser) => {
 
     const updatedUserId = updatedUser.id;
 
-    console.log('updatedUserId', updatedUserId)
         axios
           .put(`/users/${updatedUserId}`, updatedUser)
           .then(() => getAllUsers())
@@ -148,10 +150,7 @@ const UserContextProvider = (props) => {
               .then((userInfo) => setUser(userInfo))
           }
           )
-          console.log('confirm', updatedUser)
   };
-
-  console.log('user', user)
 
   return (
     <div>

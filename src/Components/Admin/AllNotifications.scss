@@ -15,6 +15,7 @@
     }
 
     h1{
+        @include page-title;
         margin-left: 0;
         @include media('<=phone'){
             font-size: 24px;

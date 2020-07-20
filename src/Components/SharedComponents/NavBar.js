@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import { Link } from 'react-router-dom';
 import './NavBar.scss';
@@ -11,6 +11,10 @@ const NavBar = () => {
   const { speakers, user, logout, setAuth } = useContext(UserContext);
   const { months } = useContext(WorkshopContext);
   const [isNavExpanded, setNavExpanded] = useState(false);
+
+  useEffect(() => {
+    console.log("NAVBAR MOUNTED")
+  })
 
   const toggleNavExpanded = () => {
     setNavExpanded(!isNavExpanded);

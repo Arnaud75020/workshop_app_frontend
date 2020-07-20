@@ -1,12 +1,13 @@
-import React, { useContext, useEffect } from 'react';
-import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom';
+
+import React, { useContext } from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Admin from './Components/Admin/Admin';
 import Speaker from './Components/Speaker/Speaker';
 import Attendee from './Components/Attendee/Attendee';
 import Login from './Components/SharedComponents/Login';
 import SignUp from './Components/SharedComponents/SignUp';
+import ForgotPassword from './Components/SharedComponents/ForgotPassword';
 import { UserContext } from './Context/UserContext';
-import { WorkshopContext } from './Context/WorkshopContext';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <LoginSignUpRoute path='/login' component={Login} />
           <LoginSignUpRoute path='/signup/:id' component={SignUp} />
           <LoginSignUpRoute path='/signup' component={SignUp} />
+          <LoginSignUpRoute path='/forgot-password' component={ForgotPassword} />
         </Switch>
       </BrowserRouter>
     </div>
@@ -27,7 +29,7 @@ function App() {
 }
 
 const LoginSignUpRoute = ({ component: Component, ...rest }) => {
-  const { user, auth, setAuth } = useContext(UserContext);
+  const { auth } = useContext(UserContext);
 
   return (
     <Route
@@ -44,8 +46,7 @@ const LoginSignUpRoute = ({ component: Component, ...rest }) => {
 };
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const { auth, setAuth } = useContext(UserContext);
-  console.log(auth);
+  const { auth } = useContext(UserContext);
   return (
     <Route
       {...rest}

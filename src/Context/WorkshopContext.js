@@ -16,6 +16,7 @@ const WorkshopContextProvider = (props) => {
   const [allAttendees, setAllAttendees] = useState([]);
   const [dateFilter, setdDateFilter] = useState("All workshops");
   const [myAttendeesList, setMyAttendeesList] = useState([]);
+  const [confirmedAll, setConfirmedAll] = useState(false)
 
   useEffect(() => {
     getWorkshops();
@@ -37,7 +38,6 @@ const WorkshopContextProvider = (props) => {
       .get(`/workshops/${speakerId}`)
       .then((response) => response.data[0])
       .then((workshopInfo) => {
-        console.log("WORKSHOP CONTEXT", workshopInfo);
         setWorkshop(workshopInfo);
       });
   };
@@ -83,7 +83,9 @@ const WorkshopContextProvider = (props) => {
         console.log("ADD USER", newUserWorkshops);
         setUserWorkshops(newUserWorkshops);
       })
-      .then(() => getWorkshops());
+      .then(() => {
+        getWorkshops();
+      })
   };
 
   const deleteUserWorkshop = (workshopId, userId) => {
@@ -98,7 +100,7 @@ const WorkshopContextProvider = (props) => {
       })
       .then(() => {
         getWorkshops();
-      });
+      })
   };
 
   const getMonth = () => {
@@ -130,10 +132,11 @@ const WorkshopContextProvider = (props) => {
   };
 
   const confirmWorkshop = (newObject) => {
-    axios.post("/workshops", newObject).then(() => {
+    axios.post("/workshops", newObject)
+    .then(() => {
       getWorkshops();
       getMonth();
-    });
+    })
   };
 
   const editTempWorkshop = (newObject) => {
@@ -210,6 +213,11 @@ const WorkshopContextProvider = (props) => {
     }
   };
 
+  const handleConfirmedAll = () => {
+    setConfirmedAll(true)
+    setTimeout(() => setConfirmedAll(false), 20000)
+  }
+
   return (
     <div>
       <WorkshopContext.Provider
@@ -240,6 +248,8 @@ const WorkshopContextProvider = (props) => {
           handleAttendeeSearch,
           dateFilter,
           deleteWorkshop,
+          confirmedAll,
+          handleConfirmedAll
         }}
       >
         {props.children}
