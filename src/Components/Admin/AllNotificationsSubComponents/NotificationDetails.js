@@ -17,7 +17,7 @@ const NotificationDetails = ({notification, handleSelectedNotification, toggleDi
     }
 
     const handleDelete = () => {
-        toggleDisplayModal("confirm", "are you sure you want delete this notification?",notification.id)
+        toggleDisplayModal("confirm", "Are you sure you want delete this notification?",notification.id)
     }
 
     return ( 

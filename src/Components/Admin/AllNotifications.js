@@ -16,7 +16,7 @@ const AllNotifications = () => {
 
     useEffect(() => {
         if(confirmedAll){
-          toggleDisplayModal("message", "notifications successfully added")
+          toggleDisplayModal("message", "Notifications successfully added!")
         }
       },[confirmedAll])
 
@@ -48,7 +48,7 @@ const AllNotifications = () => {
                 <h1>All Notifications</h1>
                 <button className="new-notification-btn"><Link to='/admin/new-notification'>New Notification</Link></button>
             </div>
-            {displayModal && <ModalForm active={active} toggleDisplayModal={toggleDisplayModal} notification={notification} content={content} confirmFunction={deleteNotification} confirmText="delete" id={NotificationId} />}
+            {displayModal && <ModalForm active={active} toggleDisplayModal={toggleDisplayModal} notification={notification} content={content} confirmFunction={deleteNotification} confirmText="Delete" id={NotificationId} />}
             <div className="all-notifications-body">
                 <Filters handleSearch={handleNotificationSearch} seachValue={searchNotificationValue} optionsList={state} handleOption={handleFilterState} defaultOption="All notifications" optionKey="state" optionValue={stateFilter} />
                 <NotificationsList notifications={notifications} toggleDisplayModal={toggleDisplayModal} />

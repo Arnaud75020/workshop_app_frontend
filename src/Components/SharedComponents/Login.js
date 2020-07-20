@@ -20,7 +20,6 @@ const Login = () => {
   const [incorrectPassword, setIncorrectPassword] = useState(false);
 
   const onSubmit = async (data) => {
-    //run validation
     axios
       .post('/auth/login', data)
       .then((response) => response.data)
@@ -35,31 +34,14 @@ const Login = () => {
           if (incorrectPassword === true) {
             setIncorrectPassword(false);
           }
-          //console.log(error.response.data);
-          //console.log(error.response.status);
-          //console.log(error.response.headers);
         } else if (error.response.data.message === 'Incorrect password.') {
           setIncorrectPassword(true);
           if (incorrectEmail === true) {
             setIncorrectEmail(false);
           }
-          //console.log(error.request);
         }
       }
       });
-    //const response = await axios.post('/auth/login', data);
-    //console.log("response",response)
-    //await setUserInformation(response.data);
-    //const { id, role } = response.data.user
-    //if(role === "attendee"){
-    //  getUserWorkshops(id)
-    //}
-    //if(role === "speaker"){
-    //    getWorkshop(id);
-    //    getAttendees(id)
-    //}
-    //setAuth(true);
-    ////redirect to role-based view
   };
 
   return (

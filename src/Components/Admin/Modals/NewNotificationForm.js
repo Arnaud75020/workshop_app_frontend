@@ -31,6 +31,8 @@ const NewNotificationForm = ({ send_to, attendees, toggleDisplayModal }) => {
 
     const date = data.checkbox ? data.date : now_formated;
 
+    console.log(date)
+
     const state = data.checkbox ? 'scheduled' : 'sent';
 
     const newObject = [

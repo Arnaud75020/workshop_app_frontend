@@ -86,14 +86,14 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
     }];
 
     confirmNotification(newObject);
-    toggleDisplayModal("message", "Notification successfully added");
+    toggleDisplayModal("message", "Notification successfully added!");
     deleteTempNotification(tempNotification.id);
   };
 
   console.log("tempNotification", tempNotification)
 
   const handleDelete = () => {
-    toggleDisplayModal("confirm","Do you want to delete this Notification?", tempNotification.id)
+    toggleDisplayModal("confirm","Are you sure you want to delete this notification?", tempNotification.id)
   };
 
   const toggleSchedule = () => {

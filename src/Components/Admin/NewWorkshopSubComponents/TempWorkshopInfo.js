@@ -66,13 +66,13 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
     }];
     confirmWorkshop(newObject);
     deleteTempWorkshop(tempWorkshop.id);
-    toggleDisplayModal("message", "Workshop successfully added");
+    toggleDisplayModal("message", "Workshop successfully added!");
   };
 
   const handleDelete = () => {
     toggleDisplayModal(
       "confirm",
-      "Do you want to delete this Workshop?",
+      "Are you sure you want to delete this workshop?",
       tempWorkshop.id
     );
   };

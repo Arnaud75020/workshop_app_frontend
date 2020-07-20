@@ -19,6 +19,10 @@ const UserContextProvider = (props) => {
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {
+  console.log(auth)
+  }, [auth])
+
+  useEffect(() => {
     axios
       .get('/auth/verify-token')
       .then(async (response) => {

@@ -75,7 +75,7 @@ const NewWorkshop = () => {
               toggleDisplayModal={toggleDisplayModal}
               confirmFunction={deleteTempWorkshop}
               id={workshopId}
-              confirmText="delete"
+              confirmText="Delete"
               content={content}
             />
           )}
