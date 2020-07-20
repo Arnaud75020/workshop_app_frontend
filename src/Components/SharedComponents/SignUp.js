@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import './SignUp.scss';
 import axios from 'axios';
+import { UserContext } from '../../Context/UserContext';
 
 const SignUp = (props) => {
   const cryptedRoleId = props.match.params.id;
@@ -23,6 +24,9 @@ const SignUp = (props) => {
   const { register, handleSubmit, reset, errors, watch } = useForm();
   const password = useRef({});
   password.current = watch('password', '');
+
+  const { setUserInformation, setAuth } = useContext(UserContext);
+
 
   const [passwordsMatch, setPasswordsMatch] = useState(true);
 
@@ -54,9 +58,16 @@ const SignUp = (props) => {
 
       axios
         .post('/auth/signup', formData)
-        .then((response) => console.log('SIGNUP RES DATA', response.data));
-      reset();
-      //redirect to role-based view
+        .then((response) => console.log('SIGNUP RES DATA', response.data))
+        .then(() => {
+          axios
+          .post('/auth/login', data)
+          .then((response) => response.data)
+          .then((user) => {
+            setUserInformation(user);
+          })
+      .then(() => setAuth(true))
+      })
     } else {
       setPasswordsMatch(false);
     }
