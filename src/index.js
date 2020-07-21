@@ -8,7 +8,6 @@ import axios from 'axios';
    'https://lisbon-js-202003-pjt3-productized-backend.jsrover.wilders.dev';
  console.log(axios.defaults.baseURL);
 
-
 axios.defaults.withCredentials = true;
 
 ReactDOM.render(
