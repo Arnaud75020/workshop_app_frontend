@@ -24,16 +24,20 @@ const ForgotPassword = () => {
       .then((response) => response.data)
       .then((result) => {
         if (result.affectedRows === 1) {
+        console.log("result", result)
           setNewPasswordSent(true);
+          setActive('inputCode');
+          setUserEmail(data.email);
+
         }
       })
       .catch((error) => {
+        console.log(error.response.data.message)
         if (error.response.data.message === 'user not found') {
           setEmailNotFound(true);
         }
       });
-    setUserEmail(data.email);
-    setActive('inputCode');
+    
   };
 
   const submitCode = (data) => {
