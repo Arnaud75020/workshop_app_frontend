@@ -8,6 +8,7 @@ import { UserContext } from '../../Context/UserContext';
 const SignUp = (props) => {
   const cryptedRoleId = props.match.params.id;
   let roleId = "";
+  let maxWorkshops = "";
 
   switch (cryptedRoleId) {
     case "DFJLMdk123CDLEcjks":
@@ -16,8 +17,29 @@ const SignUp = (props) => {
     case "dfqlQIF":
       roleId = 2;
       break;
+    case `${process.env.REACT_APP_URL_MAXWORKSHOPS_1}`:
+      roleId = 3;
+      maxWorkshops = 1;
+      break;
+    case `${process.env.REACT_APP_URL_MAXWORKSHOPS_2}`:
+      roleId = 3;
+      maxWorkshops = 2;
+      break;
+    case `${process.env.REACT_APP_URL_MAXWORKSHOPS_3}`:
+      roleId = 3;
+      maxWorkshops = 3;
+      break;
+    case `${process.env.REACT_APP_URL_MAXWORKSHOPS_4}`:
+      roleId = 3;
+      maxWorkshops = 4;
+      break;
+    case `${process.env.REACT_APP_URL_MAXWORKSHOPS_5}`:
+      roleId = 3;
+      maxWorkshops = 5;
+      break;
     default:
       roleId = 3;
+      maxWorkshops = 0;
       break;
   }
 
@@ -165,7 +187,7 @@ const SignUp = (props) => {
             <input
               name="max_workshops"
               type="hidden"
-              value="3"
+              value={maxWorkshops}
               contentEditable={false}
               ref={register}
             />
