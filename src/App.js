@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import UserContextProvider from './Context/UserContext';
 import WorkshopContextProvider from './Context/WorkshopContext';
@@ -11,10 +11,6 @@ import ForgotPassword from './Components/SharedComponents/ForgotPassword';
 import { UserContext } from './Context/UserContext';
 
 function App() {
-
-  useEffect(() => {
-    console.log("APP")
-  },[])
 
   return (
     <div className='App'>

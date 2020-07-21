@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NotificationContext } from '../../../Context/NotificationContext';
+import moment from 'moment';
 
 const NewNotificationForm = ({ send_to, attendees, toggleDisplayModal }) => {
   console.log(send_to);
@@ -23,15 +24,12 @@ const NewNotificationForm = ({ send_to, attendees, toggleDisplayModal }) => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
-    const now = new Date();
-
-    const now_formated = `${now.getFullYear()}-${
-      now.getMonth() + 1
-    }-${now.getDay()}T${now.getHours()}:${now.getMinutes()}`;
+    const now_formated = moment().add(1, 'minutes').format('YYYY-MM-DDTHH:mm');
 
     const date = data.checkbox ? data.date : now_formated;
 
-    console.log(date)
+    console.log('NOW_FORMATED', now_formated);
+    console.log('DATE', date);
 
     const state = data.checkbox ? 'scheduled' : 'sent';
 
@@ -58,7 +56,7 @@ const NewNotificationForm = ({ send_to, attendees, toggleDisplayModal }) => {
     <form className='new-notification-form' onSubmit={handleSubmit(onSubmit)}>
       <div className='new-notification-form-header' />
       <div className='new-notification-form-body'>
-        <p className="defined-to">To: {send_to}</p>
+        <p className='defined-to'>To: {send_to}</p>
         <input
           style={errors.subject && { border: '1px solid #3B65B0' }}
           type='text'
