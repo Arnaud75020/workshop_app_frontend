@@ -17,7 +17,7 @@ const NotificationDetails = ({notification, handleSelectedNotification, toggleDi
     }
 
     const handleDelete = () => {
-        toggleDisplayModal("confirm", "are you sure you want delete this notification?",notification.id)
+        toggleDisplayModal("confirm", "Are you sure you want delete this notification?",notification.id)
     }
 
     return ( 
@@ -26,9 +26,9 @@ const NotificationDetails = ({notification, handleSelectedNotification, toggleDi
             <td className="subject-col">{notification.subject}</td>
             <td className="to-col">{notification.send_to}</td>
             <td className="state-col">{notification.state}</td>
-            <td>
-                <button className="notification-info-btn" onClick={handleInfo} ><MdInfo /></button>
-                <button className="delete-notification-btn" onClick={handleDelete}><MdDelete /></button>
+            <td className="icons-col">
+                <button title="Info" className="notification-info-btn" onClick={handleInfo} ><MdInfo /></button>
+                <button title="Delete Notification" className="delete-notification-btn" onClick={handleDelete}><MdDelete /></button>
             </td>
         </tr>
      );

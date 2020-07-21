@@ -13,6 +13,7 @@ const NewNotification = () => {
     confirmNotification,
     setTempNotifications,
     deleteTempNotification,
+    handleConfirmedAll
   } = useContext(NotificationContext);
 
   const [isModalDisplayed, setIsModalDisplayed] = useState(false);
@@ -52,6 +53,7 @@ const NewNotification = () => {
 
     confirmNotification(notificationList);
     setTempNotifications([]);
+    handleConfirmedAll()
   };
 
   return (
@@ -66,7 +68,7 @@ const NewNotification = () => {
             className="confirm-all-btn"
             onClick={handleConfirmAllNotifications}
           >
-            Confirm All
+            <Link to="/admin/all-notifications">Confirm All</Link>
           </button>
         </div>
         <div>
@@ -76,7 +78,7 @@ const NewNotification = () => {
               toggleDisplayModal={toggleDisplayModal}
               confirmFunction={deleteTempNotification}
               id={notificationId}
-              confirmText={"confirm"}
+              confirmText="Delete"
               content={content}
             />
           )}

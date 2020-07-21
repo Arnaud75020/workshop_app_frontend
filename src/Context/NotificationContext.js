@@ -9,6 +9,8 @@ const NotificationContextProvider = (props) => {
   const [allNotifications, setAllNotifications] = useState([]);
   const [searchNotificationValue, setSearchNotificationValue] = useState([]);
   const [stateFilter, setStateFilter] = useState("All notifications");
+  const [confirmedAll, setConfirmedAll] = useState(false)
+
 
   useEffect(() => {
     getNotifications();
@@ -25,16 +27,16 @@ const NotificationContextProvider = (props) => {
   };
 
   const addTempNotification = (newObject) => {
-    console.log(newObject);
     setTempNotifications([...tempNotifications, newObject]);
   };
 
   const confirmNotification = (newObject) => {
-    console.log("newObject", newObject);
     axios
-      .post("/notifications", newObject)
+      .post('/notifications', newObject)
+      .then(() => {
+        getNotifications();
+      })
 
-      .then(() => getNotifications());
   };
 
   const editNotification = (newObject) => {
@@ -54,10 +56,12 @@ const NotificationContextProvider = (props) => {
   };
 
   const deleteNotification = (id) => {
-    axios.delete(`/notifications/${id}`);
-
-    getNotifications();
-  };
+    axios
+      .delete(`/notifications/${id}`)
+      .then(() => {
+        getNotifications()
+      })
+  }
 
   const handleFilterState = (event) => {
     const { value } = event.target;
@@ -91,6 +95,11 @@ const NotificationContextProvider = (props) => {
     }
   };
 
+  const handleConfirmedAll = () => {
+    setConfirmedAll(true)
+    setTimeout(() => setConfirmedAll(false), 20000)
+  }
+
   return (
     <div>
       <NotificationContext.Provider
@@ -108,8 +117,9 @@ const NotificationContextProvider = (props) => {
           handleNotificationSearch,
           searchNotificationValue,
           deleteNotification,
-        }}
-      >
+          confirmedAll,
+          handleConfirmedAll
+        }}>
         {props.children}
       </NotificationContext.Provider>
     </div>

@@ -20,56 +20,29 @@ const Login = () => {
   const [incorrectPassword, setIncorrectPassword] = useState(false);
 
   const onSubmit = async (data) => {
-    //run validation
     axios
       .post('/auth/login', data)
       .then((response) => response.data)
       .then((user) => {
-        console.log(user);
         setUserInformation(user);
-        const { id, role } = user.user;
-        if (role === 'attendee') {
-          // getUserWorkshops(user.id);
-        }
-        if (role === 'speaker') {
-          ////////???////////
-          getWorkshop(id);
-          getAttendees(id);
-          ////////???//////
-        }
       })
       .then(() => setAuth(true))
       .catch((error) => {
-        console.log(error);
+        if(error){
+
         if (error.response.data.message === 'Incorrect email.') {
           setIncorrectEmail(true);
           if (incorrectPassword === true) {
             setIncorrectPassword(false);
           }
-          //console.log(error.response.data);
-          //console.log(error.response.status);
-          //console.log(error.response.headers);
         } else if (error.response.data.message === 'Incorrect password.') {
           setIncorrectPassword(true);
           if (incorrectEmail === true) {
             setIncorrectEmail(false);
           }
-          //console.log(error.request);
         }
+      }
       });
-    //const response = await axios.post('/auth/login', data);
-    //console.log("response",response)
-    //await setUserInformation(response.data);
-    //const { id, role } = response.data.user
-    //if(role === "attendee"){
-    //  getUserWorkshops(id)
-    //}
-    //if(role === "speaker"){
-    //    getWorkshop(id);
-    //    getAttendees(id)
-    //}
-    //setAuth(true);
-    ////redirect to role-based view
   };
 
   return (
@@ -97,11 +70,9 @@ const Login = () => {
             <hr />
           </form>
           <p>
-            don't have an account yet?{' '}
-            <Link to='/signup/edjDFKJ'>create an account</Link>
+            Don't have an account? <Link to='/signup/edjDFKJ'>create one</Link>
           </p>
-m
-          <p>Forgot your account?</p>
+          <p><Link to='/forgot-password'>Forgot your password?</Link></p>
         </div>
       </div>
     </div>

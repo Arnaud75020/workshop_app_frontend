@@ -14,7 +14,7 @@ const WorkshopDetails = ({ workshop, toggleDisplayModal, deleteWorkshop }) => {
   const handleDelete = () => {
     toggleDisplayModal(
       "confirm",
-      "are you sure you want to delete this workshop?",
+      "Are you sure you want to delete this workshop?",
       workshop.id,
       workshop.enrolled_attendees
     );

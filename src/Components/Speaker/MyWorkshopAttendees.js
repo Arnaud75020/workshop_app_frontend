@@ -28,8 +28,7 @@ const MyWorkshopAttendees = () => {
   console.log('USER ID', user);
 
   return (
-    <div>
-      {workshop === undefined ? (
+      workshop === undefined ? (
         <h1>No workshop scheduled at the moment {user.firstname}</h1>
       ) : (
         <div>
@@ -37,15 +36,14 @@ const MyWorkshopAttendees = () => {
             <h1>Workshop Info</h1>
           </div>
 
-          <div cl_assName='workshop-attendees-body'>
+          <div className='workshop-attendees-body'>
             {attendees !== undefined && (
               <WorkshopInfo workshop={workshop} attendees={attendees} />
             )}
             {attendees !== undefined && <AttendeesList attendees={attendees} />}
           </div>
         </div>
-      )}
-    </div>
+      )
   );
 };
 

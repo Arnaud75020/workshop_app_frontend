@@ -1,42 +1,51 @@
-import React, { useContext, useState, useEffect } from 'react';
-import ChangePhoto from './ProfileSubcomponents/ChangePhoto';
+import React, {  useState, useEffect } from 'react';
 import './Profile.scss';
-import EditMyWorkshops from './ProfileSubcomponents/EditMyWorkshops';
 import UserSettings from './ProfileSubcomponents/UserSettings';
 import ContactSettings from './ProfileSubcomponents/ContactSettings';
 import ChangePasswordForm from './ProfileSubcomponents/ChangePasswordForm';
-import { UserContext } from '../../Context/UserContext';
 
 const Profile = () => {
-  const { user, confirmUpdatedUser } = useContext(UserContext);
+
+  useEffect(()=> {
+    console.log("PROFILE MOUNTED")
+  },[])
 
   const [changePasswordDisplaying, setChangePasswordDisplaying] = useState(
     false
   );
 
+  const [isSaved, setIsSaved] = useState(false)
+
+  const handleIsSaved = () => {
+    setIsSaved(true)
+    setTimeout(() => setIsSaved(false), 1500)
+  }
+
   const handleChangePassword = () => {
     setChangePasswordDisplaying(!changePasswordDisplaying);
   };
 
+  console.log("isSaved", isSaved)
+
   return (
     <div className='profile'>
-      <h1>Profile</h1>
+      <div className="profile-header">
+        <h1>Profile</h1>
+        {isSaved && <p className="saved">saved</p>}
+      </div>
       <div className='profile-body'>
         <div className='right'>
           <UserSettings
-            user={user}
             handleChangePassword={handleChangePassword}
-            confirmUpdatedUser={confirmUpdatedUser}
+            handleIsSaved={handleIsSaved}
           />
           <ContactSettings
-            user={user}
-            confirmUpdatedUser={confirmUpdatedUser}
+            handleIsSaved={handleIsSaved}
           />
         </div>
       </div>
       {changePasswordDisplaying && (
         <ChangePasswordForm
-          user={user}
           handleChangePassword={handleChangePassword}
         />
       )}

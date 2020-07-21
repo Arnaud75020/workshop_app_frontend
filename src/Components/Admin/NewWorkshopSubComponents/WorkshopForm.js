@@ -5,11 +5,13 @@ import uuid from 'react-uuid';
 import { UserContext } from '../../../Context/UserContext';
 
 const WorkshopForm = () => {
-  const { addTempWorkshop, allWorkshops } = useContext(WorkshopContext);
+  const { addTempWorkshop, allWorkshops, tempWorkshops } = useContext(WorkshopContext);
   const { speakers } = useContext(UserContext);
   const { register, handleSubmit, reset, errors } = useForm();
 
-  const workshopSpeakers = allWorkshops.map( workshop => workshop.speaker_id)
+  console.log("speakers", speakers)
+
+  const workshopSpeakers = [...allWorkshops.map( workshop => workshop.speaker_id), ...tempWorkshops.map( workshop => workshop.speaker_id)]
 
   const speakersLeft = speakers.filter( speaker => !workshopSpeakers.includes(speaker.id))
 
@@ -18,6 +20,13 @@ const WorkshopForm = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+
+    const speakerInfo = data.speaker.split(",");
+
+    const speaker_name = speakerInfo[0];
+
+    const speaker_id = Number(speakerInfo[1]);
+
     const newObject = {
       id: uuid(),
       title: data.title,
@@ -26,7 +35,8 @@ const WorkshopForm = () => {
       starting_hour: data.starting_hour,
       ending_hour: data.ending_hour,
       description: data.description,
-      speaker: data.speaker,
+      speaker: speakerInfo,
+      speaker_id: speaker_id,
       room: data.room,
       room_capacity: data.room_capacity,
       room_manager: data.room_manager,
@@ -99,7 +109,7 @@ const WorkshopForm = () => {
             {speakersLeft.length > 0 && speakersLeft.map((speaker) => {
               return (
                 <option
-                  value={`${speaker.firstname} ${speaker.lastname}`}>{`${speaker.firstname} ${speaker.lastname}`}</option>
+                  value={`${speaker.firstname} ${speaker.lastname},${speaker.id}`}>{`${speaker.firstname} ${speaker.lastname}`}</option>
               );
             })}
           </select>

@@ -57,6 +57,14 @@ input[type='checkbox'] {
   display: block;
 }
 
+.item input:checked ~ label .arrow {
+  transform: rotate(90deg);
+}
+
+.sub-item input:checked ~ label .arrow {
+  transform: rotate(90deg);
+}
+
 .arrow {
   width: 12px;
   vertical-align: middle;
@@ -150,6 +158,7 @@ label {
     color: #e6e6e6;
     font-weight: 400;
     font-family: roboto;
+    cursor: pointer;
   }
 }
 
@@ -171,7 +180,6 @@ label {
   position: relative;
   height: 100%;
   width: 100%;
-  padding-top: 50px;
 }
 
 .productized-logo{

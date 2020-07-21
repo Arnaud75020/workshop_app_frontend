@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import './ChangePasswordForm.scss'
 import axios from 'axios';
+import { UserContext } from '../../../Context/UserContext';
 
 
-const ChangePasswordForm = ({ user, handleChangePassword }) => {
+const ChangePasswordForm = ({ handleChangePassword }) => {
+
+  const { user } = useContext(UserContext);
+    
 
     const [passwordErr, setPasswordErr] = useState(false)
     const [passwordsDontMatch, setPasswordsDontMatch] = useState(false)
@@ -24,9 +28,6 @@ const ChangePasswordForm = ({ user, handleChangePassword }) => {
             .catch((error) => {
                  if (error.response) {
                     setPasswordErr(true)
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
                 } else if (error.request) {
                     console.log(error.request);
                 } else {

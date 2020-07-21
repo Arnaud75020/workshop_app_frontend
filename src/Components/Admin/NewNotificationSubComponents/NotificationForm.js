@@ -33,13 +33,26 @@ const NotificationForm = () => {
             workshopTitle = workshop[0]
         }
 
-        const now = new Date();
+    const now = new Date();
+    let nowMonth = now.getMonth() + 1;
+    let nowDay = now.getDay();
 
-        const now_formated = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDay()}T${now.getHours()}:${now.getMinutes()}`
+    if(nowMonth.toLocaleString().length === 1){
+      nowMonth = `0${nowMonth}`
+    }
+
+    if(nowDay.toLocaleString().length === 1){
+      nowDay = `0${nowDay}`
+    }
+
+    console.log("nowDay", nowDay, "nowMonth", nowMonth )
+
+
+    const now_formated = `${now.getFullYear()}-${nowMonth}-${nowDay}T${now.getHours()}:${now.getMinutes()}`;
 
         const date = data.checkbox ? data.date : now_formated;
 
-        const state = data.checkbox ? "scheduled" : "send"
+        const state = data.checkbox ? "scheduled" : "sent"
 
         const newObject = {
             id: uuid(),

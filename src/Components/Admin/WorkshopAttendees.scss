@@ -14,12 +14,24 @@
         margin: 50px 5% 10px 5%;
     }
 
+    .all-workshops-btn{
+      @include button(40px, $darkgrey);
+      margin-right: 20px;
+      margin-top: 0;
+
+      a{
+          text-decoration: none;
+          color: white;
+      }
+  }
+
     h1{
+      @include page-title;
       margin-left: 0;
       @include media('<=phone'){
           font-size: 24px;
         }
-  }
+    }
 }
 
 .workshop-attendees-body {
@@ -27,6 +39,7 @@
   margin: 0 auto 40px auto;
   background-color: white;
   box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
+  border-radius: 5px;
   @include media('<=tablet'){
     width: 90%;
 }
@@ -47,10 +60,28 @@
   width: 100%;
   margin-bottom: 0;
   border-bottom: 1px solid $darkgrey;
+  border-radius: 5px;
+
 }
 
 .workshop-info-header {
   @include workshop-info-card-header;
+
+  .copy-to-clipboard{
+    display: flex;
+    align-items: center;
+    
+    p{
+      margin-right: 10px;
+      color: $blue;
+    }
+
+    button{
+      &:hover{
+        color: $blue;
+      }
+    }
+  }
 
   .workshop-info-date {
     display: flex;
@@ -71,14 +102,14 @@
 
 .workshop-info-body {
   @include workshop-info-card-body;
-  @include media('<=tablet'){
+  @include media('<=phone'){
     flex-direction: column;
   }
 }
 
 .workshop-info-left {
   @include workshop-info-card-body-half(start);
-  @include media('<=tablet'){
+  @include media('<=phone'){
     width: 100%;
     align-items: flex-start;
     border-bottom: 1px solid $darkgrey;
@@ -96,7 +127,7 @@
 .workshop-info-right {
   @include workshop-info-card-body-half(end);
   border: none;
-  @include media('<=tablet'){
+  @include media('<=phone'){
     width: 100%;
     align-items: flex-start;
 }
@@ -106,8 +137,11 @@
     justify-content: flex-end;
     @include media('<=tablet'){
       flex-direction: column;
+      align-items: flex-end;
+    }
+    @include media('<=phone'){
       align-items: flex-start;
-  }
+    }
 
     .room {
       margin-right: 15px;
@@ -179,10 +213,39 @@
 
 .workshop-info-dropdown {
   @include dropdown(28px);
-  right: 25px;
+  right: 15px;
 
   .delete-workshop-btn:hover {
     @include dropdown-delete-btn-hover;
+  }
+
+  a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $grey;
+    border-radius: 0;
+    color: $darkgrey;
+    border-bottom: 1px solid $darkgrey;
+    font-family: roboto;
+    font-weight: 450;
+    text-decoration: none;
+
+    button{
+      padding: 10px;
+      border-bottom: none;
+    }
+  }
+
+  .workshop-csv{
+    padding: 10px;
+    font-size: 14px;
+    font-family: roboto;
+    font-weight: 450;
+    text-decoration: none;
+    &:hover {
+      @include dropdown-item-hover;
+    }
   }
 
   button {
@@ -193,12 +256,15 @@
 
       a {
         color: white;
+        text-decoration: none;
+        width: 100%;
       }
     }
 
     a {
       text-decoration: none;
       color: $darkgrey;
+      width: 100%;
     }
   }
 }

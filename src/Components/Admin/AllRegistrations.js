@@ -36,7 +36,7 @@ const AllRegistrations = () => {
             <div className="all-resgistrations-header">
                 <h1>All registrations</h1>
             </div>
-            {displayModal && <ModalForm toggleDisplayModal={toggleDisplayModal} attendees={user} active={active} confirmFunction={deleteUser} userRole={userRole} id={userId} confirmText={"confirm"} content={content} />}
+            {displayModal && <ModalForm toggleDisplayModal={toggleDisplayModal} attendees={user} active={active} confirmFunction={deleteUser} userRole={userRole} id={userId} confirmText="Delete" content={content} />}
             <div className="all-registrations-body">
                 <Filters handleSearch={handleChangeSearch} seachValue={searchValue} optionsList={roles} handleOption={handleFilterUser} defaultOption="All users" optionKey="role" optionValue={filterUser} />
                 <RegistrationsList users={users} toggleDisplayModal={toggleDisplayModal} /> 

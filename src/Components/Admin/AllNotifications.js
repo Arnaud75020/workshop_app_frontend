@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import NotificationsList from './AllNotificationsSubComponents/NotificationsList';
 import Filters from '../SharedComponents/Filters'
 import { Link } from 'react-router-dom';
@@ -10,11 +10,16 @@ import { UserContext } from '../../Context/UserContext';
 
 const AllNotifications = () => {
 
-    const { notifications, handleFilterState, stateFilter, handleNotificationSearch, searchNotificationValue, deleteNotification } = useContext(NotificationContext)
+    const { notifications, handleFilterState, stateFilter, handleNotificationSearch, searchNotificationValue, deleteNotification, confirmedAll } = useContext(NotificationContext)
 
     const {user} = useContext(UserContext)
 
-    console.log("USER USER USER",user)
+    useEffect(() => {
+        if(confirmedAll){
+          toggleDisplayModal("message", "Notifications successfully added!")
+        }
+      },[confirmedAll])
+
 
     const [displayModal, setDisplayModal] = useState(false);
     const [notification, setNotification] = useState(false);
@@ -28,6 +33,10 @@ const AllNotifications = () => {
         setActive(activeModal)
         setDisplayModal(!displayModal)
         setNotification(selectedNotification)
+        if(activeModal === "message"){
+            setDisplayModal(true);
+            setTimeout(() => setDisplayModal(false), 1500);
+          }
 
     }
 
@@ -39,7 +48,7 @@ const AllNotifications = () => {
                 <h1>All Notifications</h1>
                 <button className="new-notification-btn"><Link to='/admin/new-notification'>New Notification</Link></button>
             </div>
-            {displayModal && <ModalForm active={active} toggleDisplayModal={toggleDisplayModal} notification={notification} content={content} confirmFunction={deleteNotification} confirmText={"confirm"} id={NotificationId} />}
+            {displayModal && <ModalForm active={active} toggleDisplayModal={toggleDisplayModal} notification={notification} content={content} confirmFunction={deleteNotification} confirmText="Delete" id={NotificationId} />}
             <div className="all-notifications-body">
                 <Filters handleSearch={handleNotificationSearch} seachValue={searchNotificationValue} optionsList={state} handleOption={handleFilterState} defaultOption="All notifications" optionKey="state" optionValue={stateFilter} />
                 <NotificationsList notifications={notifications} toggleDisplayModal={toggleDisplayModal} />

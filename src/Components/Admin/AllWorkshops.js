@@ -20,6 +20,7 @@ const AllWorkshops = (props) => {
     attendees,
     getWorkshop,
     getAttendees,
+    confirmedAll
   } = useContext(WorkshopContext);
 
   const {user} = useContext(UserContext)
@@ -32,6 +33,12 @@ const AllWorkshops = (props) => {
   const [content, setContent] = useState("");
   const [workshopId, setWorkshopId] = useState("");
   const [workshopEnrolled, setWorkshopEnrolled] = useState("");
+
+  useEffect(() => {
+    if(confirmedAll){
+      toggleDisplayModal("message", "Workshop successfully added!")
+    }
+  },[confirmedAll])
 
   const toggleDisplayModal = (
     activeModal,
@@ -71,7 +78,7 @@ const AllWorkshops = (props) => {
           confirmFunction={deleteWorkshop}
           workshopEnrolled={workshopEnrolled}
           id={workshopId}
-          confirmText={"confirm"}
+          confirmText="Delete"
           content={content}
         />
       )}

@@ -2,20 +2,20 @@ import React, { useContext, useState, useEffect } from 'react';
 import { WorkshopContext } from '../../../Context/WorkshopContext';
 import { UserContext } from '../../../Context/UserContext';
 
-const MyWorkshopDetails = ({ workshop, reachedLimit }) => {
-  console.log('workshop', workshop);
+const MyWorkshopDetails = ({ workshop, reachedLimit , userWorkshopsLeft}) => {
 
   const { user } = useContext(UserContext);
   const {
-    workshops,
     userWorkshops,
     addUserWorkshop,
     deleteUserWorkshop,
-    getWorkshops,
+    handleStatus,
+    getWorkshops
   } = useContext(WorkshopContext);
 
   const [isEnrolled, setIsEnrolled] = useState(false);
   const [percentage, setPercentage] = useState(null);
+  const [progressColor, setProgressColor] = useState("");
 
   useEffect(() => {
     userWorkshops.length &&
@@ -27,18 +27,42 @@ const MyWorkshopDetails = ({ workshop, reachedLimit }) => {
   }, [userWorkshops]);
 
   useEffect(() => {
-    calcPercentage(workshop.enrolled_attendees, workshop.room_capacity);
+    if(percentage < 25){
+      setProgressColor("#D75745")
+    }
+    if(percentage >= 25 && percentage < 50){
+      setProgressColor("#EFC359")
+    }
+    if(percentage >= 50 && percentage < 75){
+      setProgressColor("#405EA9")
+    }
+    if(percentage >= 75 && percentage < 100){
+      setProgressColor("#5EB7C9")
+    }
+    if(percentage > 99){
+      setProgressColor("#65BB8D")
+    }
+    getWorkshops()
+  }, [percentage])
 
-  }, [workshop]);
+  useEffect(() => {
+    calcPercentage(workshop.enrolled_attendees, workshop.room_capacity);
+    if(workshop.enrolled_attendees === workshop.room_capacity){
+      handleStatus(workshop.id, 0)
+    } else{
+      handleStatus(workshop.id, 1)
+    }
+  }, [workshop.enrolled_attendees]);
 
   const calcPercentage = (enrolled, room_capacity) => {
-    const percentage = Math.round((enrolled / room_capacity) * 100);
-    setPercentage(percentage);
+    const newPercentage = Math.round((enrolled / room_capacity) * 100);
+    setPercentage(newPercentage);
+
   };
 
   const handleEnrolled = (enroll) => {
     if (enroll) {
-      addUserWorkshop(workshop.id, user.id, workshop.speaker_id);
+      addUserWorkshop(workshop.id, user.id, workshop.speaker_id)
     } else {
       deleteUserWorkshop(workshop.id, user.id, workshop.speaker_id);
     }
@@ -49,6 +73,8 @@ const MyWorkshopDetails = ({ workshop, reachedLimit }) => {
     workshop.date[8] === '0'
       ? workshop.date.substring(9, 10)
       : workshop.date.substring(8, 10);
+
+      console.log("STATUS",workshop.id, workshop.status_open)
 
   return (
     <div className='myWorkshop-details'>
@@ -85,7 +111,7 @@ const MyWorkshopDetails = ({ workshop, reachedLimit }) => {
               {percentage !== null && (
                 <div
                   className='progress-bar-fill'
-                  style={{ width: `${percentage}%` }}
+                  style={{ width: `${percentage}%`, backgroundColor: progressColor }}
                 />
               )}
             </div>
