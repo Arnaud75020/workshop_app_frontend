@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../../Context/UserContext';
 
-const ContactSettings = () => {
+const ContactSettings = ({ handleIsSaved }) => {
 
     const {register, handleSubmit, errors, watch} = useForm();
 
@@ -18,9 +18,8 @@ const ContactSettings = () => {
         position: data.position
         };
 
+        handleIsSaved()
         confirmUpdatedUser(updatedUser);
-        console.log('newuser', updatedUser)
-    // toggleDisplayModal("message", "workshop successfully updated");
     };
 
 

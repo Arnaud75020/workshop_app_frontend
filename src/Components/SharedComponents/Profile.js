@@ -18,7 +18,7 @@ const Profile = () => {
 
   const handleIsSaved = () => {
     setIsSaved(true)
-    setTimeout(() => setIsSaved(false), 20000)
+    setTimeout(() => setIsSaved(false), 1500)
   }
 
   const handleChangePassword = () => {
@@ -31,7 +31,7 @@ const Profile = () => {
     <div className='profile'>
       <div className="profile-header">
         <h1>Profile</h1>
-        {isSaved && <p>saved</p>}
+        {isSaved && <p className="saved">saved</p>}
       </div>
       <div className='profile-body'>
         <div className='right'>

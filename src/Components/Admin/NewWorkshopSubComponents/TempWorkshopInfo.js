@@ -86,6 +86,8 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
 
   const date_errors = errors.date || errors.starting_hour || errors.ending_hour;
 
+  console.log(tempWorkshop.date)
+
   return (
     <div>
       {!editMode && (

@@ -42,9 +42,21 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
     }
 
     const now = new Date();
+    let nowMonth = now.getMonth() + 1
+    let nowDay = now.getDay()
 
-    const now_formated = `${now.getFullYear()}-${
-        now.getMonth() + 1 }-${now.getDay()}T${now.getHours()}:${now.getMinutes()}`;
+    if(nowMonth.length === 1){
+      nowMonth = `0${nowMonth}`
+    }
+
+    if(nowDay.length === 1){
+      nowDay = `0${nowDay}`
+    }
+
+    console.log("nowDay", nowDay, "nowMonth", nowMonth )
+
+
+    const now_formated = `${now.getFullYear()}-${nowMonth}-${nowDay}T${now.getHours()}:${now.getMinutes()}`;
 
     const date = data.checkbox ? data.date : now_formated;
 
@@ -140,12 +152,23 @@ const onChangeSelect = (event) => {
     workshopTitle = notificationWorkshop[0]
   }
 
+  const year = Number(tempNotification.date.substring(0, 4));
+  const month = Number(tempNotification.date.substring(5, 7));
+  const day = Number(tempNotification.date.substring(8, 10));
+
+  const date = new Date(year, month - 1, day); // 2009-11-10
+  const notification_month = date.toLocaleString("default", { month: "long" });
+  const notification_hour = tempNotification.date.substring(11,16)
+
+  console.log(tempNotification.date)
+
+
   return (
     <div>
       {!editMode && (
         <div className="temp-notification-info">
           <div className="temp-notification-info-header">
-            <div>{tempNotification.date}</div>
+            <div>{`${day} ${notification_month} - ${notification_hour}`}</div>
             <div className="temp-notification-info-header-btns">
               <button title="Edit Notification" onClick={handleEdit} className="notification-icons"><MdEdit /></button>
               <button title="Delete Notification" onClick={handleDelete} className="notification-icons"><MdDelete /></button>
