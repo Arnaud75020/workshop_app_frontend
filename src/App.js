@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import UserContextProvider from './Context/UserContext';
+import WorkshopContextProvider from './Context/WorkshopContext';
 import Admin from './Components/Admin/Admin';
 import Speaker from './Components/Speaker/Speaker';
 import Attendee from './Components/Attendee/Attendee';
@@ -9,23 +11,25 @@ import ForgotPassword from './Components/SharedComponents/ForgotPassword';
 import { UserContext } from './Context/UserContext';
 
 function App() {
+
   return (
     <div className='App'>
-      <BrowserRouter>
-        <Switch>
-          <ProtectedRoute path='/admin' component={Admin} />
-          <ProtectedRoute path='/speaker' component={Speaker} />
-          <ProtectedRoute path='/attendee' component={Attendee} />
-          <LoginSignUpRoute exact path='/' component={Login} />
-          <LoginSignUpRoute path='/login' component={Login} />
-          <LoginSignUpRoute path='/signup/:id' component={SignUp} />
-          <LoginSignUpRoute path='/signup' component={SignUp} />
-          <LoginSignUpRoute
-            path='/forgot-password'
-            component={ForgotPassword}
-          />
-        </Switch>
-      </BrowserRouter>
+      <UserContextProvider>
+        <WorkshopContextProvider>
+          <BrowserRouter>
+            <Switch>
+              <ProtectedRoute path='/admin' component={Admin} />
+              <ProtectedRoute path='/speaker' component={Speaker} />
+              <ProtectedRoute path='/attendee' component={Attendee} />
+              <LoginSignUpRoute exact path='/' component={Login} />
+              <LoginSignUpRoute path='/login' component={Login} />
+              <LoginSignUpRoute path='/signup/:id' component={SignUp} />
+              <LoginSignUpRoute path='/signup' component={SignUp} />
+              <LoginSignUpRoute path='/forgot-password' component={ForgotPassword} />
+            </Switch>
+          </BrowserRouter>
+        </WorkshopContextProvider>
+      </UserContextProvider>
     </div>
   );
 }
@@ -36,7 +40,7 @@ const LoginSignUpRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      component={(props) =>
+      render={(props) =>
         !auth ? (
           <Component {...props} />
         ) : (
@@ -52,7 +56,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      component={(props) =>
+      render={(props) =>
         auth ? <Component {...props} /> : <Redirect to='/login' />
       }
     />

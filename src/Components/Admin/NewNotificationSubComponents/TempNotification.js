@@ -48,7 +48,7 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
 
     const date = data.checkbox ? data.date : now_formated;
 
-    const state = data.checkbox ? "scheduled" : "send";
+    const state = data.checkbox ? "scheduled" : "sent";
 
     const newObject = {
       id:tempNotification.id,

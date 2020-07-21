@@ -105,7 +105,7 @@ const SignUp = (props) => {
   useEffect(() => {
     console.log("Newdate", todayDate);
     console.log("id", props.match.params.id);
-  });
+  },[]);
 
   return (
     <div className="signUp-page-container">

@@ -6,35 +6,41 @@ import './MyWorkshops.scss';
 
 const MyWorkshops = () => {
   const {
-    workshops,
-    getWorkshops,
+    allWorkshops,
     months,
     userWorkshops,
     getUserWorkshops,
   } = useContext(WorkshopContext);
-  const { user } = useContext(UserContext);
-
-  console.log('USER USER USER', user);
+  const { user, getUserMaxWorkshops, userWorkshopsLeft } = useContext(UserContext);
 
   const [workshopList, setWorkshopList] = useState([]);
   const [active, setActive] = useState('');
   const [reachedLimit, setReachedLimit] = useState(false);
   const [workshopsLeft, setWorkshopsLeft] = useState('');
 
-  useEffect(() => getUserWorkshops(user.id), []);
+  useEffect(() => {
+    getUserWorkshops(user.id)
+    getUserMaxWorkshops(user.id)
+  }, []);
+
+  useEffect(() => { 
+    getUserMaxWorkshops(user.id)
+  }, [userWorkshops]);
 
   useEffect(() => {
-    if (userWorkshops.length > 0) {
-      getWorkshops();
-    }
-    checkWorkshopsLeft();
-  }, [userWorkshops]);
+    if (userWorkshopsLeft > 0) {
+      setWorkshopsLeft(`you can register in ${userWorkshopsLeft} workshops`);
+      setReachedLimit(false);
+  } else {
+    setWorkshopsLeft('no more workshops to register');
+    setReachedLimit(true);
+  }
+  }, [userWorkshopsLeft]);
 
   useEffect(() => {
     if (months.length > 0) {
       monthlyWorkshops(months[0].month);
       setActive(months[0].month);
-      checkWorkshopsLeft();
     }
   }, [months]);
 
@@ -45,33 +51,17 @@ const MyWorkshops = () => {
         setActive(active);
       }
     }
-  }, [workshops]);
+  }, [allWorkshops]);
+
 
   const monthlyWorkshops = (month) => {
-    const monthlyWorkshopList = workshops.filter((workshop) => {
+    const monthlyWorkshopList = allWorkshops.filter((workshop) => {
       return workshop.workshop_month === month;
     });
     setWorkshopList(monthlyWorkshopList);
     setActive(month);
   };
 
-  const checkWorkshopsLeft = () => {
-    if (user.max_workshops > userWorkshops.length) {
-      if (userWorkshops.length > 0) {
-        setWorkshopsLeft(
-          `you still have ${
-            user.max_workshops - userWorkshops.length
-          } workshops to choose`
-        );
-      } else {
-        setWorkshopsLeft(`you can register in ${user.max_workshops} workshops`);
-      }
-      setReachedLimit(false);
-    } else {
-      setWorkshopsLeft('no more workshops to register');
-      setReachedLimit(true);
-    }
-  };
 
   return (
     <div>
@@ -104,7 +94,7 @@ const MyWorkshops = () => {
           {workshopsLeft}
         </p>
       </div>
-      <MyWorkshopList workshops={workshopList} reachedLimit={reachedLimit} />
+      <MyWorkshopList workshops={workshopList} reachedLimit={reachedLimit} userWorkshopsLeft={userWorkshopsLeft} />
     </div>
   );
 };

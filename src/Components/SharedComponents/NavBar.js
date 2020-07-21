@@ -16,7 +16,7 @@ const NavBar = () => {
 
   useEffect(() => {
     console.log("NAVBAR MOUNTED")
-  })
+  },[])
 
   const handleCheckboxOne = () => {
     setCheckboxCheckedOne(!checkboxCheckedOne)
