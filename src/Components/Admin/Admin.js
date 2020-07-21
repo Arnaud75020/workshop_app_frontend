@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NewWorkshop from './NewWorkshop';
 import NotificationContextProvider from '../../Context/NotificationContext';
@@ -12,6 +12,11 @@ import './Admin.scss';
 import Profile from '../SharedComponents/Profile';
 
 const Admin = (props) => {
+
+  useEffect(() => {
+    console.log("ADMIN")
+  },[])
+  
   return (
     <BrowserRouter>
       <NotificationContextProvider>

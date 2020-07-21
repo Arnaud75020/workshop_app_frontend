@@ -43,13 +43,10 @@ const WorkshopContextProvider = (props) => {
   };
 
   const getAttendees = (speakerId) => {
-    console.log("SPEAKER ID", typeof speakerId);
     if (typeof speakerId !== "string" && typeof speakerId != "number") {
-      console.log("GROUP");
       setAttendees(speakerId);
       setAllAttendees(speakerId);
     } else {
-      console.log("ONE ONE ONE");
       axios
         .get(`/workshops/${speakerId}/attendees`)
         .then((response) => response.data)
@@ -65,7 +62,6 @@ const WorkshopContextProvider = (props) => {
       .get(`/workshops/user-workshops/${id}`)
       .then((response) => response.data)
       .then((userWorkshops) => {
-        console.log(userWorkshops);
         setUserWorkshops(userWorkshops);
       });
   };
@@ -80,7 +76,6 @@ const WorkshopContextProvider = (props) => {
       .post("/workshops/user-workshops/add", user_workshop)
       .then((response) => response.data)
       .then((newUserWorkshops) => {
-        console.log("ADD USER", newUserWorkshops);
         setUserWorkshops(newUserWorkshops);
       })
       .then(() => {
@@ -89,13 +84,12 @@ const WorkshopContextProvider = (props) => {
   };
 
   const deleteUserWorkshop = (workshopId, userId) => {
+
     const user_workshop = [workshopId, userId];
     axios
       .delete("/workshops/user-workshops/delete", { data: user_workshop })
       .then((response) => response.data)
       .then((newUserWorkshops) => {
-        console.log("DELETE USER", newUserWorkshops);
-
         setUserWorkshops(newUserWorkshops);
       })
       .then(() => {
@@ -108,7 +102,6 @@ const WorkshopContextProvider = (props) => {
       .get("/workshops/months")
       .then((response) => response.data)
       .then((monthsList) => {
-        console.log("monthsList", monthsList);
         setMonths(monthsList);
       });
   };
@@ -124,7 +117,6 @@ const WorkshopContextProvider = (props) => {
     //.then(() => {
     axios
       .put(`/workshops/${newWorkshopId}`, newWorkshop)
-      //})
       .then(() => {
         getWorkshops();
         getMonth();
@@ -153,11 +145,14 @@ const WorkshopContextProvider = (props) => {
 
   const deleteWorkshop = (id, enrolled_attendees) => {
     if (enrolled_attendees > 0) {
-      axios.delete(`/workshops/workshop-user-workshops/${id}`).then(() => {
+      axios
+      .delete(`/workshops/workshop-user-workshops/${id}`)
+      .then(() => {
         axios.delete(`/workshops/${id}`);
       });
     }
-    axios.delete(`/workshops/${id}`);
+    axios
+      .delete(`/workshops/${id}`);
 
     getWorkshops();
   };
@@ -218,6 +213,21 @@ const WorkshopContextProvider = (props) => {
     setTimeout(() => setConfirmedAll(false), 20000)
   }
 
+  const handleStatus = (id, status) => {
+
+   const formData = {
+     status: status
+   }
+
+    axios
+      .put(`/workshops/workshop-status/${id}`, formData)
+      .then(() => {
+        getWorkshops()
+      })
+
+  }
+
+
   return (
     <div>
       <WorkshopContext.Provider
@@ -249,7 +259,8 @@ const WorkshopContextProvider = (props) => {
           dateFilter,
           deleteWorkshop,
           confirmedAll,
-          handleConfirmedAll
+          handleConfirmedAll,
+          handleStatus
         }}
       >
         {props.children}

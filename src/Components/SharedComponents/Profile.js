@@ -1,7 +1,5 @@
 import React, {  useState, useEffect } from 'react';
-import ChangePhoto from './ProfileSubcomponents/ChangePhoto';
 import './Profile.scss';
-import EditMyWorkshops from './ProfileSubcomponents/EditMyWorkshops';
 import UserSettings from './ProfileSubcomponents/UserSettings';
 import ContactSettings from './ProfileSubcomponents/ContactSettings';
 import ChangePasswordForm from './ProfileSubcomponents/ChangePasswordForm';

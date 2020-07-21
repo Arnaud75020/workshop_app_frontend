@@ -149,7 +149,10 @@ const ForgotPassword = () => {
             <button type="submit">submit</button>
             </form>}
             {active ==="success" &&
-            <p>Password successfully changed! <Link to='/login'>login</Link></p>
+            <div className="password-recovered">
+              <p>Password successfully changed!</p>
+              <button><Link to='/login'>Go to login</Link></button>
+            </div>
             }
               {active !=="success" &&
               <p>

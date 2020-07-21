@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
-import { WorkshopContext } from '../../../Context/WorkshopContext';
+import React from "react";
 import MyWorkshopDetails from './MyWorkshopDetails'
 
 
-const MyWorkshopList = ({workshops, reachedLimit}) => {
+const MyWorkshopList = ({workshops, reachedLimit, userWorkshopsLeft}) => {
 
 
     return(
@@ -11,10 +10,9 @@ const MyWorkshopList = ({workshops, reachedLimit}) => {
             {workshops.length > 0 &&
             workshops.map(workshop => {
                 return <MyWorkshopDetails workshop={workshop}
-                key={workshop.id} reachedLimit={reachedLimit}/>
+                key={workshop.id} reachedLimit={reachedLimit} userWorkshopsLeft={userWorkshopsLeft}/>
             })}
         </div>
-        //workshop.length && <h1>{user.id}</h1>
     )
 }
 

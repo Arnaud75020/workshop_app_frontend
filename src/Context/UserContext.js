@@ -14,31 +14,24 @@ const UserContextProvider = (props) => {
   const [speakers, setSpeakers] = useState([]);
   const [searchValue, setsearchValue] = useState('');
   const [user, setUser] = useState([]);
+  const [userWorkshopsLeft, setUserWorkshopsLeft] = useState(null);
 
 
   const [auth, setAuth] = useState(false);
 
-  useEffect(() => {
-  console.log(auth)
-  }, [auth])
 
   useEffect(() => {
     axios
       .get('/auth/verify-token')
-      .then(async (response) => {
-        console.log('RESPONSE DATA', response.data);
+      .then((response) => {
         setAuth(true);
         setUser(response.data);
       })
-      .then(() => {
-        console.log('UNIQUE NAME ', user);
-      })
       .catch(() => setAuth(false));
-    /////???/////
+
     getAllAttendees();
     getAllSpeakers();
     getAllUsers();
-    /////???/////
   }, []);
 
   const getAllSpeakers = () => {
@@ -47,7 +40,6 @@ const UserContextProvider = (props) => {
       .then((response) => response.data)
       .then((speakersList) => {
         setSpeakers(speakersList);
-        console.log('speakers', speakersList);
       });
   };
 
@@ -57,7 +49,6 @@ const UserContextProvider = (props) => {
       .then((response) => response.data)
       .then((attendeesList) => {
         setAllattendees(attendeesList);
-        console.log('attendees', attendeesList);
       });
   };
 
@@ -117,26 +108,36 @@ const UserContextProvider = (props) => {
 
   const deleteUser = (id, role) => {
     if (role == 'speaker') {
-      console.log('deleteUser', id, role);
-      axios.delete(`/workshops/all-speaker-workshops/${id}`).then(() => {
-        axios.delete(`/workshops/speaker/${id}`).then(() => {
-          axios.delete(`/users/${id}`).then(() => {
+      axios
+        .delete(`/workshops/all-speaker-workshops/${id}`)
+        .then(() => {
+        axios
+          .delete(`/workshops/speaker/${id}`)
+          .then(() => {
+          axios
+            .delete(`/users/${id}`)
+            .then(() => {
             getAllUsers();
           });
         });
       });
     }
     if (role == 'attendee') {
-      axios.delete(`/workshops/all-user-workshops/${id}`).then(() => {
-        axios.delete(`/users/${id}`).then(() => {
+      axios
+        .delete(`/workshops/all-user-workshops/${id}`)
+        .then(() => {
+        axios
+          .delete(`/users/${id}`)
+          .then(() => {
           getAllUsers();
         });
       });
     }
-    axios.delete(`/users/${id}`)
-    .then(() => {
-      getAllUsers();
-    })
+    axios
+      .delete(`/users/${id}`)
+      .then(() => {
+        getAllUsers();
+      })
 
   };
 
@@ -155,6 +156,15 @@ const UserContextProvider = (props) => {
           }
           )
   };
+
+  const getUserMaxWorkshops = (id) => {
+    axios
+      .get(`/users/get-max-workshops/${id}`)
+      .then(response => response.data[0])
+      .then((info) => {
+        setUserWorkshopsLeft(info.max_workshops)
+      })
+  }
 
   return (
     <div>
@@ -176,7 +186,9 @@ const UserContextProvider = (props) => {
           logout,
           auth,
           setAuth,
-          confirmUpdatedUser
+          confirmUpdatedUser,
+          getUserMaxWorkshops,
+          userWorkshopsLeft
         }}>
         {props.children}
       </UserContext.Provider>
