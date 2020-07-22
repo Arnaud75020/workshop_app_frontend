@@ -36,6 +36,7 @@ const NotificationContextProvider = (props) => {
       .then(() => {
         getNotifications();
       })
+
   };
 
   const editNotification = (newObject) => {

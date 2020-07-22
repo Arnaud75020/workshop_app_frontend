@@ -46,6 +46,7 @@ const WorkshopContextProvider = (props) => {
       setAttendees(speakerId);
       setAllAttendees(speakerId);
     } else {
+
       axios
         .get(`/workshops/${speakerId}/attendees`)
         .then((response) => response.data)
@@ -80,6 +81,7 @@ const WorkshopContextProvider = (props) => {
       .then(() => {
         getWorkshops();
       })
+
   };
 
   const deleteUserWorkshop = (workshopId, userId) => {
@@ -93,7 +95,7 @@ const WorkshopContextProvider = (props) => {
       })
       .then(() => {
         getWorkshops();
-      })
+      });
   };
 
   const getMonth = () => {
@@ -111,7 +113,6 @@ const WorkshopContextProvider = (props) => {
 
   const confirmEditedWorkshop = (newWorkshop) => {
     const newWorkshopId = newWorkshop.id;
-
     axios
       .put(`/workshops/${newWorkshopId}`, newWorkshop)
       .then(() => {
