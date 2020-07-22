@@ -27,7 +27,7 @@ $darkgrey: #8f8f8f;
   margin: 0;
   padding-left: 10px;
   border-radius: 5px 5px 0 0;
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 450;
   font-size: 16px;
   color: $blue;
@@ -53,7 +53,7 @@ $darkgrey: #8f8f8f;
 @mixin edit-profile-label {
   padding: 0;
   height: 40px;
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: $darkgrey;
@@ -84,7 +84,7 @@ $darkgrey: #8f8f8f;
 
 @mixin page-title {
   margin: 0;
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 450;
   font-size: 25px;
   color: $darkgrey;
@@ -94,7 +94,7 @@ $darkgrey: #8f8f8f;
 /****** tables ******/
 
 @mixin table {
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   border-collapse: collapse;
   margin: auto;
   width: 97%;
@@ -111,7 +111,7 @@ $darkgrey: #8f8f8f;
   position: relative;
 
   p {
-    font-family: roboto, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 450;
     color: $darkgrey;
   }
@@ -163,7 +163,7 @@ $darkgrey: #8f8f8f;
   border-bottom: 1px solid $darkgrey;
   padding: 10px;
   font-size: 14px;
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 450;
   text-decoration: none;
   outline: none;
@@ -204,7 +204,7 @@ $darkgrey: #8f8f8f;
   padding: 0 15px 0 15px;
   border-bottom: 1px solid $darkgrey;
   border-radius: 5px 5px 0 0;
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 450;
   font-size: 16px;
   color: $blue;

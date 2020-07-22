@@ -30,7 +30,7 @@
     margin-top: 20px;
     box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
     color: $darkgrey;
-    font-family: roboto, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 450;
     justify-self: flex-end;
     @include media('<=phone') {

@@ -53,7 +53,7 @@
 
   h1 {
     color: $darkgrey;
-    font-family: roboto, Helvetica, sans-serif; //change
+    font-family: 'Roboto', sans-serif;
     margin-bottom: 30px;
   }
 
@@ -210,7 +210,7 @@
 
   p {
     color: $blue;
-    font-family: roboto, Helvetica, sans-serif; //change
+    font-family: 'Roboto', sans-serif;
     margin: 0 0 5px 0;
     cursor: pointer;
     @include media('<=tablet') {

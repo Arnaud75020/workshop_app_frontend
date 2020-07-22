@@ -51,7 +51,7 @@
     margin-top: 20px;
     box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
     color: $darkgrey;
-    font-family: roboto, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 450;
     justify-self: flex-end;
     @include media('<=phone') {
@@ -67,7 +67,7 @@
     margin-top: 20px;
     box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
     color: red;
-    font-family: roboto, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 450;
     justify-self: flex-end;
     @include media('<=phone') {
@@ -98,7 +98,7 @@
   margin: 0;
   padding-left: 10px;
   border-radius: 5px 5px 0 0;
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 450;
   font-size: 16px;
   color: $blue;
@@ -158,7 +158,7 @@
 }
 
 .myWorkshop-details-title {
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: $darkgrey;
@@ -167,7 +167,7 @@
 }
 
 .myWorkshop-details-title-enroled {
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: white;
@@ -176,7 +176,7 @@
 }
 
 .myWorkshop-details-speaker {
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 18px;
   color: $darkgrey;
@@ -185,7 +185,7 @@
 }
 
 .myWorkshop-details-speaker-enroled {
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 18px;
   color: white;
@@ -194,7 +194,7 @@
 }
 
 .myWorkshop-details-description {
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: $darkgrey;
@@ -203,7 +203,7 @@
 }
 
 .myWorkshop-details-description-enroled {
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: white;
@@ -249,14 +249,14 @@
     align-items: baseline;
 
     .myWorkshops-room-capacity-title {
-      font-family: roboto, Helvetica, sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-weight: 400;
       font-size: 18px;
       color: $darkgrey;
     }
 
     .myWorkshops-room-capacity-percentage {
-      font-family: roboto, Helvetica, sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-weight: 400;
       font-size: 16px;
       color: $darkgrey;
@@ -280,14 +280,14 @@
 .status-open {
   margin: 10px 0;
   font-size: 18px;
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #65bb8d;
 }
 
 .status-closed {
   margin: 10px 0;
   font-size: 18px;
-  font-family: roboto, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: red;
 }
 
