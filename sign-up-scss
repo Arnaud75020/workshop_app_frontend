@@ -243,10 +243,16 @@ hr {
 
 .gdpr {
   display: flex;
+  flex-direction: column;
   align-items: center;
   @include media("<=tablet") {
     align-items: flex-start;
   }
+
+  .gdpr-input{
+    display: flex;
+  }
+
   .checkbox,
   p,
   a {
