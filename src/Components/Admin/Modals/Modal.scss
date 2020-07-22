@@ -2,31 +2,30 @@
 
 //$modal-height:(100% - 80px);
 
-.modal{
-    width: fit-content;
-    height: fit-content;
-    padding: 30px;
-    background-color: white;
-    border-radius: 5px;
+.modal {
+  width: fit-content;
+  height: fit-content;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-family: roboto, Helvetica, sans-serif;
+    font-weight: 400;
+    color: $darkgrey;
+  }
+
+  .modal-btns-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    p{
-        font-family: roboto;
-        font-weight: 400;
-        color: $darkgrey;
-    }
 
-    .modal-btns-wrapper{
-        display: flex;
-        
-        .close-modal{
-            @include button(30px, $blue);
-        }
-        .confirm-modal{
-            @include button(30px, $blue);
-
-        }
+    .close-modal {
+      @include button(30px, $blue);
     }
+    .confirm-modal {
+      @include button(30px, $blue);
+    }
+  }
 }

@@ -1,9 +1,9 @@
 @import '../../styles/variables.scss';
 @import '../../styles/breakpoints.scss';
 
-.nav-burguer-menu{
+.nav-burguer-menu {
   display: none;
-  @include media('<=desktop'){
+  @include media('<=desktop') {
     display: flex;
     position: fixed;
     width: 100%;
@@ -16,16 +16,16 @@
     color: $blue;
     cursor: pointer;
     z-index: 10;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
-  @include media('<=tablet'){
+  @include media('<=tablet') {
     padding-left: 5%;
   }
 }
 
-.nav-close-menu{
+.nav-close-menu {
   display: none;
-  @include media('<=desktop'){
+  @include media('<=desktop') {
     display: flex;
     position: fixed;
     top: 20px;
@@ -34,9 +34,9 @@
     color: white;
     cursor: pointer;
     z-index: 60;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
-  @include media('<=phone'){
+  @include media('<=phone') {
     left: 55%;
   }
 }
@@ -89,17 +89,17 @@ label {
   background-color: $blue;
   overflow-x: hidden;
   border-bottom: 1px solid #e6e6e6;
-  @include media('<=desktop'){
+  @include media('<=desktop') {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     z-index: 20;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 }
 
-.nav-expanded{
+.nav-expanded {
   position: absolute;
   top: 0;
   left: 0;
@@ -108,12 +108,12 @@ label {
   background-color: $blue;
   overflow-x: hidden;
   border-bottom: 1px solid #e6e6e6;
-  transition: all .3s ease-in-out;
-  @include media('<=desktop'){
+  transition: all 0.3s ease-in-out;
+  @include media('<=desktop') {
     width: 50%;
     z-index: 20;
   }
-  @include media('<=phone'){
+  @include media('<=phone') {
     width: 70%;
     z-index: 20;
   }
@@ -130,15 +130,15 @@ label {
   color: #e6e6e6;
   width: 100%;
   font-weight: 400;
-  font-family: roboto;
+  font-family: roboto, Helvetica, sans-serif;
 }
 
-.item{
+.item {
   padding: 0;
   width: 100%;
   border-bottom: 1px solid white;
 
-  a{
+  a {
     width: 100%;
     line-height: 50px;
     margin: 0;
@@ -146,10 +146,10 @@ label {
     text-decoration: none;
     color: #e6e6e6;
     font-weight: 400;
-    font-family: roboto;
+    font-family: roboto, Helvetica, sans-serif;
   }
 
-  p{
+  p {
     width: 100%;
     line-height: 50px;
     margin: 0;
@@ -157,7 +157,7 @@ label {
     text-decoration: none;
     color: #e6e6e6;
     font-weight: 400;
-    font-family: roboto;
+    font-family: roboto, Helvetica, sans-serif;
     cursor: pointer;
   }
 }
@@ -176,13 +176,13 @@ label {
   font-weight: 100;
 }
 
-.multi-level{
+.multi-level {
   position: relative;
   height: 100%;
   width: 100%;
 }
 
-.productized-logo{
+.productized-logo {
   padding-top: 200px;
   margin: 0 auto;
   width: 80%;
