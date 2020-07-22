@@ -3,10 +3,8 @@ import WorkshopList from "./AllWorkshopsSubComponents/WorkshopList";
 import Filters from "../SharedComponents/Filters";
 import { WorkshopContext } from "../../Context/WorkshopContext";
 import { Link } from "react-router-dom";
-import SearchBar from "../SharedComponents/SearchBar";
 import "./AllWorkshops.scss";
 import ModalForm from "./Modals/ModalForm";
-import { UserContext } from "../../Context/UserContext";
 
 const AllWorkshops = (props) => {
   const {
@@ -18,14 +16,9 @@ const AllWorkshops = (props) => {
     searchWorkshopValue,
     deleteWorkshop,
     attendees,
-    getWorkshop,
     getAttendees,
     confirmedAll
   } = useContext(WorkshopContext);
-
-  const {user} = useContext(UserContext)
-
-  console.log("USER USER USER", user)
 
   const [displayModal, setDisplayModal] = useState(false);
   const [workshopInEdit, setWorkshopInEdit] = useState([]);
@@ -60,7 +53,6 @@ const AllWorkshops = (props) => {
     );
     setWorkshopInEdit(editingWorkshop[0]);
   };
-  console.log("months", months);
 
   return (
     <div>

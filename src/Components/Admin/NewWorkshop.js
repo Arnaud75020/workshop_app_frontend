@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import WorkshopForm from "./NewWorkshopSubComponents/WorkshopForm";
 import { WorkshopContext } from "../../Context/WorkshopContext";
-import { UserContext } from "../../Context/UserContext";
 import TempWorkshopInfo from "./NewWorkshopSubComponents/TempWorkshopInfo";
 import { Link } from "react-router-dom";
 import "./NewWorkshop.scss";
@@ -30,9 +29,6 @@ const NewWorkshop = () => {
       setTimeout(() => setIsModalDisplayed(false), 1500);
     }
   };
-
-  const { speakers } = useContext(UserContext);
-  console.log("speakers", speakers);
 
   const handleConfirmAllWorkshops = () => {
     const workshopList = tempWorkshops.map((tempWorkshop) => {
@@ -92,7 +88,6 @@ const NewWorkshop = () => {
         );
       })}
       <WorkshopForm />
-      {/*<NewRoomForm />*/}
     </div>
   );
 };

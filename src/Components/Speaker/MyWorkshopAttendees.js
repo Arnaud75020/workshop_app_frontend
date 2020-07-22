@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AttendeesList from '../Admin/WorkshopAttendeesSubComponents/AttendeesList';
 import WorkshopInfo from '../Admin/WorkshopAttendeesSubComponents/WorkshopInfo';
 import { WorkshopContext } from '../../Context/WorkshopContext';
@@ -14,18 +14,14 @@ const MyWorkshopAttendees = () => {
   useEffect(() => {
     getAttendees(user.id);
     getWorkshop(user.id);
-    console.log('MWA_ATTENDEES', attendees);
   }, []);
 
   useEffect(() => {
     if (user !== []) {
       getAttendees(user.id);
       getWorkshop(user.id);
-      console.log('MWA_ATTENDEES 2', attendees);
     }
   }, [user]);
-
-  console.log('USER ID', user);
 
   return (
       workshop === undefined ? (

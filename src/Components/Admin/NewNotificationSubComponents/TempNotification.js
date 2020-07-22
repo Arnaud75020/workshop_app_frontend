@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { NotificationContext } from "../../../Context/NotificationContext";
-import Modal from "../Modals/Modal";
 import { WorkshopContext } from "../../../Context/WorkshopContext";
 import { UserContext } from "../../../Context/UserContext";
 import { MdDelete, MdEdit } from "react-icons/md";
@@ -34,13 +33,6 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
       return attendee.email
     }).join()
 
-    let workshopTitle = "";
-
-    if(data.workshop){
-        const workshop = data.workshop.split(",")
-        workshopTitle = workshop[0]
-    }
-
     const now = new Date();
     let nowMonth = now.getMonth() + 1
     let nowDay = now.getDay()
@@ -52,8 +44,6 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
     if(nowDay.length === 1){
       nowDay = `0${nowDay}`
     }
-
-    console.log("nowDay", nowDay, "nowMonth", nowMonth )
 
 
     const now_formated = `${now.getFullYear()}-${nowMonth}-${nowDay}T${now.getHours()}:${now.getMinutes()}`;
@@ -101,8 +91,6 @@ const TempNotification = ({ tempNotification, toggleDisplayModal }) => {
     toggleDisplayModal("message", "Notification successfully added!");
     deleteTempNotification(tempNotification.id);
   };
-
-  console.log("tempNotification", tempNotification)
 
   const handleDelete = () => {
     toggleDisplayModal("confirm","Are you sure you want to delete this notification?", tempNotification.id)
@@ -159,8 +147,6 @@ const onChangeSelect = (event) => {
   const date = new Date(year, month - 1, day); // 2009-11-10
   const notification_month = date.toLocaleString("default", { month: "long" });
   const notification_hour = tempNotification.date.substring(11,16)
-
-  console.log(tempNotification.date)
 
 
   return (

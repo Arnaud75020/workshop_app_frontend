@@ -28,9 +28,6 @@ const ChangePasswordForm = ({ handleChangePassword }) => {
             .catch((error) => {
                  if (error.response) {
                     setPasswordErr(true)
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
                 } else if (error.request) {
                     console.log(error.request);
                 } else {
@@ -48,8 +45,6 @@ const ChangePasswordForm = ({ handleChangePassword }) => {
                 setActive("success")
                 setTimeout(() => handleChangePassword(), 1500)
                 setTimeout(() => setActive("current"), 2000)
-                
-              
         } else{
             setPasswordsDontMatch(true)
         }
@@ -114,8 +109,7 @@ const ChangePasswordForm = ({ handleChangePassword }) => {
                 <p>password changed</p>
             </div>
             }
-        </div>
-         
+        </div>        
     )
 }
 

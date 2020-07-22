@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 const WorkshopDetail = ( { workshop } ) => {
 
     useEffect(() => {
-    console.log("detail", workshop)
     }, [])
 
     const workshopDate = workshop.date.substring(0, 10);

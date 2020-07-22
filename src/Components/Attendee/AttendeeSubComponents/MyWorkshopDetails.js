@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { WorkshopContext } from '../../../Context/WorkshopContext';
 import { UserContext } from '../../../Context/UserContext';
 
-const MyWorkshopDetails = ({ workshop, reachedLimit , userWorkshopsLeft}) => {
+const MyWorkshopDetails = ({ workshop, reachedLimit }) => {
 
   const { user } = useContext(UserContext);
   const {
@@ -74,7 +74,6 @@ const MyWorkshopDetails = ({ workshop, reachedLimit , userWorkshopsLeft}) => {
       ? workshop.date.substring(9, 10)
       : workshop.date.substring(8, 10);
 
-      console.log("STATUS",workshop.id, workshop.status_open)
 
   return (
     <div className='myWorkshop-details'>

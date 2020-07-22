@@ -15,7 +15,6 @@ const WorkshopContextProvider = (props) => {
   const [attendees, setAttendees] = useState([]);
   const [allAttendees, setAllAttendees] = useState([]);
   const [dateFilter, setdDateFilter] = useState("All workshops");
-  const [myAttendeesList, setMyAttendeesList] = useState([]);
   const [confirmedAll, setConfirmedAll] = useState(false)
 
   useEffect(() => {
@@ -112,9 +111,7 @@ const WorkshopContextProvider = (props) => {
 
   const confirmEditedWorkshop = (newWorkshop) => {
     const newWorkshopId = newWorkshop.id;
-    //axios
-    //.put(`/workshops/workshop-user-workshops/${newWorkshopId}`, newWorkshop)
-    //.then(() => {
+
     axios
       .put(`/workshops/${newWorkshopId}`, newWorkshop)
       .then(() => {

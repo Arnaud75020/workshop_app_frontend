@@ -5,14 +5,12 @@ import { Link } from 'react-router-dom';
 import './AllNotifications.scss'
 import { NotificationContext } from '../../Context/NotificationContext';
 import ModalForm from './Modals/ModalForm';
-import { UserContext } from '../../Context/UserContext';
 
 
 const AllNotifications = () => {
 
     const { notifications, handleFilterState, stateFilter, handleNotificationSearch, searchNotificationValue, deleteNotification, confirmedAll } = useContext(NotificationContext)
 
-    const {user} = useContext(UserContext)
 
     useEffect(() => {
         if(confirmedAll){

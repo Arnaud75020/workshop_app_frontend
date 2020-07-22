@@ -2,12 +2,11 @@ import React, { useContext, useState } from "react";
 import { WorkshopContext } from "../../../Context/WorkshopContext";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../../Context/UserContext";
-import Modal from "../Modals/Modal";
 import { MdDelete, MdEdit } from "react-icons/md";
 
 
 const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
-  const { confirmWorkshop, editTempWorkshop, deleteTempWorkshop, allWorkshops, tempWorkshops } = useContext(
+  const { confirmWorkshop, editTempWorkshop, deleteTempWorkshop, allWorkshops } = useContext(
     WorkshopContext
   );
 
@@ -85,8 +84,6 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
   const workshop_month = date.toLocaleString("default", { month: "long" });
 
   const date_errors = errors.date || errors.starting_hour || errors.ending_hour;
-
-  console.log(tempWorkshop.date)
 
   return (
     <div>

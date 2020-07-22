@@ -1,9 +1,6 @@
-import React, { useContext } from "react";
-import { MdDelete } from "react-icons/md";
-import { NotificationContext } from "../../../Context/NotificationContext";
+import React from "react";
 
 const NotificationInfo = ({ toggleDisplayModal, notification }) => {
-  const { deleteNotification } = useContext(NotificationContext);
 
   return (
     <div className="temp-notification-info">

@@ -9,21 +9,13 @@ const WorkshopForm = () => {
   const { speakers } = useContext(UserContext);
   const { register, handleSubmit, reset, errors } = useForm();
 
-  console.log("speakers", speakers)
-
   const workshopSpeakers = [...allWorkshops.map( workshop => workshop.speaker_id), ...tempWorkshops.map( workshop => workshop.speaker_id)]
 
   const speakersLeft = speakers.filter( speaker => !workshopSpeakers.includes(speaker.id))
 
-
-  console.log("speakersLeft", speakersLeft)
-
   const onSubmit = (data) => {
-    console.log(data);
 
     const speakerInfo = data.speaker.split(",");
-
-    const speaker_name = speakerInfo[0];
 
     const speaker_id = Number(speakerInfo[1]);
 

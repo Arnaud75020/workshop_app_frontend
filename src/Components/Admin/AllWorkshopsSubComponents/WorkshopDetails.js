@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import WorkshopView from "../Documents/WorkshopView";
-import ReactDOM from "react-dom";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FaListUl } from "react-icons/fa";
 
@@ -8,8 +6,6 @@ const WorkshopDetails = ({ workshop, toggleDisplayModal, deleteWorkshop }) => {
   const workshopDate = workshop.date.substring(0, 10);
   const starting_at = workshop.starting_hour.substring(0, 5);
   const ending_at = workshop.ending_hour.substring(0, 5);
-
-  console.log("workshop", workshop);
 
   const handleDelete = () => {
     toggleDisplayModal(
@@ -54,7 +50,5 @@ const WorkshopDetails = ({ workshop, toggleDisplayModal, deleteWorkshop }) => {
     </tr>
   );
 };
-
-//ReactDOM.render(<WorkshopView />, document.getElementById("root"));
 
 export default WorkshopDetails;

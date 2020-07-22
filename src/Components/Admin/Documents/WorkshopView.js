@@ -1,13 +1,11 @@
 import React from "react";
 import {
-  pdf,
   Page,
   Text,
   View,
   Document,
   StyleSheet,
 } from "@react-pdf/renderer";
-import AttendeeDetails from "../WorkshopAttendeesSubComponents/AttendeeDetails";
 
 // Create styles
 const styles = StyleSheet.create({

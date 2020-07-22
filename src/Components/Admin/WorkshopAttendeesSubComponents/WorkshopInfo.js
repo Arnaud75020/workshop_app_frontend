@@ -2,21 +2,14 @@ import React, { useContext, useState, useEffect } from 'react';
 import { IoIosCopy} from 'react-icons/io';
 import { UserContext } from '../../../Context/UserContext';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import ReactPDF, {
-  PDFViewer,
-  PDFDownloadLink,
-  BlobProvider,
-  pdf,
-} from '@react-pdf/renderer';
-import ReactDOM from 'react-dom';
+import  {PDFDownloadLink} from '@react-pdf/renderer';
 import WorkshopView from '../Documents/WorkshopView';
 import { FaListUl } from 'react-icons/fa';
-import { CSVLink, CSVDownload } from 'react-csv';
+import { CSVLink} from 'react-csv';
 
 const WorkshopInfo = ({
   workshop,
   toggleDisplayModal,
-  selectModal,
   attendees,
 }) => {
   const { user } = useContext(UserContext);
@@ -164,5 +157,5 @@ const WorkshopInfo = ({
     )
   );
 };
-//ReactDOM.render(<WorkshopView />, document.getElementById("root"));
+
 export default WorkshopInfo;

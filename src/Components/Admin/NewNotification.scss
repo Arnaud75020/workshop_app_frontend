@@ -96,6 +96,9 @@
 
     .defined-to{
         margin-top: 20px;
+        @include media('<=tablet'){
+             width: 90%;         
+        }
     }
 
     input{

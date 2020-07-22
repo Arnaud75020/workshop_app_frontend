@@ -81,21 +81,27 @@
         justify-content: center;
       }
 
-      input {
-        height: 40px;
-        outline: none;
-        padding: 5px;
-        border: 2px solid $grey;
-        border-radius: 5px;
-        color: $darkgrey;
+      .input-error{
         width: 48%;
-        border-radius: 20px;
-        box-sizing: border-box;
-        @include media("<=tablet") {
-          flex-wrap: wrap;
-          justify-content: center;
-          width: 90%;
-          margin: 10px;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          height: 40px;
+          outline: none;
+          padding: 5px;
+          border: 2px solid $grey;
+          border-radius: 5px;
+          color: $darkgrey;
+          width: 100%;
+          border-radius: 20px;
+          box-sizing: border-box;
+          @include media("<=tablet") {
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
+            margin: 10px;
+          }
         }
       }
     }
@@ -106,6 +112,30 @@
       @include media("<=tablet") {
         flex-direction: column;
         justify-content: center;
+      }
+
+      .input-error{
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          height: 40px;
+          outline: none;
+          padding: 5px;
+          border: 2px solid $grey;
+          border-radius: 5px;
+          color: $darkgrey;
+          width: 100%;
+          border-radius: 20px;
+          box-sizing: border-box;
+          @include media("<=tablet") {
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
+            margin: 10px;
+          }
+        }
       }
 
       input {
@@ -135,21 +165,27 @@
         justify-content: center;
       }
 
-      input {
-        height: 40px;
-        outline: none;
-        padding: 5px;
-        border: 2px solid $grey;
-        border-radius: 5px;
-        color: $darkgrey;
+      .input-error{
         width: 48%;
-        border-radius: 20px;
-        box-sizing: border-box;
-        @include media("<=tablet") {
-          flex-wrap: wrap;
-          justify-content: center;
-          width: 90%;
-          margin: 10px;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          height: 40px;
+          outline: none;
+          padding: 5px;
+          border: 2px solid $grey;
+          border-radius: 5px;
+          color: $darkgrey;
+          width: 100%;
+          border-radius: 20px;
+          box-sizing: border-box;
+          @include media("<=tablet") {
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
+            margin: 10px;
+          }
         }
       }
     }
@@ -207,13 +243,19 @@ hr {
 
 .gdpr {
   display: flex;
+  flex-direction: column;
   align-items: center;
   @include media("<=tablet") {
-    flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
   }
+
+  .gdpr-input{
+    display: flex;
+  }
+
+  .checkbox,
   p,
   a {
-    margin-left: 5px;
+    margin: 0 0 0 5px;
   }
 }

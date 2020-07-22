@@ -36,17 +36,6 @@ const WorkshopFormEdit = ({workshopInEdit, toggleDisplayModal, active, content})
         toggleDisplayModal("message", "workshop successfully updated");
         };
 
-        console.log("speakers", speakers)
-        console.log("workshopInEdit", workshopInEdit)
-
-        //const currentSpeaker = speakers.filter(speaker => `${speaker.firstname} ${speaker.lastname}` === //workshopInEdit.workshop_speaker)
-//
-        //const currentSpeakerId = currentSpeaker[0].id;
-//
-        //const currentWorkshopSpeaker = `${currentSpeaker[0].firstname} ${currentSpeaker[0].lastname}`
-//
-       // console.log('speakerId', currentSpeakerId)
-
         const formatingDate = new Date(workshopInEdit.date);
 
         const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(formatingDate)

@@ -1,16 +1,10 @@
-import React, { useContext }from 'react';
+import React from 'react';
 import { MdDelete, MdInfo } from 'react-icons/md';
-import { NotificationContext } from '../../../Context/NotificationContext';
 
-
-const NotificationDetails = ({notification, handleSelectedNotification, toggleDisplayModal}) => {
-
-    console.log(notification)
+const NotificationDetails = ({notification, toggleDisplayModal}) => {
 
     const notificationDate = notification.date.substring(0, 10);
     const notificationHour = notification.date.substring(11, 16);
-
-    const { deleteNotification } = useContext(NotificationContext)
 
     const handleInfo = () => {
         toggleDisplayModal("notificationInfo", "","", notification)
