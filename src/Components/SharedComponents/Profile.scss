@@ -1,168 +1,166 @@
-@import "../../styles/variables.scss";
-@import "../../styles//breakpoints.scss";
+@import '../../styles/variables.scss';
+@import '../../styles//breakpoints.scss';
 
 /***** PAGE TITLE *****/
 
-.profile-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin: 10px 2.5% 10px 2.5%;
-    @include media('<=phone'){
-        margin: 40px 5% 10px 5%;
-    }
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 10px 2.5% 10px 2.5%;
+  @include media('<=phone') {
+    margin: 40px 5% 10px 5%;
+  }
 
-    .saved{
-        color:#65BB8D;
-    }
+  .saved {
+    color: #65bb8d;
+  }
 
-    h1{
-        @include page-title;
-        margin-left: 0;
-        @include media('<=phone'){
-            font-size: 24px;
-          }
+  h1 {
+    @include page-title;
+    margin-left: 0;
+    @include media('<=phone') {
+      font-size: 24px;
     }
+  }
 
-    p{
-        background-color: $grey;
-        padding: 10px;
-        margin-top: 20px;
-        box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
-        color: $darkgrey;
-        font-family: roboto;
-        font-weight: 450;
-        justify-self: flex-end;
-        @include media('<=phone'){
-            position: absolute;
-            bottom: 30px;
-            right: 15px;
-        }
+  p {
+    background-color: $grey;
+    padding: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
+    color: $darkgrey;
+    font-family: roboto, Helvetica, sans-serif;
+    font-weight: 450;
+    justify-self: flex-end;
+    @include media('<=phone') {
+      position: absolute;
+      bottom: 30px;
+      right: 15px;
     }
+  }
 }
 
 /***** BODY LAYOUT *****/
 
-.profile-body{
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    margin: 10px auto;
-    @include media('<=tablet'){
-        width: 90%;
-    }
+.profile-body {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 10px auto;
+  @include media('<=tablet') {
+    width: 90%;
+  }
 }
 
 /***** USER SETTINGS *****/
 
-.user-settings{
-    @include edit-profile-box(97%);
-    margin-bottom: 20px;
+.user-settings {
+  @include edit-profile-box(97%);
+  margin-bottom: 20px;
 
-    button{
-        @include button(30px, $blue);
-    }
+  button {
+    @include button(30px, $blue);
+  }
 }
 
-.user-settings-title{
-    @include edit-profile-title(40px);
+.user-settings-title {
+  @include edit-profile-title(40px);
 }
 
-.user-settings-form{
-    @include edit-profile-form;
+.user-settings-form {
+  @include edit-profile-form;
 
-    label{
-        @include edit-profile-label;
-    }
+  label {
+    @include edit-profile-label;
+  }
 
-    input{
-        @include edit-profile-input;
-        margin-left: 0;
-    }
+  input {
+    @include edit-profile-input;
+    margin-left: 0;
+  }
 }
 
-.password-form{
-    @include edit-profile-form;
+.password-form {
+  @include edit-profile-form;
 
-    label{
-        @include edit-profile-label;
-    }
+  label {
+    @include edit-profile-label;
+  }
 
-    input{
-        @include edit-profile-input
-    }
+  input {
+    @include edit-profile-input;
+  }
 }
 
 .profile-email,
 .name,
-.password{
-    display: flex;
+.password {
+  display: flex;
 }
 
-.profile-email{
-    width: 50%;
+.profile-email {
+  width: 50%;
 
-    .label-input{
-        width: 100%;
-    }
+  .label-input {
+    width: 100%;
+  }
 }
 
-.change-password-btn{
-    width: fit-content;
-    margin: 0 0 10px 10px;
+.change-password-btn {
+  width: fit-content;
+  margin: 0 0 10px 10px;
 }
 
 /***** CONTACT SETTINGS *****/
 
-.contact-settings{
-    @include edit-profile-box(97%);
-    margin-bottom: 20px;
+.contact-settings {
+  @include edit-profile-box(97%);
+  margin-bottom: 20px;
 
-    button{
-        @include button(30px, $blue);
-    }
+  button {
+    @include button(30px, $blue);
+  }
 }
 
-.contact-settings-title{
-    @include edit-profile-title(40px);
+.contact-settings-title {
+  @include edit-profile-title(40px);
 }
 
-.contact-settings-form{
-    @include edit-profile-form;
+.contact-settings-form {
+  @include edit-profile-form;
 
-    label{
-        @include edit-profile-label;
-    }
+  label {
+    @include edit-profile-label;
+  }
 
-    input{
-        @include edit-profile-input;
-        margin-left: 0;
+  input {
+    @include edit-profile-input;
+    margin-left: 0;
+  }
 
-    }
-
-    select{
-        @include edit-profile-select(29px, 90%)
-    }
+  select {
+    @include edit-profile-select(29px, 90%);
+  }
 }
 
 .country-company,
-.position{
-    display: flex;
+.position {
+  display: flex;
 }
 
-.position{
-    width: 50%;
+.position {
+  width: 50%;
 
-    .label-input{
-        width: 100%;
-    }
+  .label-input {
+    width: 100%;
+  }
 }
 
 /***** FORM LABLEL/INPUT LAYOUT *****/
 
-.label-input{
-    display: flex;
-    flex-direction: column;
-    width: 90%;
+.label-input {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
 }
-

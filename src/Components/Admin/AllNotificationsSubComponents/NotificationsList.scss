@@ -1,59 +1,58 @@
 @import '../../../styles/variables.scss';
 @import '../../../styles/breakpoints.scss';
 
-.notifications-table{
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    margin: auto;
-    width: 97%;
+.notifications-table {
+  font-family: roboto, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin: auto;
+  width: 97%;
 
-    td, th{
-        border-bottom: 1px solid #ddd;
-        padding: 8px;
-        color: $darkgrey;
+  td,
+  th {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    color: $darkgrey;
+  }
+
+  td {
+    background-color: white;
+
+    .notification-info-btn {
+      background: none;
+      color: $darkgrey;
+      font-size: 24px;
+
+      &:hover {
+        color: $blue;
+      }
     }
 
-    td{
-        background-color: white;
+    .delete-notification-btn {
+      background: none;
+      color: $darkgrey;
+      font-size: 24px;
 
-        .notification-info-btn{
-            background: none;
-            color: $darkgrey;
-            font-size: 24px;
-
-            &:hover{
-                color: $blue;
-            }
-        }
-
-        .delete-notification-btn{
-            background: none;
-            color: $darkgrey;
-            font-size: 24px;
-
-            &:hover{
-                color: red;
-            }
-        }
+      &:hover {
+        color: red;
+      }
     }
+  }
 
-    th{
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: white;
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: white;
+  }
+
+  .icons-col {
+    width: 10%;
+  }
+
+  .to-col,
+  .state-col {
+    @include media('<=phone') {
+      display: none;
     }
-
-    .icons-col{
-        width: 10%;
-    }
-    
-    .to-col,
-    .state-col{
-        @include media('<=phone'){
-            display: none;
-         }
-    }
-
-
+  }
 }
