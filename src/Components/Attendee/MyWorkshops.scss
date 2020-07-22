@@ -52,7 +52,7 @@
     box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
     color: $darkgrey;
     font-family: 'Roboto', sans-serif;
-    font-weight: 450;
+    font-weight: 400;
     justify-self: flex-end;
     @include media('<=phone') {
       position: absolute;
@@ -68,7 +68,7 @@
     box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
     color: red;
     font-family: 'Roboto', sans-serif;
-    font-weight: 450;
+    font-weight: 400;
     justify-self: flex-end;
     @include media('<=phone') {
       position: absolute;
@@ -99,7 +99,7 @@
   padding-left: 10px;
   border-radius: 5px 5px 0 0;
   font-family: 'Roboto', sans-serif;
-  font-weight: 450;
+  font-weight: 400;
   font-size: 16px;
   color: $blue;
 

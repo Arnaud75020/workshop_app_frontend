@@ -227,7 +227,7 @@
     color: $darkgrey;
     border-bottom: 1px solid $darkgrey;
     font-family: 'Roboto', sans-serif;
-    font-weight: 450;
+    font-weight: 400;
     text-decoration: none;
 
     button {
@@ -240,7 +240,7 @@
     padding: 10px;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 450;
+    font-weight: 400;
     text-decoration: none;
     &:hover {
       @include dropdown-item-hover;
