@@ -4,7 +4,7 @@ import { UserContext } from '../../../Context/UserContext';
 
 const UserSettings = ({ handleChangePassword, handleIsSaved }) => {
 
-    const {register, handleSubmit, errors, watch} = useForm();
+    const {register, handleSubmit, errors } = useForm();
 
   const { user, confirmUpdatedUser } = useContext(UserContext);
 
@@ -21,7 +21,6 @@ const UserSettings = ({ handleChangePassword, handleIsSaved }) => {
       handleIsSaved()
 
       confirmUpdatedUser(updatedUser);
-  // toggleDisplayModal("message", "workshop successfully updated");
   };
     
     return(

@@ -1,12 +1,10 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 export const UserContext = createContext();
 
 const UserContextProvider = (props) => {
   const [attendees, setAttendees] = useState([]);
-  const [allAttendeesCopy, setAllattendeesCopy] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [allAttendees, setAllattendees] = useState([]);
   const [users, setUsers] = useState([]);
@@ -107,7 +105,7 @@ const UserContextProvider = (props) => {
   };
 
   const deleteUser = (id, role) => {
-    if (role == 'speaker') {
+    if (role === 'speaker') {
       axios
         .delete(`/workshops/all-speaker-workshops/${id}`)
         .then(() => {
@@ -122,7 +120,7 @@ const UserContextProvider = (props) => {
         });
       });
     }
-    if (role == 'attendee') {
+    if (role === 'attendee') {
       axios
         .delete(`/workshops/all-user-workshops/${id}`)
         .then(() => {

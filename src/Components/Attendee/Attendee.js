@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from '../SharedComponents/NavBar';
 import './Attendee.scss'
@@ -7,9 +7,6 @@ import MyWorkshops from "../Attendee/MyWorkshops";
 
 const Attendee = (props) => {
 
-  useEffect(() => {
-    console.log("ATTENDEE")
-  },[])
 
   return (
     <BrowserRouter>

@@ -1,37 +1,37 @@
-@import "../../styles/variables.scss";
-@import "../../styles/breakpoints.scss";
+@import '../../styles/variables.scss';
+@import '../../styles/breakpoints.scss';
 
 .workshop-attendees-header {
-    display: flex;
-    align-items: center;
-    margin: 10px 10px 10px 2.5%;
-    @include media('<=desktop'){
-        margin: 50px 2.5% 10px 2.5%;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    @include media('<=tablet'){
-        margin: 50px 5% 10px 5%;
-    }
-
-    .all-workshops-btn{
-      @include button(40px, $darkgrey);
-      margin-right: 20px;
-      margin-top: 0;
-
-      a{
-          text-decoration: none;
-          color: white;
-      }
+  display: flex;
+  align-items: center;
+  margin: 10px 10px 10px 2.5%;
+  @include media('<=desktop') {
+    margin: 50px 2.5% 10px 2.5%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @include media('<=tablet') {
+    margin: 50px 5% 10px 5%;
   }
 
-    h1{
-      @include page-title;
-      margin-left: 0;
-      @include media('<=phone'){
-          font-size: 24px;
-        }
+  .all-workshops-btn {
+    @include button(40px, $darkgrey);
+    margin-right: 20px;
+    margin-top: 0;
+
+    a {
+      text-decoration: none;
+      color: white;
     }
+  }
+
+  h1 {
+    @include page-title;
+    margin-left: 0;
+    @include media('<=phone') {
+      font-size: 24px;
+    }
+  }
 }
 
 .workshop-attendees-body {
@@ -40,16 +40,16 @@
   background-color: white;
   box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
   border-radius: 5px;
-  @include media('<=tablet'){
+  @include media('<=tablet') {
     width: 90%;
-}
+  }
 
   .search-attendee {
     width: 20%;
-    margin: 10px ;
-    @include media('<=tablet'){
+    margin: 10px;
+    @include media('<=tablet') {
       width: 50%;
-  }
+    }
   }
 }
 
@@ -61,23 +61,22 @@
   margin-bottom: 0;
   border-bottom: 1px solid $darkgrey;
   border-radius: 5px;
-
 }
 
 .workshop-info-header {
   @include workshop-info-card-header;
 
-  .copy-to-clipboard{
+  .copy-to-clipboard {
     display: flex;
     align-items: center;
-    
-    p{
+
+    p {
       margin-right: 10px;
       color: $blue;
     }
 
-    button{
-      &:hover{
+    button {
+      &:hover {
         color: $blue;
       }
     }
@@ -102,14 +101,14 @@
 
 .workshop-info-body {
   @include workshop-info-card-body;
-  @include media('<=phone'){
+  @include media('<=phone') {
     flex-direction: column;
   }
 }
 
 .workshop-info-left {
   @include workshop-info-card-body-half(start);
-  @include media('<=phone'){
+  @include media('<=phone') {
     width: 100%;
     align-items: flex-start;
     border-bottom: 1px solid $darkgrey;
@@ -119,7 +118,7 @@
   h2,
   h4,
   p {
-    font-family: roboto;
+    font-family: roboto, Helvetica, sans-serif;
     color: $darkgrey;
   }
 }
@@ -127,19 +126,19 @@
 .workshop-info-right {
   @include workshop-info-card-body-half(end);
   border: none;
-  @include media('<=phone'){
+  @include media('<=phone') {
     width: 100%;
     align-items: flex-start;
-}
+  }
 
   .room-manager {
     display: flex;
     justify-content: flex-end;
-    @include media('<=tablet'){
+    @include media('<=tablet') {
       flex-direction: column;
       align-items: flex-end;
     }
-    @include media('<=phone'){
+    @include media('<=phone') {
       align-items: flex-start;
     }
 
@@ -149,7 +148,7 @@
   }
 
   p {
-    font-family: roboto;
+    font-family: roboto, Helvetica, sans-serif;
     color: $darkgrey;
 
     span {
@@ -194,10 +193,10 @@
   .position-col,
   .company-col,
   .country-col,
-  .reg-date-col{
-    @include media('<=phone'){
+  .reg-date-col {
+    @include media('<=phone') {
       display: none;
-   }
+    }
   }
 }
 
@@ -227,20 +226,20 @@
     border-radius: 0;
     color: $darkgrey;
     border-bottom: 1px solid $darkgrey;
-    font-family: roboto;
+    font-family: roboto, Helvetica, sans-serif;
     font-weight: 450;
     text-decoration: none;
 
-    button{
+    button {
       padding: 10px;
       border-bottom: none;
     }
   }
 
-  .workshop-csv{
+  .workshop-csv {
     padding: 10px;
     font-size: 14px;
-    font-family: roboto;
+    font-family: roboto, Helvetica, sans-serif;
     font-weight: 450;
     text-decoration: none;
     &:hover {

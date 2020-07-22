@@ -4,7 +4,6 @@ import { NotificationContext } from '../../../Context/NotificationContext';
 import moment from 'moment';
 
 const NewNotificationForm = ({ send_to, attendees, toggleDisplayModal }) => {
-  console.log(send_to);
 
   const [checkboxCheck, setCheckboxCheck] = useState(false);
   const { confirmNotification } = useContext(NotificationContext);
@@ -19,17 +18,12 @@ const NewNotificationForm = ({ send_to, attendees, toggleDisplayModal }) => {
     })
     .join();
 
-  console.log('emailsList', emailsList);
-
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
     const now_formated = moment().add(1, 'minutes').format('YYYY-MM-DDTHH:mm');
 
     const date = data.checkbox ? data.date : now_formated;
-
-    console.log('NOW_FORMATED', now_formated);
-    console.log('DATE', date);
 
     const state = data.checkbox ? 'scheduled' : 'sent';
 

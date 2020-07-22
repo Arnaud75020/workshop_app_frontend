@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from 'react';
+import React, {  useState } from 'react';
 import './Profile.scss';
 import UserSettings from './ProfileSubcomponents/UserSettings';
 import ContactSettings from './ProfileSubcomponents/ContactSettings';
@@ -6,9 +6,6 @@ import ChangePasswordForm from './ProfileSubcomponents/ChangePasswordForm';
 
 const Profile = () => {
 
-  useEffect(()=> {
-    console.log("PROFILE MOUNTED")
-  },[])
 
   const [changePasswordDisplaying, setChangePasswordDisplaying] = useState(
     false
@@ -24,8 +21,6 @@ const Profile = () => {
   const handleChangePassword = () => {
     setChangePasswordDisplaying(!changePasswordDisplaying);
   };
-
-  console.log("isSaved", isSaved)
 
   return (
     <div className='profile'>

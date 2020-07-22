@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../../../Context/UserContext';
-import { MdDelete, MdEdit, MdMessage } from 'react-icons/md';
+import React from 'react';
+import { MdDelete, MdMessage } from 'react-icons/md';
 
 
-const RegistrationDetails = ({user, handleSetUser, toggleDisplayModal}) => {
+const RegistrationDetails = ({user, toggleDisplayModal}) => {
 
 
     const handleNotification = () => {
@@ -16,7 +15,6 @@ const RegistrationDetails = ({user, handleSetUser, toggleDisplayModal}) => {
 
     const name = `${user.firstname} ${user.lastname}`
 
-    console.log(user)
         return (
             <tr>
                 <td className="name-col">

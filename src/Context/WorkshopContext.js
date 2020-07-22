@@ -15,7 +15,6 @@ const WorkshopContextProvider = (props) => {
   const [attendees, setAttendees] = useState([]);
   const [allAttendees, setAllAttendees] = useState([]);
   const [dateFilter, setdDateFilter] = useState("All workshops");
-  const [myAttendeesList, setMyAttendeesList] = useState([]);
   const [confirmedAll, setConfirmedAll] = useState(false)
 
   useEffect(() => {

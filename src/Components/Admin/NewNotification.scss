@@ -1,275 +1,273 @@
 @import '../../styles/variables.scss';
 @import '../../styles/breakpoints.scss';
 
-.new-notifications-header{
-    display: flex;
-    align-items: center;
-    margin: 10px 10px 10px 2.5%;
-    @include media('<=desktop'){
-        margin: 50px 5% 10px 5%;
-    }
-    @include media('<=tablet'){
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    h1{
-        @include page-title;
-        margin-left: 0;
-    }
-
-    .new-notification-btn-wrapper{
-        display: flex;
-
-        .all-notifications-btn{
-            @include button(40px, $darkgrey);
-            margin-right: 20px;
-            margin-top: 0;
-    
-            a{
-                text-decoration: none;
-                color: white;
-            }
-        }
-    
-        .confirm-all-btn{
-            @include button(40px, $blue);
-            margin-top: 0;
-        }
-
-        a{
-            text-decoration: none;
-            color: white;
-        }
-    }
-    
-}
-
-.new-notification-form{
-    background-color: white;
-    border-radius: 5px;
-    width: 95%;
-    margin: 20px auto;
-    display: flex;
+.new-notifications-header {
+  display: flex;
+  align-items: center;
+  margin: 10px 10px 10px 2.5%;
+  @include media('<=desktop') {
+    margin: 50px 5% 10px 5%;
+  }
+  @include media('<=tablet') {
     flex-direction: column;
-    box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
-    @include media('<=tablet'){
-        width: 90%;
+    align-items: flex-start;
+  }
+
+  h1 {
+    @include page-title;
+    margin-left: 0;
+  }
+
+  .new-notification-btn-wrapper {
+    display: flex;
+
+    .all-notifications-btn {
+      @include button(40px, $darkgrey);
+      margin-right: 20px;
+      margin-top: 0;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
     }
+
+    .confirm-all-btn {
+      @include button(40px, $blue);
+      margin-top: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
 }
 
-.new-notification-form-header{
-    width: 100%;
-    height: 50px;
-    background-color: $grey;
+.new-notification-form {
+  background-color: white;
+  border-radius: 5px;
+  width: 95%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
+  @include media('<=tablet') {
+    width: 90%;
+  }
+}
+
+.new-notification-form-header {
+  width: 100%;
+  height: 50px;
+  background-color: $grey;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-left: 10px;
+  border-bottom: 1px solid $darkgrey;
+  border-radius: 5px 5px 0 0;
+  font-family: roboto, Helvetica, sans-serif;
+  font-weight: 450;
+  font-size: 16px;
+  color: $blue;
+
+  input {
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding-left: 10px;
-    border-bottom: 1px solid $darkgrey;
-    border-radius: 5px 5px 0 0;
-    font-family: roboto;
-    font-weight: 450;
-    font-size: 16px;
-    color: $blue;
-
-    input{
-        box-sizing: border-box;
-        width: fit-content;
-        margin: 10px 0;
-        height: 25px;
-        outline: none;
-        padding-left: 5px;
-        border: 2px solid $grey;
-        border-radius: 5px;
-        color: $darkgrey;
-        @include media('<=tablet'){
-            width: 90%;
-        }
-    }
-}  
-
-.new-notification-form-body{
-    display: flex;
-    flex-direction: column;
-
-    .defined-to{
-        margin-top: 20px;
-    }
-
-    input{
-        box-sizing: border-box;
-        width: 70%;
-        margin: 20px auto;
-        height: 25px;
-        outline: none;
-        padding-left: 5px;
-        border: 2px solid $grey;
-        border-radius: 5px;
-        color: $darkgrey;
-        @include media('<=tablet'){
-            width: 90%;
-        }
-        
-    }
-
-    .content{
-        box-sizing: border-box;
-        width: 70%;
-        margin: 20px auto;
-        height: 60px;
-        outline: none;
-        padding-left: 5px;
-        border: 2px solid $grey;
-        border-radius: 5px;
-        color: $darkgrey;
-        @include media('<=tablet'){
-            width: 90%;
-        }
-    }
-
-    select{
-        box-sizing: border-box;
-        align-self: flex-start;
-        width: 70%;
-        height: 25px;
-        margin: 20px auto;
-        outline: none;
-        border: 2px solid $grey;
-        border-radius: 5px;
-        color: $darkgrey;
-        @include media('<=tablet'){
-            width: 90%;
-        }
-    }
-
-    p{
-        box-sizing: border-box;
-        width: 70%;
-        margin: auto;
-        align-self: flex-start;
-        height: fit-content;
-        font-family: roboto;
-        font-weight: 400;
-        color: $blue;
-    }
-    
-    .schedule{
-        display: flex;
-        align-self: flex-start;
-        width: 70%;
-        margin: 20px auto;
-        align-items: center;
-        @include media('<=tablet'){
-            width: 90%;
-        }
-
-        label{
-            width: fit-content;
-            align-self: flex-start;
-            padding-left: 0;
-            font-family: roboto;
-            font-weight: 500;
-            color: $darkgrey;
-        }
-
-        input{
-            width: fit-content;
-            margin: 0 16px 0 0;
-            display: flex;
-        }
-    }
-}
-
-
-.new-notification-form-footer{
-    background-color: $grey;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid $darkgrey ;
-    border-radius: 0 0 5px 5px;
-
-    button{
-        @include button(30px,$blue);
-        margin-top:0;
-    }
-}
-
-
-.temp-notification-info{
-    background-color: white;
+    width: fit-content;
+    margin: 10px 0;
+    height: 25px;
+    outline: none;
+    padding-left: 5px;
+    border: 2px solid $grey;
     border-radius: 5px;
-    width: 95%;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 20px  rgba(53, 53, 53, .2);
-    @include media('<=tablet'){
-        width: 90%;
+    color: $darkgrey;
+    @include media('<=tablet') {
+      width: 90%;
     }
+  }
 }
 
-.temp-notification-info-header{
-    width: 100%;
-    height: 50px;
-    background-color: $grey;
+.new-notification-form-body {
+  display: flex;
+  flex-direction: column;
+
+  .defined-to {
+    margin-top: 20px;
+    @include media('<=tablet') {
+      width: 90%;
+    }
+  }
+
+  input {
     box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-    padding-left: 10px;
-    border-bottom: 1px solid $darkgrey;
-    border-radius: 5px 5px 0 0;
-    font-family: roboto;
-    font-weight: 450;
-    font-size: 16px;
-    color: $blue;
-
-    .temp-notification-info-header-btns{
-        margin-right: 10px;
-
-        .notification-icons{
-            @include workshop-info-card-header-btns;
-        }
+    width: 70%;
+    margin: 20px auto;
+    height: 25px;
+    outline: none;
+    padding-left: 5px;
+    border: 2px solid $grey;
+    border-radius: 5px;
+    color: $darkgrey;
+    @include media('<=tablet') {
+      width: 90%;
     }
+  }
 
-    button{
-        margin-right: 10px;
-    }
-}
-
-.temp-notification-info-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-    div{
-        margin: 20px 10px;
-        font-family: roboto;
-        color: $darkgrey;
-
-        span{
-            font-weight: 500;
-        }
-    }
-}
-
-
-.temp-notification-info-footer{
-    background-color: $grey;
+  .content {
+    box-sizing: border-box;
+    width: 70%;
+    margin: 20px auto;
     height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid $darkgrey ;
-    border-radius: 0 0 5px 5px;
-
-    button{
-        @include button(30px,$blue);
-        margin-top:0;
+    outline: none;
+    padding-left: 5px;
+    border: 2px solid $grey;
+    border-radius: 5px;
+    color: $darkgrey;
+    @include media('<=tablet') {
+      width: 90%;
     }
+  }
+
+  select {
+    box-sizing: border-box;
+    align-self: flex-start;
+    width: 70%;
+    height: 25px;
+    margin: 20px auto;
+    outline: none;
+    border: 2px solid $grey;
+    border-radius: 5px;
+    color: $darkgrey;
+    @include media('<=tablet') {
+      width: 90%;
+    }
+  }
+
+  p {
+    box-sizing: border-box;
+    width: 70%;
+    margin: auto;
+    align-self: flex-start;
+    height: fit-content;
+    font-family: roboto, Helvetica, sans-serif;
+    font-weight: 400;
+    color: $blue;
+  }
+
+  .schedule {
+    display: flex;
+    align-self: flex-start;
+    width: 70%;
+    margin: 20px auto;
+    align-items: center;
+    @include media('<=tablet') {
+      width: 90%;
+    }
+
+    label {
+      width: fit-content;
+      align-self: flex-start;
+      padding-left: 0;
+      font-family: roboto, Helvetica, sans-serif;
+      font-weight: 500;
+      color: $darkgrey;
+    }
+
+    input {
+      width: fit-content;
+      margin: 0 16px 0 0;
+      display: flex;
+    }
+  }
+}
+
+.new-notification-form-footer {
+  background-color: $grey;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $darkgrey;
+  border-radius: 0 0 5px 5px;
+
+  button {
+    @include button(30px, $blue);
+    margin-top: 0;
+  }
+}
+
+.temp-notification-info {
+  background-color: white;
+  border-radius: 5px;
+  width: 95%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(53, 53, 53, 0.2);
+  @include media('<=tablet') {
+    width: 90%;
+  }
+}
+
+.temp-notification-info-header {
+  width: 100%;
+  height: 50px;
+  background-color: $grey;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding-left: 10px;
+  border-bottom: 1px solid $darkgrey;
+  border-radius: 5px 5px 0 0;
+  font-family: roboto, Helvetica, sans-serif;
+  font-weight: 450;
+  font-size: 16px;
+  color: $blue;
+
+  .temp-notification-info-header-btns {
+    margin-right: 10px;
+
+    .notification-icons {
+      @include workshop-info-card-header-btns;
+    }
+  }
+
+  button {
+    margin-right: 10px;
+  }
+}
+
+.temp-notification-info-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  div {
+    margin: 20px 10px;
+    font-family: roboto, Helvetica, sans-serif;
+    color: $darkgrey;
+
+    span {
+      font-weight: 500;
+    }
+  }
+}
+
+.temp-notification-info-footer {
+  background-color: $grey;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $darkgrey;
+  border-radius: 0 0 5px 5px;
+
+  button {
+    @include button(30px, $blue);
+    margin-top: 0;
+  }
 }

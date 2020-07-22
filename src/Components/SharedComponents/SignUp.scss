@@ -1,5 +1,5 @@
-@import "../../styles/variables.scss";
-@import "../../styles/breakpoints.scss";
+@import '../../styles/variables.scss';
+@import '../../styles/breakpoints.scss';
 
 .signUp-page-container {
   margin: 0;
@@ -17,10 +17,10 @@
   height: 70%;
   width: 60%;
   border-radius: 5px;
-  @include media("<=tablet") {
+  @include media('<=tablet') {
     width: 80%;
     height: 80%;
-    @include media("<=phone") {
+    @include media('<=phone') {
       width: 95%;
       height: 80%;
       justify-content: center;
@@ -28,14 +28,14 @@
   }
 
   .signUp-img {
-    background-image: url("../../styles/images/login-8.png");
+    background-image: url('../../styles/images/login-8.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 40%;
     height: 100%;
     border-radius: 5px 0 0 5px;
-    @include media("<=tablet") {
+    @include media('<=tablet') {
       display: none;
     }
   }
@@ -46,14 +46,14 @@
   border-radius: 0 5px 5px 0;
   text-align: center;
   padding: 10px;
-  @include media("<=tablet") {
+  @include media('<=tablet') {
     width: 90%;
     margin: auto;
   }
 
   h1 {
     color: $darkgrey;
-    font-family: roboto; //change
+    font-family: roboto, Helvetica, sans-serif; //change
     margin-bottom: 30px;
   }
 
@@ -63,39 +63,45 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 0 30px 10px 30px;
-    @include media("<=tablet") {
+    @include media('<=tablet') {
       padding: 0px 20px 20px 20px;
       flex-direction: column;
       justify-content: center;
     }
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       display: block;
     }
 
     .name {
       display: flex;
       justify-content: space-between;
-      @include media("<=tablet") {
+      @include media('<=tablet') {
         flex-direction: column;
         justify-content: center;
       }
 
-      input {
-        height: 40px;
-        outline: none;
-        padding: 5px;
-        border: 2px solid $grey;
-        border-radius: 5px;
-        color: $darkgrey;
+      .input-error {
         width: 48%;
-        border-radius: 20px;
-        box-sizing: border-box;
-        @include media("<=tablet") {
-          flex-wrap: wrap;
-          justify-content: center;
-          width: 90%;
-          margin: 10px;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          height: 40px;
+          outline: none;
+          padding: 5px;
+          border: 2px solid $grey;
+          border-radius: 5px;
+          color: $darkgrey;
+          width: 100%;
+          border-radius: 20px;
+          box-sizing: border-box;
+          @include media('<=tablet') {
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
+            margin: 10px;
+          }
         }
       }
     }
@@ -103,9 +109,33 @@
     .comp-country {
       display: flex;
       justify-content: space-between;
-      @include media("<=tablet") {
+      @include media('<=tablet') {
         flex-direction: column;
         justify-content: center;
+      }
+
+      .input-error {
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          height: 40px;
+          outline: none;
+          padding: 5px;
+          border: 2px solid $grey;
+          border-radius: 5px;
+          color: $darkgrey;
+          width: 100%;
+          border-radius: 20px;
+          box-sizing: border-box;
+          @include media('<=tablet') {
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
+            margin: 10px;
+          }
+        }
       }
 
       input {
@@ -118,7 +148,7 @@
         width: 48%;
         border-radius: 20px;
         box-sizing: border-box;
-        @include media("<=tablet") {
+        @include media('<=tablet') {
           flex-wrap: wrap;
           justify-content: center;
           width: 90%;
@@ -130,26 +160,32 @@
     .password {
       display: flex;
       justify-content: space-between;
-      @include media("<=tablet") {
+      @include media('<=tablet') {
         flex-direction: column;
         justify-content: center;
       }
 
-      input {
-        height: 40px;
-        outline: none;
-        padding: 5px;
-        border: 2px solid $grey;
-        border-radius: 5px;
-        color: $darkgrey;
+      .input-error {
         width: 48%;
-        border-radius: 20px;
-        box-sizing: border-box;
-        @include media("<=tablet") {
-          flex-wrap: wrap;
-          justify-content: center;
-          width: 90%;
-          margin: 10px;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          height: 40px;
+          outline: none;
+          padding: 5px;
+          border: 2px solid $grey;
+          border-radius: 5px;
+          color: $darkgrey;
+          width: 100%;
+          border-radius: 20px;
+          box-sizing: border-box;
+          @include media('<=tablet') {
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
+            margin: 10px;
+          }
         }
       }
     }
@@ -165,7 +201,7 @@
       cursor: pointer;
       box-sizing: border-box;
       width: 100%;
-      @include media("<=tablet") {
+      @include media('<=tablet') {
         width: 90%;
         margin: 10px;
       }
@@ -174,10 +210,10 @@
 
   p {
     color: $blue;
-    font-family: roboto; //change
+    font-family: roboto, Helvetica, sans-serif; //change
     margin: 0 0 5px 0;
     cursor: pointer;
-    @include media("<=tablet") {
+    @include media('<=tablet') {
       justify-content: space-around;
     }
   }
@@ -193,7 +229,7 @@
   color: $darkgrey;
   border-radius: 20px;
   box-sizing: border-box;
-  @include media("<=tablet") {
+  @include media('<=tablet') {
     flex-wrap: wrap;
     justify-content: center;
     width: 90%;
@@ -207,13 +243,19 @@ hr {
 
 .gdpr {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  @include media("<=tablet") {
-    flex-direction: column;
-    justify-content: center;
+  @include media('<=tablet') {
+    align-items: flex-start;
   }
+
+  .gdpr-input {
+    display: flex;
+  }
+
+  .checkbox,
   p,
   a {
-    margin-left: 5px;
+    margin: 0 0 0 5px;
   }
 }

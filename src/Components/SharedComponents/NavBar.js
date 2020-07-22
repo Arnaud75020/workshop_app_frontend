@@ -1,22 +1,18 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import { Link } from 'react-router-dom';
 import './NavBar.scss';
 import { WorkshopContext } from '../../Context/WorkshopContext';
-import { MdMenu, MdClose, MdKeyboardArrowRight, MdKeyboardArrowDown } from 'react-icons/md';
+import { MdMenu, MdClose, MdKeyboardArrowRight } from 'react-icons/md';
 
 import MonthlySpeakers from './MonthlySpeakers';
 
 const NavBar = () => {
-  const { speakers, user, logout, setAuth } = useContext(UserContext);
+  const { user, logout, setAuth } = useContext(UserContext);
   const { months } = useContext(WorkshopContext);
   const [isNavExpanded, setNavExpanded] = useState(false);
   const [checkboxCheckedOne, setCheckboxCheckedOne] = useState(false);
   const [checkboxCheckedTwo, setCheckboxCheckedTwo] = useState(false);
-
-  useEffect(() => {
-    console.log("NAVBAR MOUNTED")
-  },[])
 
   const handleCheckboxOne = () => {
     setCheckboxCheckedOne(!checkboxCheckedOne)
@@ -75,7 +71,6 @@ const NavBar = () => {
               <input onChange={handleCheckboxOne} type='checkbox' id='A' />
               <label htmlFor='A'>
                 WORKSHOPS BY MONTH
-                {/* add animation */}
                 <MdKeyboardArrowRight  className="arrow"/>
               </label>
               <ul>
@@ -86,7 +81,6 @@ const NavBar = () => {
                         <input onChange={handleCheckboxTwo} type='checkbox' id={month.month} />
                         <label htmlFor={month.month}>
                           {month.month}
-                          {/* add animation */}
                          <MdKeyboardArrowRight className="arrow"/>
                         </label>
                         <ul>

@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../../Context/UserContext';
 
 const ContactSettings = ({ handleIsSaved }) => {
 
-    const {register, handleSubmit, errors, watch} = useForm();
+    const {register, handleSubmit, errors } = useForm();
 
   const { user, confirmUpdatedUser } = useContext(UserContext);
 

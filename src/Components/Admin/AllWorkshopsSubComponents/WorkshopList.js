@@ -1,8 +1,6 @@
-import React, { useContext, useState } from "react";
-import { WorkshopContext } from "../../../Context/WorkshopContext";
+import React from "react";
 import WorkshopDetails from "./WorkshopDetails";
 import "./WorkshopList.scss";
-import ModalForm from "../Modals/ModalForm";
 
 const WorkshopList = ({
   toggleDisplayModal,

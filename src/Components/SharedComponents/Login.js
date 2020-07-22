@@ -1,20 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../Context/UserContext';
-import { WorkshopContext } from '../../Context/WorkshopContext';
 import { Link } from 'react-router-dom';
 import './Login.scss';
 import axios from 'axios';
 
 const Login = () => {
-  const { register, handleSubmit, reset, errors } = useForm();
+  const { register, handleSubmit } = useForm();
   const { setUserInformation, setAuth } = useContext(UserContext);
-  const {
-    userWorkshops,
-    getUserWorkshops,
-    getWorkshop,
-    getAttendees,
-  } = useContext(WorkshopContext);
 
   const [incorrectEmail, setIncorrectEmail] = useState(false);
   const [incorrectPassword, setIncorrectPassword] = useState(false);

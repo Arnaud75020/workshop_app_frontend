@@ -1,7 +1,6 @@
 import React from "react";
 
 const AttendeeDetails = (attendee) => {
-  console.log("attendee", attendee);
   return (
     <tr>
       <td className="name-col">

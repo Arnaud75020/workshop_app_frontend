@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './ForgotPassword.scss';
 
 const ForgotPassword = () => {
-  const { register, handleSubmit, reset, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const [newPasswordSent, setNewPasswordSent] = useState(false);
   const [emailNotFound, setEmailNotFound] = useState(false);
@@ -37,7 +37,6 @@ const ForgotPassword = () => {
           setEmailNotFound(true);
         }
       });
-    
   };
 
   const submitCode = (data) => {
@@ -52,9 +51,6 @@ const ForgotPassword = () => {
       .catch((error) => {
         if (error.response) {
           setPasswordErr(true);
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
         } else if (error.request) {
           console.log(error.request);
         } else {

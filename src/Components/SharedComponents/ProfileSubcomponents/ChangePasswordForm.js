@@ -45,8 +45,6 @@ const ChangePasswordForm = ({ handleChangePassword }) => {
                 setActive("success")
                 setTimeout(() => handleChangePassword(), 1500)
                 setTimeout(() => setActive("current"), 2000)
-                
-              
         } else{
             setPasswordsDontMatch(true)
         }
@@ -111,8 +109,7 @@ const ChangePasswordForm = ({ handleChangePassword }) => {
                 <p>password changed</p>
             </div>
             }
-        </div>
-         
+        </div>        
     )
 }
 

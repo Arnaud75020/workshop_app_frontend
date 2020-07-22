@@ -81,11 +81,9 @@ const SignUp = (props) => {
         registration_date: registration_date,
         password: password,
       };
-      console.log(formData);
 
       axios
         .post('/auth/signup', formData)
-        .then((response) => console.log('SIGNUP RES DATA', response.data))
         .then(() => {
           axios
           .post('/auth/login', data)
@@ -102,11 +100,6 @@ const SignUp = (props) => {
 
   var todayDate = new Date().toISOString().slice(0, 10);
 
-  useEffect(() => {
-    console.log("Newdate", todayDate);
-    console.log("id", props.match.params.id);
-  },[]);
-
   return (
     <div className="signUp-page-container">
       <div className="signUp-container">
@@ -115,22 +108,26 @@ const SignUp = (props) => {
           <h1>Create an Account</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="name">
-              <input
-                name="firstname"
-                type="text"
-                placeholder="First Name"
-                ref={register({
-                  required: true,
-                })}
-              />
+              <div className="input-error">
+                <input
+                  name="firstname"
+                  type="text"
+                  placeholder="First Name"
+                  ref={register({
+                    required: true,
+                  })}
+                />
               {errors.firstname && <p>please add your firstname</p>}
-              <input
-                name="lastname"
-                type="text"
-                placeholder="Last Name"
-                ref={register({ required: true })}
-              />
-              {errors.lastname && <p>please add your lastname</p>}
+              </div>
+              <div className="input-error">
+                <input
+                  name="lastname"
+                  type="text"
+                  placeholder="Last Name"
+                  ref={register({ required: true })}
+                />
+                {errors.lastname && <p>please add your lastname</p>}
+              </div>
             </div>
             <div className="comp-country">
               <input
@@ -139,43 +136,51 @@ const SignUp = (props) => {
                 placeholder="Company"
                 ref={register}
               />
+              <div className="input-error">
+                <input
+                  name="country"
+                  type="text"
+                  placeholder="Country"
+                  ref={register({ required: true })}
+                />
+              {errors.country && <p>please add your country</p>}
+              </div>
+            </div>
+            <div className="input-error">
               <input
-                name="country"
+                id="email"
+                name="email"
                 type="text"
-                placeholder="Country"
+                placeholder="Email Address"
                 ref={register({ required: true })}
               />
-              {errors.country && <p>please add your country</p>}
-            </div>
-            <input
-              id="email"
-              name="email"
-              type="text"
-              placeholder="Email Address"
-              ref={register({ required: true })}
-            />
             {errors.email && <p>please add your email</p>}
+            </div>
             <div className="password">
-              <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                ref={register({
-                  required: true,
-                  minLength: { value: 8, message: "minimum 8 characters" },
-                })}
-              />
-              {errors.password && <p>{errors.password.message}</p>}
-              <input
-                name="repeatPassword"
-                type="password"
-                placeholder="Repeat Password"
-                ref={register({
-                  required: true,
-                })}
-              />
-              {errors.repeatPassword && <p>please repeat your password</p>}
-              {!passwordsMatch && <p>passwords don't match</p>}
+              <div className="input-error">
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  ref={register({
+                    required: true,
+                    minLength: { value: 8, message: "minimum 8 characters" },
+                  })}
+                />
+                {errors.password && <p>{errors.password.message}</p>}
+              </div>
+              <div className="input-error">
+                <input
+                  name="repeatPassword"
+                  type="password"
+                  placeholder="Repeat Password"
+                  ref={register({
+                    required: true,
+                  })}
+                />
+                {errors.repeatPassword && <p>please repeat your password</p>}
+                {!passwordsMatch && <p>passwords don't match</p>}
+              </div>
             </div>
             <input
               name="role_id"
@@ -199,20 +204,22 @@ const SignUp = (props) => {
               ref={register}
             />
             <div className="gdpr">
-              <input
-                type="checkbox"
-                name="checkbox"
-                id="gdpr"
-                value={checkboxCheck}
-                onChange={toggleCheckbox}
-                ref={register({ required: true })}
-              />
-              <p>
-                I have read and accept the
-                <a href="https://productized.co/privacy-policy/">
-                  Privacy Policy
-                </a>
-              </p>
+              <div className="gdpr-input">
+                <input
+                  type="checkbox"
+                  name="checkbox"
+                  id="gdpr"
+                  value={checkboxCheck}
+                  onChange={toggleCheckbox}
+                  ref={register({ required: true })}
+                />
+                <p>
+                  I have read and accept the
+                  <a href="https://productized.co/privacy-policy/">
+                    Privacy Policy
+                  </a>
+                </p>
+              </div>
               {errors.checkbox && (
                 <p>You need to agree with the Privacy Policy</p>
               )}

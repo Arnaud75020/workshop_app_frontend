@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../../../Context/UserContext';
+import React from 'react';
 import RegistrationDetails from './RegistrationDetails'
 import './RegistrationList.scss'
 
