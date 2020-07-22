@@ -124,7 +124,7 @@ label {
 label {
   line-height: 50px;
   margin: 0;
-  padding: 0 1rem;
+  padding: 0 1em;
   list-style: none;
   text-decoration: none;
   color: #e6e6e6;
@@ -169,11 +169,12 @@ label {
 .nav li a {
   line-height: 50px;
   margin: 0;
-  padding: 0 4em;
+  padding: 0 1em;
   list-style: none;
   text-decoration: none;
   color: #e6e6e6;
-  font-weight: 100;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
 }
 
 .multi-level {
