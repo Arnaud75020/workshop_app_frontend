@@ -118,7 +118,7 @@
   h2,
   h4,
   p {
-    font-family: roboto, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: $darkgrey;
   }
 }
@@ -148,7 +148,7 @@
   }
 
   p {
-    font-family: roboto, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: $darkgrey;
 
     span {
@@ -226,7 +226,7 @@
     border-radius: 0;
     color: $darkgrey;
     border-bottom: 1px solid $darkgrey;
-    font-family: roboto, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 450;
     text-decoration: none;
 
@@ -239,7 +239,7 @@
   .workshop-csv {
     padding: 10px;
     font-size: 14px;
-    font-family: roboto, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 450;
     text-decoration: none;
     &:hover {

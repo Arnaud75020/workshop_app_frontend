@@ -25,7 +25,7 @@ const ForgotPassword = () => {
       .then((result) => {
         if (result.affectedRows === 1) {
         console.log("result", result)
-          setNewPasswordSent(true);
+          //setNewPasswordSent(true);
           setActive('inputCode');
           setUserEmail(data.email);
 
@@ -120,7 +120,6 @@ const ForgotPassword = () => {
                 contentEditable={false}
                 ref={register}
             />
-            
             <label htmlFor="new-password">New Password</label>
             <input
                 name="newPassword"
