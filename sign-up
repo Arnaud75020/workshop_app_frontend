@@ -211,20 +211,22 @@ const SignUp = (props) => {
               ref={register}
             />
             <div className="gdpr">
-              <input
-                type="checkbox"
-                name="checkbox"
-                id="gdpr"
-                value={checkboxCheck}
-                onChange={toggleCheckbox}
-                ref={register({ required: true })}
-              />
-              <p>
-                I have read and accept the
-                <a href="https://productized.co/privacy-policy/">
-                  Privacy Policy
-                </a>
-              </p>
+              <div className="gdpr-input">
+                <input
+                  type="checkbox"
+                  name="checkbox"
+                  id="gdpr"
+                  value={checkboxCheck}
+                  onChange={toggleCheckbox}
+                  ref={register({ required: true })}
+                />
+                <p>
+                  I have read and accept the
+                  <a href="https://productized.co/privacy-policy/">
+                    Privacy Policy
+                  </a>
+                </p>
+              </div>
               {errors.checkbox && (
                 <p>You need to agree with the Privacy Policy</p>
               )}
