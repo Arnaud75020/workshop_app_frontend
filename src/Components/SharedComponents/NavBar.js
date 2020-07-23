@@ -74,9 +74,9 @@ const NavBar = () => {
                 <MdKeyboardArrowRight  className="arrow"/>
               </label>
               <ul>
-                {months.map((month) => {
+                {months.map((month, index) => {
                   return (
-                    <li>
+                    <li key={index}>
                       <div className='sub-item'>
                         <input onChange={handleCheckboxTwo} type='checkbox' id={month.month} />
                         <label htmlFor={month.month}>

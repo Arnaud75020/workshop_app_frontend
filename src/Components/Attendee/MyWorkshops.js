@@ -70,9 +70,10 @@ const MyWorkshops = () => {
           <h1>My Workshops</h1>
           <div className="myworkshops-btns-wrapper">
           {months.length > 0 &&
-            months.map((month) => {
+            months.map((month, index) => {
               return (
                 <button
+                  key={index}
                   className={
                     active === month.month
                       ? 'myWorkshops-month-btn active'

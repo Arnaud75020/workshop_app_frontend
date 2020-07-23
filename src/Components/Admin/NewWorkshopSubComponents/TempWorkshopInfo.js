@@ -203,7 +203,7 @@ const TempWorkshopInfo = ({ tempWorkshop, toggleDisplayModal }) => {
                 })}
               </select>
               {errors.speaker && <p>please choose speaker</p>}
-              <input
+              <textarea
                 style={errors.description && { border: "1px solid #3B65B0" }}
                 type="text"
                 placeholder="Description"
