@@ -106,11 +106,13 @@ const WorkshopForm = () => {
             })}
           </select>
           {errors.speaker && <p>please choose speaker</p>}
-          <input
+          <textarea
             style={errors.description && ({border: "1px solid #3B65B0"})} 
             type='text'
             placeholder='Description'
             name='description'
+            row="4"
+            cols="50"
             ref={register({ required: true })}
           />
           {errors.description && <p>please add a description</p>}
