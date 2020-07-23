@@ -35,9 +35,9 @@ const AttendeeList = ({attendees} ) => {
                 </thead>
                 <tbody>
                     {attendees
-                    .map(attendee => {
+                    .map((attendee, index) => {
                     return <AttendeeDetails 
-                        key={attendee.id} 
+                        key={index} 
                         {...attendee} /> 
                     })} 
                 </tbody>

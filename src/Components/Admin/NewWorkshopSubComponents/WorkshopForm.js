@@ -101,7 +101,7 @@ const WorkshopForm = () => {
             {speakersLeft.length > 0 && speakersLeft.map((speaker) => {
               return (
                 <option
-                  value={`${speaker.firstname} ${speaker.lastname},${speaker.id}`}>{`${speaker.firstname} ${speaker.lastname}`}</option>
+                  key={speaker.id} value={`${speaker.firstname} ${speaker.lastname},${speaker.id}`}>{`${speaker.firstname} ${speaker.lastname}`}</option>
               );
             })}
           </select>

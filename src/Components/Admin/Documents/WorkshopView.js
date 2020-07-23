@@ -84,9 +84,9 @@ const WorkshopView = ({ workshop, attendees }) => (
         <div>
           <div>
             {attendees &&
-              attendees.map((attendee) => {
+              attendees.map((attendee, index) => {
                 return (
-                  <div style={styles.informationA}>
+                  <div style={styles.informationA} key={index}>
                     <Text>
                       {`Name : ${attendee.firstname} ${attendee.lastname}`} -{" "}
                       {`Country : ${attendee.country} `} -{" "}

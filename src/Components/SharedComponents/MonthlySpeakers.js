@@ -13,8 +13,8 @@ const MonthlySpeakers = ({ month, closeNavExpanded }) => {
     })
 
     return(
-            filteredWorkshops.map(workshop => {
-                return <li onClick={closeNavExpanded}><Link to={`/admin/workshop-attendees/${workshop.speaker_id}`}>{workshop.workshop_speaker}</Link></li>
+            filteredWorkshops.map((workshop, index) => {
+                return <li onClick={closeNavExpanded} key={index}><Link to={`/admin/workshop-attendees/${workshop.speaker_id}`}>{workshop.workshop_speaker}</Link></li>
             })
         
     )
